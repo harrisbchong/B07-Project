@@ -19,3 +19,14 @@ What are you planning on doing today?
 
 Any impediments or stumbling blocks?
 	- None
+
+Name: Yuchuan Xue
+
+What have you done since yesterday?
+	- Todat we finally met with each other, so no work yesterday.
+
+What are you planning on doing today?
+	- Get my mission and create new file.java and write something.
+
+Any impediments or stumbling blocks?
+	- None
