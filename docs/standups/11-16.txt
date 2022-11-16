@@ -1,12 +1,10 @@
-Name: <Your Name>
+Name: Harris Chong
 
 What have you done since yesterday?
-	- <What you have done>
+	- Setup Github and Jira board
 
 What are you planning on doing today?
-	- <What you plan on doing 1...>
-    - <What you plan on doing 2...>
-    - <What you plan on doing 3...>
+	- Nothing
 
 Any impediments or stumbling blocks?
 	- None
