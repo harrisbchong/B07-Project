@@ -8,3 +8,16 @@ What are you planning on doing today?
 
 Any impediments or stumbling blocks?
 	- None
+
+
+Name: Jason Liang
+
+What have you done since yesterday?
+	- Familiarizing firebase to plan out the first user story.
+
+What are you planning on doing today?
+	- plan out the first user story.
+
+Any impediments or stumbling blocks?
+	- None
+		
