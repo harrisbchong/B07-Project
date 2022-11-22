@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">B07 Project</string>
+    <string name="action_settings">Settings</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+    <string name="logo_content_description">Logo of University of Toronto Scarborough</string>
+
+    <!-- Front page -->
+    <string name="front_page_admin_login">Admin Login</string>
+    <string name="front_page_student_login">Student Login</string>
+    <string name="front_page_signup">Sign Up</string>
+    <string name="front_page_title">Course Manager</string>
+
+    <!-- Student Login page -->
+    <string name="student_login_submit_text">Login</string>
+
+    <!-- Student registration page  -->
+    <string name="student_signup_submit_text">Signup</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

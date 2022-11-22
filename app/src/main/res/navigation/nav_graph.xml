@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/studentFrontPage">
+
+    <fragment
+        android:id="@+id/studentFrontPage"
+        android:name="com.example.b07project.StudentFrontPage"
+        android:label="student_front_page"
+        tools:layout="@layout/fragment_student_front_page" >
+        <action
+            android:id="@+id/action_studentFrontPage_to_studentLoginPage"
+            app:destination="@id/studentLoginPage" />
+        <action
+            android:id="@+id/action_studentFrontPage_to_adminLoginPage"
+            app:destination="@id/adminLoginPage" />
+        <action
+            android:id="@+id/action_studentFrontPage_to_studentSignupPage"
+            app:destination="@id/studentSignupPage" />
+    </fragment>
+    <fragment
+        android:id="@+id/studentLoginPage"
+        android:name="com.example.b07project.StudentLoginPage"
+        android:label="fragment_student_login_page"
+        tools:layout="@layout/fragment_student_login_page" >
+        <action
+            android:id="@+id/action_studentLoginPage_to_studentCourseView"
+            app:destination="@id/studentCourseView" />
+    </fragment>
+    <fragment
+        android:id="@+id/studentCourseView"
+        android:name="com.example.b07project.StudentCourseView"
+        android:label="fragment_student_course_view"
+        tools:layout="@layout/fragment_student_course_view" />
+    <fragment
+        android:id="@+id/adminLoginPage"
+        android:name="com.example.b07project.AdminLoginPage"
+        android:label="fragment_admin_login_page"
+        tools:layout="@layout/fragment_admin_login_page" />
+    <fragment
+        android:id="@+id/studentSignupPage"
+        android:name="com.example.b07project.StudentSignupPage"
+        android:label="fragment_student_signup_page"
+        tools:layout="@layout/fragment_student_signup_page" >
+        <action
+            android:id="@+id/action_studentSignupPage_to_studentCourseView"
+            app:destination="@id/studentCourseView" />
+    </fragment>
+</navigation>
