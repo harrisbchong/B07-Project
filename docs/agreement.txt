@@ -1,0 +1,13 @@
+Name of all group members (Indicate which member is the Scrum Master): 
+Harris Chong (Scrum Master), Mark Lin, Liang Ma Yuan, Moon Guo, Cheng Liang Huang, Yuchuan Xue
+
+Primary Method of communication (Discord, Facebook Messenger, WeChat, etc.):
+Discord
+
+Scheduled times for all daily standup meetings (e.g. Weekdays at 17:00 EST):
+Weekdays at 20:00PM EST
+
+Where the project will be Version Controlled (GitHub (recommended), GitLab, SVN, etc.):
+Github
+
+Anything else that is relevant to the group and project:
