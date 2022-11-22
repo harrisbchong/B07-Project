@@ -30,3 +30,16 @@ What are you planning on doing today?
 
 Any impediments or stumbling blocks?
 	- None
+	
+Name: Cheng Liang Huang
+
+What have you done since yesterday?
+	- Went though Firebase authentication Get Started page
+
+What are you planning on doing today?
+	- Design preliminary layout of pages within the app
+	- Work on implementing the Front Page, Student Login + Signup pages
+
+Any impediments or stumbling blocks?
+	- None
+
