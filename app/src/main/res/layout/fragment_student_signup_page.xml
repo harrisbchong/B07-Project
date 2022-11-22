@@ -10,6 +10,13 @@
 
     <!-- TODO: Update blank fragment layout -->
 
+    <ImageButton
+        android:id="@+id/back_button_2"
+        android:layout_width="40dp"
+        android:layout_height="51dp"
+        android:background="@color/uoft_blue"
+        android:src="@drawable/abc_vector_test" />
+
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
