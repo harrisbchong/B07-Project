@@ -19,3 +19,14 @@ What are you planning on doing today?
 
 Any impediments or stumbling blocks?
 	- None
+
+Name: Yuchuan Xue
+
+What have you done since yesterday?
+	- Nothing
+
+What are you planning on doing today?
+	- Design the primary version of UI with other groupmembers
+
+Any impediments or stumbling blocks?
+	- None
