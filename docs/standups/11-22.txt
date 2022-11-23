@@ -1,0 +1,10 @@
+Name: Cheng Liang Huang
+
+What have you done since yesterday?
+	- Committed front page, student login and signup pages
+
+What are you planning on doing today?
+	- Talk with team about branching structure
+
+Any impediments or stumbling blocks?
+	- None
