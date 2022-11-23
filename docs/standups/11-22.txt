@@ -19,3 +19,14 @@ What are you planning on doing today?
 
 Any impediments or stumbling blocks?
 	- None
+	
+Name: Yuchuan Xue
+
+What have you done since yesterday?
+	- Committed back buttons on student login and signup pages
+
+What are you planning on doing today?
+	- Talk with group members about the next step to do and the use of firebase
+
+Any impediments or stumbling blocks?
+	- None
