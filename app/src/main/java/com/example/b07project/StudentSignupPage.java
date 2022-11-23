@@ -56,5 +56,12 @@ public class StudentSignupPage extends Fragment {
                         });
             }
         });
+
+        binding.backButton2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                NavHostFragment.findNavController(StudentSignupPage.this).navigate(R.id.action_studentSignupPage_to_studentFrontPage);
+            }
+        });
     }
 }

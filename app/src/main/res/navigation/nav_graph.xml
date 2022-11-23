@@ -28,6 +28,9 @@
         <action
             android:id="@+id/action_studentLoginPage_to_studentCourseView"
             app:destination="@id/studentCourseView" />
+        <action
+            android:id="@+id/action_studentLoginPage_to_studentFrontPage"
+            app:destination="@id/studentFrontPage" />
     </fragment>
     <fragment
         android:id="@+id/studentCourseView"
@@ -47,5 +50,8 @@
         <action
             android:id="@+id/action_studentSignupPage_to_studentCourseView"
             app:destination="@id/studentCourseView" />
+        <action
+            android:id="@+id/action_studentSignupPage_to_studentFrontPage"
+            app:destination="@id/studentFrontPage" />
     </fragment>
 </navigation>

@@ -97,4 +97,11 @@ tools:context=".StudentFrontPage">
         app:layout_constraintTop_toTopOf="parent"
         tools:contentDescription="@string/logo_content_description" />
 
+    <ImageButton
+        android:id="@+id/back_button"
+        android:layout_width="40dp"
+        android:layout_height="51dp"
+        android:background="@color/uoft_blue"
+        android:src="@drawable/abc_vector_test" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
