@@ -1,15 +1,14 @@
 package com.example.b07project;
 
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import androidx.navigation.fragment.NavHostFragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.b07project.databinding.FragmentStudentLoginPageBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -55,13 +54,6 @@ public class StudentLoginPage extends Fragment {
                                 }
                             }
                         });
-            }
-        });
-
-        binding.backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                NavHostFragment.findNavController(StudentLoginPage.this).navigate(R.id.action_studentLoginPage_to_studentFrontPage);
             }
         });
     }

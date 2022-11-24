@@ -16,11 +16,22 @@
     <string name="front_page_signup">Sign Up</string>
     <string name="front_page_title">Course Manager</string>
 
+    <string name="login_submit_text">Login</string>
+
     <!-- Student Login page -->
-    <string name="student_login_submit_text">Login</string>
+    <string name="student_login_text">Student Login</string>
+    <string name="admin_login_text">Admin Login</string>
 
     <!-- Student registration page  -->
     <string name="student_signup_submit_text">Signup</string>
+
+    <!-- String used as email and password hints  -->
+    <string name="enter_email_text">Enter Email</string>
+    <string name="enter_password_text">Enter Password</string>
+
+    <!-- Admin Front page  -->
+    <string name="add_course_text">Add Course</string>
+    <string name="browse_course_text">Browse Course</string>
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>

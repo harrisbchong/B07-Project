@@ -41,7 +41,33 @@
         android:id="@+id/adminLoginPage"
         android:name="com.example.b07project.AdminLoginPage"
         android:label="fragment_admin_login_page"
-        tools:layout="@layout/fragment_admin_login_page" />
+        tools:layout="@layout/fragment_admin_login_page" >
+        <action
+            android:id="@+id/action_adminLoginPage_to_adminFrontPage"
+            app:destination="@id/adminFrontPage" />
+    </fragment>
+    <fragment
+        android:id="@+id/adminCourseAddPage"
+        android:name="com.example.b07project.AdminCourseAddPage"
+        android:label="fragment_admin_course_add_page"
+        tools:layout="@layout/fragment_admin_course_add_page" />
+    <fragment
+        android:id="@+id/adminBrowseCourseViewPage"
+        android:name="com.example.b07project.AdminBrowseCourseViewPage"
+        android:label="fragment_admin_browse_course_view_page"
+        tools:layout="@layout/fragment_admin_browse_course_view_page" />
+    <fragment
+        android:id="@+id/adminFrontPage"
+        android:name="com.example.b07project.AdminFrontPage"
+        android:label="fragment_admin_front_page"
+        tools:layout="@layout/fragment_admin_front_page" >
+        <action
+            android:id="@+id/action_adminFrontPage_to_adminCourseAddPage"
+            app:destination="@id/adminCourseAddPage" />
+        <action
+            android:id="@+id/action_adminFrontPage_to_adminBrowseCourseViewPage"
+            app:destination="@id/adminBrowseCourseViewPage" />
+    </fragment>
     <fragment
         android:id="@+id/studentSignupPage"
         android:name="com.example.b07project.StudentSignupPage"
