@@ -19,3 +19,15 @@ What are you planning on doing today?
 
 Any impediments or stumbling blocks?
 	- None
+
+Name: Mark Lin
+
+What have you done since yesterday?
+	- Did research on firebase
+
+What are you planning on doing today?
+	- Got my android studio connected to firebase
+	- Did a basic test to check if registered users data appeared on firebase
+
+Any impediments or stumbling blocks?
+	- None
