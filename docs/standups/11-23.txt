@@ -31,3 +31,16 @@ What are you planning on doing today?
 
 Any impediments or stumbling blocks?
 	- None
+
+Name: Cheng Liang Huang
+
+What have you done since yesterday?
+	- Shared Firebase Authentication and Realtime Database with group members
+	- Had a meeting with Jason to make UI design improvements
+	
+What are you planning on doing today?
+	- Finalize UI design with team and help update Jira according to new design
+	
+Any impediments or stumbling blocks?
+	- Waiting for everyone else to agree on UI design proposed
+	
