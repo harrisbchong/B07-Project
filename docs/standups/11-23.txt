@@ -44,3 +44,13 @@ What are you planning on doing today?
 Any impediments or stumbling blocks?
 	- Waiting for everyone else to agree on UI design proposed
 	
+Name: Yuchuan Xue
+What have you done since yesterday?
+	- Did research on firebase and checked whether the login function work
+	- Talked with groupmembers about the design of student course view page
+	
+What are you planning on doing today?
+	- Assign the mission and work on the admin login page
+	
+Any impediments or stumbling blocks?
+	- Waiting for the assigning of the mission
