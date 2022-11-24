@@ -8,3 +8,14 @@ What are you planning on doing today?
 
 Any impediments or stumbling blocks?
 	- None
+
+Name: Harris Chong
+
+What have you done since yesterday?
+	- Setting up firebase on local repository and testing authentication
+
+What are you planning on doing today?
+	- delegate tasks and get access to firebase database
+
+Any impediments or stumbling blocks?
+	- None
