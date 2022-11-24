@@ -15,7 +15,7 @@ What have you done since yesterday?
 	- Nothing
 
 What are you planning on doing today?
-	- Nothing
+	- Setting up firebase and assigning tasks
 
 Any impediments or stumbling blocks?
 	- None
