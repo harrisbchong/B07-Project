@@ -37,8 +37,8 @@ public class StudentSignupPage extends Fragment {
         binding.studentSignupSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String email = binding.studentSignupEmailAddressInput.getText().toString();
-                String password = binding.studentSignupPasswordInput.getText().toString();
+                String email = binding.emailAddressInput.getText().toString();
+                String password = binding.passwordInput.getText().toString();
 
                 firebaseAuth.createUserWithEmailAndPassword(email, password)
                         .addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() {
