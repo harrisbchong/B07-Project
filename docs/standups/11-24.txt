@@ -8,3 +8,15 @@ What are you planning on doing today?
 	
 Any impediments or stumbling blocks?
   - Waiting for Scrum Master to organize meeting to finalize task delegation and organize Jira
+  
+Name: Mark Lin
+
+What have you done since yesterday?
+	- Nothing
+	
+What are you planning on doing today?
+	- Revamped the UI to conform to our new designs
+	- Added drawable icons to resource manager
+	
+Any impediments or stumbling blocks?
+  	- None
