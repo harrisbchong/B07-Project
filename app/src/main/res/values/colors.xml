@@ -9,4 +9,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="uoft_blue">#192852</color>
     <color name="button_tint">#D9D9D9</color>
+    <color name="button_green">#2AB514</color>
 </resources>
