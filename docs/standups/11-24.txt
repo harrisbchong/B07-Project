@@ -1,0 +1,10 @@
+Name: Cheng Liang Huang
+
+What have you done since yesterday?
+	- Fixed bug where app crashed on empty password or email submission
+	
+What are you planning on doing today?
+	- Check if we can have a team meeting today or tomorrow to divide the remaining user stories into subtasks
+	
+Any impediments or stumbling blocks?
+  - Waiting for Scrum Master to organize meeting to finalize task delegation and organize Jira
