@@ -41,20 +41,26 @@ public class StudentLoginPage extends Fragment {
                 String email = binding.studentEmailAddressInput.getText().toString();
                 String password = binding.studentPasswordInput.getText().toString();
 
-                mAuth.signInWithEmailAndPassword(email, password)
-                        .addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                if (task.isSuccessful()) {
-                                    // If login succeeds
-                                    NavHostFragment.findNavController(StudentLoginPage.this)
-                                            .navigate(R.id.action_studentLoginPage_to_studentCourseView);
-                                } else {
-                                    // If login fails
-                                    Toast.makeText(getActivity(), "Email or password is incorrect.", Toast.LENGTH_LONG).show();
+                if (email == null || email.length() == 0) {
+                    Toast.makeText(getActivity(), "You must enter an email address.", Toast.LENGTH_LONG).show();
+                } else if (password == null || password.length() == 0) {
+                    Toast.makeText(getActivity(), "You must enter a password.", Toast.LENGTH_LONG).show();
+                } else {
+                    mAuth.signInWithEmailAndPassword(email, password)
+                            .addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<AuthResult> task) {
+                                    if (task.isSuccessful()) {
+                                        // If login succeeds
+                                        NavHostFragment.findNavController(StudentLoginPage.this)
+                                                .navigate(R.id.action_studentLoginPage_to_studentCourseView);
+                                    } else {
+                                        // If login fails
+                                        Toast.makeText(getActivity(), "Email or password is incorrect.", Toast.LENGTH_LONG).show();
+                                    }
                                 }
-                            }
-                        });
+                            });
+                }
             }
         });
     }

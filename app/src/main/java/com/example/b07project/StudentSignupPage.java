@@ -7,6 +7,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,20 +41,26 @@ public class StudentSignupPage extends Fragment {
                 String email = binding.studentSignupEmailAddressInput.getText().toString();
                 String password = binding.studentSignupPasswordInput.getText().toString();
 
-                firebaseAuth.createUserWithEmailAndPassword(email, password)
-                        .addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                if (task.isSuccessful()) {
-                                    // If registration succeeds
-                                    NavHostFragment.findNavController(StudentSignupPage.this)
-                                            .navigate(R.id.action_studentSignupPage_to_studentCourseView);
-                                } else {
-                                    // If registration fails
-                                    Toast.makeText(getActivity(), "Email is already taken or credentials invalid.", Toast.LENGTH_LONG).show();
+                if (email == null || email.length() == 0) {
+                    Toast.makeText(getActivity(), "You must enter an email address.", Toast.LENGTH_LONG).show();
+                } else if (password == null || password.length() == 0) {
+                    Toast.makeText(getActivity(), "You must enter a password.", Toast.LENGTH_LONG).show();
+                } else {
+                    firebaseAuth.createUserWithEmailAndPassword(email, password)
+                            .addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<AuthResult> task) {
+                                    if (task.isSuccessful()) {
+                                        // If registration succeeds
+                                        NavHostFragment.findNavController(StudentSignupPage.this)
+                                                .navigate(R.id.action_studentSignupPage_to_studentCourseView);
+                                    } else {
+                                        // If registration fails
+                                        Toast.makeText(getActivity(), "Email is already taken or credentials invalid.", Toast.LENGTH_LONG).show();
+                                    }
                                 }
-                            }
-                        });
+                            });
+                }
             }
         });
     }
