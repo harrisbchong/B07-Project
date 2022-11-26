@@ -21,7 +21,7 @@ What are you planning on doing today?
 Any impediments or stumbling blocks?
   	- None
 	
-Name: Mark Lin
+Name: Yuchuan Xue
 
 What have you done since yesterday?
 	- Add admin add course and browse course page and implement the UI of admin front page
