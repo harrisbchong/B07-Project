@@ -19,3 +19,14 @@ What are you planning on doing today?
 
 Any impediments or stumbling blocks?
 	- None
+
+Name: Cheng Liang Huang
+
+What have you done since yesterday?
+	- Implemented the storage of student user information on the realtime database when the user first signs up
+	
+What are you planning on doing today?
+	- Add "Admin" and "Student" UI checkboxes to signup page and implement Student checkbox logic
+	
+Any impediments or stumbling blocks?
+	- None
