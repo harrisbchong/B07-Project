@@ -43,3 +43,13 @@ What are you planning on doing today?
 Any impediments or stumbling blocks?
 	- None
 
+Name: Jason Liang
+
+What have you done since yesterday?
+	- Watched tutorial to set up login/signup on youtube.
+
+What are you planning on doing today?
+	- think about the UI design.
+
+Any impediments or stumbling blocks?
+	- None

@@ -38,8 +38,8 @@ public class StudentSignupPage extends Fragment {
         binding.studentSignupSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String email = binding.studentSignupEmailAddressInput.getText().toString();
-                String password = binding.studentSignupPasswordInput.getText().toString();
+                String email = binding.emailAddressInput.getText().toString();
+                String password = binding.passwordInput.getText().toString();
 
                 if (email == null || email.length() == 0) {
                     Toast.makeText(getActivity(), "You must enter an email address.", Toast.LENGTH_LONG).show();
@@ -61,6 +61,13 @@ public class StudentSignupPage extends Fragment {
                                 }
                             });
                 }
+            }
+        });
+
+        binding.backButton2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                NavHostFragment.findNavController(StudentSignupPage.this).navigate(R.id.action_studentSignupPage_to_studentFrontPage);
             }
         });
     }

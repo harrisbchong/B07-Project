@@ -63,6 +63,13 @@ public class StudentLoginPage extends Fragment {
                 }
             }
         });
+
+        binding.backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                NavHostFragment.findNavController(StudentLoginPage.this).navigate(R.id.action_studentLoginPage_to_studentFrontPage);
+            }
+        });
     }
     @Override
     public void onDestroyView() {

@@ -1,0 +1,33 @@
+Name: Cheng Liang Huang
+
+What have you done since yesterday?
+	- Fixed bug where app crashed on empty password or email submission
+	
+What are you planning on doing today?
+	- Check if we can have a team meeting today or tomorrow to divide the remaining user stories into subtasks
+	
+Any impediments or stumbling blocks?
+  - Waiting for Scrum Master to organize meeting to finalize task delegation and organize Jira
+  
+Name: Mark Lin
+
+What have you done since yesterday?
+	- Nothing
+	
+What are you planning on doing today?
+	- Revamped the UI to conform to our new designs
+	- Added drawable icons to resource manager
+	
+Any impediments or stumbling blocks?
+  	- None
+	
+Name: Mark Lin
+
+What have you done since yesterday?
+	- Add admin add course and browse course page and implement the UI of admin front page
+	
+What are you planning on doing today?
+ 	-Planning to have a team meeting to assign the remaining task
+	
+Any impediments or stumbling blocks?
+  	- None

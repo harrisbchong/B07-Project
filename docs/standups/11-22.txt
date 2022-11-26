@@ -1,10 +1,32 @@
+Name: Cheng Liang Huang
+
+What have you done since yesterday?
+	- Committed front page, student login and signup pages
+
+What are you planning on doing today?
+	- Talk with team about branching structure
+
+Any impediments or stumbling blocks?
+	- None
+	
 Name: Harris Chong
 
 What have you done since yesterday?
 	- Nothing
 
 What are you planning on doing today?
-	- Nothing
+	- Setting up firebase and assigning tasks
+
+Any impediments or stumbling blocks?
+	- None
+	
+Name: Yuchuan Xue
+
+What have you done since yesterday?
+	- Committed back buttons on student login and signup pages
+
+What are you planning on doing today?
+	- Talk with group members about the next step to do and the use of firebase
 
 Any impediments or stumbling blocks?
 	- None
@@ -15,40 +37,18 @@ What have you done since yesterday?
 	- Nothing
 
 What are you planning on doing today?
-	- Nothing
-
-Any impediments or stumbling blocks?
-	- None
-
-Name: Yuchuan Xue
-
-What have you done since yesterday?
-	- Nothing
-
-What are you planning on doing today?
-	- Nothing
+	- Do research on firebase
 
 Any impediments or stumbling blocks?
 	- None
 	
-Name: Cheng Liang Huang
-
-What have you done since yesterday?
-	- Nothing
-
-What are you planning on doing today?
-	- Nothing
-
-Any impediments or stumbling blocks?
-	- None
-
 Name: Jason Liang
 
 What have you done since yesterday?
-	- watched firebase linking tutorial
+	- nothin
 
 What are you planning on doing today?
-	- try figma
+	- start initialzing the github code
 
 Any impediments or stumbling blocks?
-	- None
+	- None	

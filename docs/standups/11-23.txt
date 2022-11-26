@@ -1,0 +1,56 @@
+Name: Jason Liang
+
+What have you done since yesterday?
+	- Finishing up the UI design through figma
+
+What are you planning on doing today?
+	- get eveyone's opinion on the UI so we can start to procceed and delegate individual tasks.
+
+Any impediments or stumbling blocks?
+	- None
+
+Name: Harris Chong
+
+What have you done since yesterday?
+	- Setting up firebase on local repository and testing authentication
+
+What are you planning on doing today?
+	- delegate tasks and get access to firebase database
+
+Any impediments or stumbling blocks?
+	- None
+
+Name: Mark Lin
+
+What have you done since yesterday?
+	- Did research on firebase
+
+What are you planning on doing today?
+	- Got my android studio connected to firebase
+	- Did a basic test to check if registered users data appeared on firebase
+
+Any impediments or stumbling blocks?
+	- None
+
+Name: Cheng Liang Huang
+
+What have you done since yesterday?
+	- Shared Firebase Authentication and Realtime Database with group members
+	- Had a meeting with Jason to make UI design improvements
+	
+What are you planning on doing today?
+	- Finalize UI design with team and help update Jira according to new design
+	
+Any impediments or stumbling blocks?
+	- Waiting for everyone else to agree on UI design proposed
+	
+Name: Yuchuan Xue
+What have you done since yesterday?
+	- Did research on firebase and checked whether the login function work
+	- Talked with groupmembers about the design of student course view page
+	
+What are you planning on doing today?
+	- Assign the mission and work on the admin login page
+	
+Any impediments or stumbling blocks?
+	- Waiting for the assigning of the mission
