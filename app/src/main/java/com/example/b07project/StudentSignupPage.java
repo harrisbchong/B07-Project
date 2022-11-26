@@ -1,10 +1,8 @@
 package com.example.b07project;
 
-import android.app.Activity;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.navigation.fragment.NavHostFragment;
@@ -28,7 +26,8 @@ public class StudentSignupPage extends Fragment {
 
     private FragmentStudentSignupPageBinding binding;
     private FirebaseAuth firebaseAuth;
-    private DatabaseReference firebaseData;
+    private DatabaseReference studentsData;
+    private DatabaseReference adminsData;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -36,7 +35,8 @@ public class StudentSignupPage extends Fragment {
 
         // initialize realtime database and authentication instances
         this.firebaseAuth = FirebaseAuth.getInstance();
-        this.firebaseData = FirebaseDatabase.getInstance().getReference("students");
+        this.studentsData = FirebaseDatabase.getInstance().getReference("students");
+        this.adminsData = FirebaseDatabase.getInstance().getReference("admins");
 
         return binding.getRoot();
     }
@@ -51,7 +51,10 @@ public class StudentSignupPage extends Fragment {
                 String email = binding.emailAddressInput.getText().toString();
                 String password = binding.passwordInput.getText().toString();
                 String programName = binding.programInput.getText().toString();
-                String studentName = binding.nameInput.getText().toString();
+                String username = binding.nameInput.getText().toString();
+
+                int checkedRadioId = binding.userTypeRadioGroup.getCheckedRadioButtonId();
+
                 FragmentActivity activity = getActivity();
 
                 if (email == null || email.length() == 0) {
@@ -63,30 +66,63 @@ public class StudentSignupPage extends Fragment {
                 } else if (programName == null || programName.length() == 0) {
                     // reject cases where no program is given
                     Toast.makeText(activity, "You must enter a program name.", Toast.LENGTH_LONG).show();
-                } else if (studentName == null || studentName.length() == 0) {
-                    // reject cases where no student name is given
+                } else if (username == null || username.length() == 0) {
+                    // reject cases where no username is given
                     Toast.makeText(activity, "You must enter a name.", Toast.LENGTH_LONG).show();
                 } else {
-                    // try authenticating if no errors are found
-                    firebaseAuth.createUserWithEmailAndPassword(email, password)
-                            .addOnCompleteListener(activity, new OnCompleteListener<AuthResult>() {
-                                @Override
-                                public void onComplete(@NonNull Task<AuthResult> task) {
-                                    if (task.isSuccessful()) {
-                                        // If registration succeeds
-                                        NavHostFragment.findNavController(StudentSignupPage.this)
-                                                .navigate(R.id.action_studentSignupPage_to_studentCourseView);
+                    String logd = "Checked radio is " + Integer.toString(checkedRadioId);
+                    Log.d("tag", logd);
+                    if (checkedRadioId == binding.studentSignupRadio.getId()) {
+                        // if student signup is selected, try authenticating as student
+                        firebaseAuth.createUserWithEmailAndPassword(email, password)
+                                .addOnCompleteListener(activity, new OnCompleteListener<AuthResult>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<AuthResult> task) {
+                                        if (task.isSuccessful()) {
+                                            // store student data in the realtime database
+                                            StudentUser student = new StudentUser(username, programName);
+                                            FirebaseUser userId = firebaseAuth.getCurrentUser();
+                                            studentsData.child(userId.getUid()).setValue(student);
 
-                                        // store student data in the realtime database
-                                        StudentUser student = new StudentUser(programName, studentName);
-                                        FirebaseUser userId = firebaseAuth.getCurrentUser();
-                                        firebaseData.child(userId.getUid()).setValue(student);
-                                    } else {
-                                        // If registration fails
-                                        Toast.makeText(activity, "Email is already taken or credentials invalid.", Toast.LENGTH_LONG).show();
+                                            // If registration succeeds
+                                            NavHostFragment.findNavController(StudentSignupPage.this)
+                                                    .navigate(R.id.action_studentSignupPage_to_studentCourseView);
+                                        } else {
+                                            // If registration fails
+                                            Toast.makeText(activity, "Email is already taken or credentials invalid.", Toast.LENGTH_LONG).show();
+                                        }
                                     }
-                                }
-                            });
+                                });
+                    } else if (checkedRadioId == binding.adminSignupRadio.getId()) {
+
+                        if (programName == "adminProgramPassword12345") {
+                            // if admin signup is selected, try authenticating as an admin
+                            firebaseAuth.createUserWithEmailAndPassword(email, password)
+                                    .addOnCompleteListener(activity, new OnCompleteListener<AuthResult>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<AuthResult> task) {
+                                            if (task.isSuccessful()) {
+                                                // store admin data in the realtime database
+                                                AdminUser admin = new AdminUser(username);
+                                                FirebaseUser userId = firebaseAuth.getCurrentUser();
+                                                adminsData.child(userId.getUid()).setValue(admin);
+
+                                                // If registration succeeds
+                                                NavHostFragment.findNavController(StudentSignupPage.this)
+                                                        .navigate(R.id.action_studentSignupPage_to_adminFrontPage);
+
+                                            } else {
+                                                // If registration fails
+                                                Toast.makeText(activity, "Email is already taken or credentials invalid.", Toast.LENGTH_LONG).show();
+                                            }
+                                        }
+                                    });
+                        } else {
+                            Toast.makeText(activity, "You must provide the secret program name to make an admin account.", Toast.LENGTH_LONG).show();
+                        }
+                    } else {
+                        Toast.makeText(activity, "Please indicate if you are a student or an admin.", Toast.LENGTH_LONG).show();
+                    }
                 }
             }
         });
@@ -97,5 +133,8 @@ public class StudentSignupPage extends Fragment {
                 NavHostFragment.findNavController(StudentSignupPage.this).navigate(R.id.action_studentSignupPage_to_studentFrontPage);
             }
         });
+
+
+
     }
 }

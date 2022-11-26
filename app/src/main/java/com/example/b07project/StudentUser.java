@@ -7,29 +7,27 @@ package com.example.b07project;
  * @version 1.0
  * @author Cheng Liang Huang
  */
-public class StudentUser {
+public class StudentUser extends User {
     /**
      * The name of the student's program
      */
     public String programName;
 
     /**
-     * The name of the student
-     */
-    public String studentName;
-
-    /**
      * Default constructor required for use in the Realtime Database
      */
-    public StudentUser() {}
+    public StudentUser() {
+        super();
+    }
 
     /**
      * Create a new instance when supplied names
+     * @param username Name of the student
      * @param programName Name of the student's program
-     * @param studentName Name of the student
      */
-    public StudentUser(String programName, String studentName) {
+    public StudentUser(String username, String programName) {
+        super(username);
+
         this.programName = programName;
-        this.studentName = studentName;
     }
 }
