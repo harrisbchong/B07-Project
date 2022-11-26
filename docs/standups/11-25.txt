@@ -8,3 +8,14 @@ What are you planning on doing today?
 	
 Any impediments or stumbling blocks?
   - None
+
+Name: Harris Chong
+
+What have you done since yesterday?
+	- Nothing
+	
+What are you planning on doing today?
+	- Set up the tasks on jira under the user stories for the admin user stories
+
+Any impediments or stumbling blocks?
+	- None
