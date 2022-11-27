@@ -8,3 +8,16 @@ What are you planning on doing today?
 
 Any impediments or stumbling blocks?
 	- None
+
+Name: Yuchuan Xue
+
+What have you done since yesterday?
+	- implement the UI and functions of AdminLoginPage
+	- add AdminFrontPage(Blank)
+	- modified StudentLoginPage so that users cannot log in to student account with admin account, the same for AdminLoginPage
+
+What are you planning on doing today?
+	- Talk with groupmembers about the next scrums and the assigning of new missions
+
+Any impediments or stumbling blocks?
+	- none
