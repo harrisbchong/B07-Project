@@ -1,0 +1,10 @@
+Name: Jason Liang
+
+What have you done since yesterday?
+	- try some set up for list views
+
+What are you planning on doing today?
+	- try to simplify our implementations with method and views method
+
+Any impediments or stumbling blocks?
+	- None
