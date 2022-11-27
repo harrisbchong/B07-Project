@@ -42,3 +42,15 @@ What are you planning on doing today?
 
 Any impediments or stumbling blocks?
 	- None
+
+
+Name: Jason Liang
+
+What have you done since yesterday?
+	- fidgeting with checkboxes and easier implementation for login/signups
+
+What are you planning on doing today?
+	- see the mvp method for designing
+
+Any impediments or stumbling blocks?
+	- None
