@@ -16,11 +16,16 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class StudentLoginPage extends Fragment {
 
     private FragmentStudentLoginPageBinding binding;
     private FirebaseAuth mAuth;
+    private DatabaseReference mDatabase;
 
     @Override
     public View onCreateView(
@@ -29,6 +34,7 @@ public class StudentLoginPage extends Fragment {
     ) {
         binding = FragmentStudentLoginPageBinding.inflate(inflater, container, false);
         this.mAuth = FirebaseAuth.getInstance();
+        mDatabase = FirebaseDatabase.getInstance().getReference();
         return binding.getRoot();
     }
 
@@ -52,8 +58,25 @@ public class StudentLoginPage extends Fragment {
                                 public void onComplete(@NonNull Task<AuthResult> task) {
                                     if (task.isSuccessful()) {
                                         // If login succeeds
-                                        NavHostFragment.findNavController(StudentLoginPage.this)
-                                                .navigate(R.id.action_studentLoginPage_to_studentCourseView);
+                                        FirebaseUser userId = mAuth.getCurrentUser();
+
+                                        mDatabase.child("students").child(userId.getUid()).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                                                if (!task.isSuccessful()) {
+                                                    Toast.makeText(getActivity(), "Error getting data, so cannot login", Toast.LENGTH_LONG).show();
+                                                } else {
+                                                    if(task.getResult().getValue()==null){
+                                                        //if the user account is not a student account
+                                                        Toast.makeText(getActivity(), "This is not a student account", Toast.LENGTH_LONG).show();
+                                                    } else {
+                                                        //if the account is a student account
+                                                        NavHostFragment.findNavController(StudentLoginPage.this)
+                                                                .navigate(R.id.action_studentLoginPage_to_studentCourseView);
+                                                    }
+                                                }
+                                            }
+                                        });
                                     } else {
                                         // If login fails
                                         Toast.makeText(getActivity(), "Email or password is incorrect.", Toast.LENGTH_LONG).show();
