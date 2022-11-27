@@ -33,3 +33,14 @@ What are you planning on doing today?
 
 Any impediments or stumbling blocks?
 	- waiting for homepages to be coded
+	
+Name: Cheng Liang Huang
+
+What have you done since yesterday?
+	- Implemented admin and student signup on same page
+	
+What are you planning on doing today?
+	- Start working on UI for admin to add course 
+
+Any impediments or stumbling blocks?
+	- None
