@@ -42,3 +42,15 @@ What are you planning on doing today?
 
 Any impediments or stumbling blocks?
 	- color not changing in android studios, when code is changed
+	
+
+Name: Yuchuan Xue
+
+What have you done since yesterday?
+	- learned how to manipulate firebase realtime database and did some practice on it
+
+What are you planning on doing today?
+	- implement the UI and functions of AdminLoginPage
+
+Any impediments or stumbling blocks?
+	- none
