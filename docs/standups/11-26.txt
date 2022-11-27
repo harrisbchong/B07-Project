@@ -21,3 +21,14 @@ What are you planning on doing today?
 
 Any impediments or stumbling blocks?
 	- none
+
+Name: Harris Chong
+
+What have you done since yesterday?
+	- Set up and assigned all tasks on jira board
+	
+What are you planning on doing today?
+	- Code student course view page
+
+Any impediments or stumbling blocks?
+	- waiting for homepages to be coded
