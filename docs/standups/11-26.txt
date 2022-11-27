@@ -18,9 +18,10 @@ What have you done since yesterday?
 
 What are you planning on doing today?
 	- Talk with groupmembers about the next scrums and the assigning of new missions
+	- Code student course view page
 
 Any impediments or stumbling blocks?
-	- none
+	- waiting
 
 Name: Harris Chong
 
