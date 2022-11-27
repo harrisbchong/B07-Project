@@ -30,3 +30,15 @@ What are you planning on doing today?
 	
 Any impediments or stumbling blocks?
 	- None
+
+
+Name: Jason Liang
+
+What have you done since yesterday?
+	- take a look at the implementation of listviews for courses
+
+What are you planning on doing today?
+	- try some methods to link firebase with courses
+
+Any impediments or stumbling blocks?
+	- color not changing in android studios, when code is changed
