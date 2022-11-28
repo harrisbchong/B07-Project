@@ -1,0 +1,10 @@
+Name: Mark Lin
+
+What have you done since yesterday?
+	- worked on UI for admin view courses
+	
+What are you planning on doing today?
+	- Started working on the UI for the updating course list
+
+Any impediments or stumbling blocks?
+	- None
