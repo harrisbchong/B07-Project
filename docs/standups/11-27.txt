@@ -8,3 +8,14 @@ What are you planning on doing today?
 
 Any impediments or stumbling blocks?
 	- None
+	
+Name: Cheng Liang Huang
+
+What have you done since yesterday?
+	- Nothing
+	
+What are you planning on doing today?
+	- Start making UI for admin to add courses
+
+Any impediments or stumbling blocks?
+	- None
