@@ -30,3 +30,16 @@ What are you planning on doing today?
 
 Any impediments or stumbling blocks?
 	- None
+
+
+Name: Jason Liang
+
+What have you done since yesterday?
+	- Trying out new methods for list view, and see if I can make a search implementation for course library.
+	
+What are you planning on doing today?
+	- Make the model class work, to simplify the fucntions in other class.
+
+Any impediments or stumbling blocks?
+	- None
+
