@@ -1,0 +1,11 @@
+
+Name:Jason Liang
+
+What have you done since yesterday?
+	- Fix the errors when tryingt to simplify the code
+	
+What are you planning on doing today?
+	- discuss the new implementation made with teammate to see if we should use the new login/sign up method.
+
+Any impediments or stumbling blocks?
+	- None
