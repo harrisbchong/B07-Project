@@ -9,3 +9,14 @@ What are you planning on doing today?
 
 Any impediments or stumbling blocks?
 	- None
+
+Name: Mark Lin
+
+What have you done since yesterday?
+	- Done some of the UI for admin course view page
+	
+What are you planning on doing today?
+	- Do research on how to implement recycler view to make an updating course list
+
+Any impediments or stumbling blocks?
+	- None
