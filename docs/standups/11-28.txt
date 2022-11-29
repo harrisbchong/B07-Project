@@ -20,3 +20,14 @@ What are you planning on doing today?
 
 Any impediments or stumbling blocks?
 	- None
+	
+Name: Cheng Liang Huang
+
+What have you done since yesterday?
+	- Made UI for admin add page
+	
+What are you planning on doing today?
+	- Do research on how to read lists and objects from realtime database and make it update UI
+
+Any impediments or stumbling blocks?
+	- None
