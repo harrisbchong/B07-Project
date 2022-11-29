@@ -1,101 +1,134 @@
 package com.example.b07project;
 
-import android.app.Activity;
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
-import androidx.navigation.fragment.NavHostFragment;
+import androidx.appcompat.app.AppCompatActivity;
 
-import android.util.Log;
-import android.view.LayoutInflater;
+import android.util.Patterns;
 import android.view.View;
-import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.RadioButton;
 import android.widget.Toast;
 
-import com.example.b07project.databinding.FragmentStudentSignupPageBinding;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
+public class StudentSignupPage extends AppCompatActivity implements View.OnClickListener {
 
-public class StudentSignupPage extends Fragment {
+    private Button btnFinish;
+    private ImageButton backbt;
+    private EditText progtxt,nametxt,emailtxt,passtxt;
+    private RadioButton adminbt, studentbt;
+    private Model model;
 
-    private FragmentStudentSignupPageBinding binding;
-    private FirebaseAuth firebaseAuth;
-    private DatabaseReference firebaseData;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        binding = FragmentStudentSignupPageBinding.inflate(inflater, container, false);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.fragment_student_signup_page);
+        backbt = (ImageButton) findViewById(R.id.backbt);
+        backbt.setOnClickListener(this);
+        btnFinish = (Button) findViewById(R.id.btnFinish);
+        btnFinish.setOnClickListener(this);
+        nametxt = (EditText) findViewById(R.id.nametxt);
+        progtxt = (EditText) findViewById(R.id.progtxt);
+        emailtxt = (EditText) findViewById(R.id.emailtxt);
+        passtxt = (EditText) findViewById(R.id.passtxt);
+        adminbt = (RadioButton) findViewById(R.id.adminbt);
+        studentbt = (RadioButton) findViewById(R.id.studentrbt);
+        model = Model.getInstance();
 
-        // initialize realtime database and authentication instances
-        this.firebaseAuth = FirebaseAuth.getInstance();
-        this.firebaseData = FirebaseDatabase.getInstance().getReference("students");
-
-        return binding.getRoot();
     }
 
     @Override
-    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-
-        binding.studentSignupSubmit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String email = binding.emailAddressInput.getText().toString();
-                String password = binding.passwordInput.getText().toString();
-                String programName = binding.programInput.getText().toString();
-                String studentName = binding.nameInput.getText().toString();
-                FragmentActivity activity = getActivity();
-
-                if (email == null || email.length() == 0) {
-                    // reject cases where no email is given
-                    Toast.makeText(activity, "You must enter an email address.", Toast.LENGTH_LONG).show();
-                } else if (password == null || password.length() == 0) {
-                    // reject cases where no password is given
-                    Toast.makeText(activity, "You must enter a password.", Toast.LENGTH_LONG).show();
-                } else if (programName == null || programName.length() == 0) {
-                    // reject cases where no program is given
-                    Toast.makeText(activity, "You must enter a program name.", Toast.LENGTH_LONG).show();
-                } else if (studentName == null || studentName.length() == 0) {
-                    // reject cases where no student name is given
-                    Toast.makeText(activity, "You must enter a name.", Toast.LENGTH_LONG).show();
-                } else {
-                    // try authenticating if no errors are found
-                    firebaseAuth.createUserWithEmailAndPassword(email, password)
-                            .addOnCompleteListener(activity, new OnCompleteListener<AuthResult>() {
-                                @Override
-                                public void onComplete(@NonNull Task<AuthResult> task) {
-                                    if (task.isSuccessful()) {
-                                        // If registration succeeds
-                                        NavHostFragment.findNavController(StudentSignupPage.this)
-                                                .navigate(R.id.action_studentSignupPage_to_studentCourseView);
-
-                                        // store student data in the realtime database
-                                        StudentUser student = new StudentUser(programName, studentName);
-                                        FirebaseUser userId = firebaseAuth.getCurrentUser();
-                                        firebaseData.child(userId.getUid()).setValue(student);
-                                    } else {
-                                        // If registration fails
-                                        Toast.makeText(activity, "Email is already taken or credentials invalid.", Toast.LENGTH_LONG).show();
-                                    }
-                                }
-                            });
-                }
-            }
-        });
-
-        binding.backButton2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                NavHostFragment.findNavController(StudentSignupPage.this).navigate(R.id.action_studentSignupPage_to_studentFrontPage);
-            }
-        });
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.backbt:
+                startActivity(new Intent(this, MainActivity.class));
+                break;
+            case R.id.btnFinish:
+                register();
+                break;
+        }
     }
+
+    private void register() {
+        String email = emailtxt.getText().toString().trim();
+        String password = passtxt.getText().toString().trim();
+        String name = nametxt.getText().toString().trim();
+        String program = progtxt.getText().toString().trim();
+
+
+        if (name.isEmpty()) {
+            nametxt.setError("Name Required");
+            nametxt.requestFocus();
+            return;
+        }
+
+        if (email.isEmpty()) {
+            emailtxt.setError("Email Required");
+            emailtxt.requestFocus();
+            return;
+        }
+
+        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            emailtxt.setError("Improper Email Address Provided");
+            emailtxt.requestFocus();
+            return;
+        }
+
+        if (password.isEmpty()) {
+            passtxt.setError("Password Required");
+            passtxt.requestFocus();
+            return;
+        }
+
+        if (password.length() < 5) {
+            passtxt.setError("Min Password length Is 5");
+            passtxt.requestFocus();
+            return;
+        }
+
+        model.register(email, password, (String ID) -> {
+            if (ID == null) {
+                Toast.makeText(StudentSignupPage.this, "Failed to register", Toast.LENGTH_LONG).show();
+                return;
+            }
+            // Toast.makeText(RegisterActivity.this, "registered", Toast.LENGTH_LONG).show();
+            if(studentbt.isChecked() == true){
+                Student s = new Student(ID,program,email,name);
+                model.addStudent(s, (Boolean created) -> {
+                    if (!created) {
+                        Toast.makeText(StudentSignupPage.this, "Failed to create a user!", Toast.LENGTH_LONG).show();
+
+                        return;
+                    }
+
+                    Toast.makeText(StudentSignupPage.this, "user has been registered successfully!", Toast.LENGTH_LONG).show();
+
+
+                    startActivity(new Intent(StudentSignupPage.this, MainActivity.class));
+                });
+            }
+            if(adminbt.isChecked() == true){
+                Admin a = new Admin(ID,email,name);
+                model.addAdmin(a, (Boolean created) -> {
+                    if (!created) {
+                        Toast.makeText(StudentSignupPage.this, "Failed to create a user!", Toast.LENGTH_LONG).show();
+
+                        return;
+                    }
+
+                    Toast.makeText(StudentSignupPage.this, "user has been registered successfully!", Toast.LENGTH_LONG).show();
+
+
+                    startActivity(new Intent(StudentSignupPage.this, MainActivity.class));
+                });
+            }
+        });
+
+    }
+
+
 }
