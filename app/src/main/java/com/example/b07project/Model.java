@@ -25,8 +25,6 @@ public class Model {
     private DatabaseReference adRef;
     private DatabaseReference courseRef;
     private FirebaseAuth auth;
-    private StudentLoginPage view1;
-    private AdminLoginPage view2;
     private Model() {
         stuRef = FirebaseDatabase.getInstance().getReference("students");
         adRef = FirebaseDatabase.getInstance().getReference("admins");
@@ -39,34 +37,6 @@ public class Model {
         if (instance == null)
             instance = new Model();
         return instance;
-    }
-
-    public void authenticate(String email, String password, Consumer<Student> callback) {
-        auth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if (!task.isSuccessful()) {
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                        callback.accept(null);
-                    }
-                }
-                else {
-                    stuRef.child(auth.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            Student stu = snapshot.getValue(Student.class);
-                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                                callback.accept(stu);
-                            }
-                        }
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-
-                        }
-                    });
-                }
-            }
-        });
     }
 
     public void stuauthenticate(String email, String password, Consumer<Student> callback) {
@@ -96,6 +66,8 @@ public class Model {
             }
         });
     }
+
+
     public void adauthenticate(String email, String password, Consumer<Admin> callback) {
         auth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
@@ -123,30 +95,7 @@ public class Model {
             }
         });
     }
-    public void alogin(String email, String password, AdminLoginPage a) {
 
-        adauthenticate(email, password, (Admin user) -> {
-            if (user == null) {
-                a.failedToLogin();
-            }
-            else {
-                a.redirectToAdminFrontPage(user.id);;
-            }
-
-        });
-    }
-
-    public void stulogin(String email, String password, StudentLoginPage s) {
-
-        stuauthenticate(email, password, (Student user) -> {
-            if (user == null) {
-                s.failedToLogin();
-            }
-            else {
-                s.redirectToStudentFrontPage(user.id);
-            }
-        });
-    }
 
     public void getStudent(String stuID, Consumer<Student> callback) {
         stuRef.child(stuID).addListenerForSingleValueEvent(new ValueEventListener() {

@@ -5,30 +5,15 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.navigation.fragment.NavHostFragment;
 
 import android.util.Patterns;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
-
-import com.example.b07project.databinding.FragmentStudentLoginPageBinding;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 public class StudentLoginPage extends AppCompatActivity implements View.OnClickListener {
 
@@ -39,6 +24,10 @@ public class StudentLoginPage extends AppCompatActivity implements View.OnClickL
     private SharedPreferences.Editor edit;
     private EditText etxt, ptxt;
     private ImageButton backbt;
+    private SPresenter presenter;
+
+
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,10 +39,11 @@ public class StudentLoginPage extends AppCompatActivity implements View.OnClickL
         loginbt = (Button) findViewById(R.id.student_login_submit);
         loginbt.setOnClickListener(this);
         remem = (CheckBox) findViewById(R.id.srbox);
-        model = Model.getInstance();
         pref = getSharedPreferences("students", Context.MODE_PRIVATE);
         edit = pref.edit();
-
+        model = Model.getInstance();
+        presenter = new SPresenter(model,this);
+        checkremember();
     }
 
 
@@ -116,7 +106,7 @@ public class StudentLoginPage extends AppCompatActivity implements View.OnClickL
             return;
         }
 
-        model.stulogin(email, password,this);
+        presenter.stulogin(email, password);
 
 
     }

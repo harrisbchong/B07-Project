@@ -10,7 +10,9 @@ public class Student {
 
     public ArrayList<String> tcourse;
 
-    public Student(String userID, String email, String name){}
+
+
+    public Student(){}
 
     public Student(String i,String p, String e, String n)
     {

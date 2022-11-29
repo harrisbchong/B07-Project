@@ -22,7 +22,7 @@ public class StudentSignupPage extends AppCompatActivity implements View.OnClick
     private RadioButton adminbt, studentbt;
     private Model model;
 
-    @SuppressLint("MissingInflatedId")
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -24,6 +24,8 @@ public class AdminLoginPage extends AppCompatActivity implements View.OnClickLis
     private SharedPreferences.Editor edit;
     private EditText etxt, ptxt;
     private ImageButton backbt;
+    private APresenter presenter;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,10 +39,10 @@ public class AdminLoginPage extends AppCompatActivity implements View.OnClickLis
         remem = (CheckBox) findViewById(R.id.Arem);
         pref = getSharedPreferences("admins", Context.MODE_PRIVATE);
         edit = pref.edit();
-
-
-        checkremember();
         model = Model.getInstance();
+        presenter = new APresenter(model, this);
+        checkremember();
+
     }
     private void checkremember() {
         boolean remember = pref.getBoolean("remember", false);
@@ -100,7 +102,7 @@ public class AdminLoginPage extends AppCompatActivity implements View.OnClickLis
             return;
         }
 
-        model.alogin(email, password,this);
+        presenter.alogin(email, password);
 
 
     }
