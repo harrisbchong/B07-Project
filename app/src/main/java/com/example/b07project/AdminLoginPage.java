@@ -1,102 +1,119 @@
 package com.example.b07project;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import androidx.navigation.fragment.NavHostFragment;
+import androidx.appcompat.app.AppCompatActivity;
 
-import android.util.Log;
-import android.view.LayoutInflater;
+import android.util.Patterns;
 import android.view.View;
-import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
-import com.example.b07project.databinding.FragmentAdminLoginPageBinding;
-import com.example.b07project.databinding.FragmentStudentLoginPageBinding;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
+public class AdminLoginPage extends AppCompatActivity implements View.OnClickListener {
 
-public class AdminLoginPage extends Fragment {
-
-    private FragmentAdminLoginPageBinding binding;
-    private FirebaseAuth mAuth;
-    private DatabaseReference mDatabase;
-
+    private Button loginbt;
+    private CheckBox remem;
+    private Model model;
+    private SharedPreferences pref;
+    private SharedPreferences.Editor edit;
+    private EditText etxt, ptxt;
+    private ImageButton backbt;
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        binding = FragmentAdminLoginPageBinding.inflate(inflater, container, false);
-        this.mAuth = FirebaseAuth.getInstance();
-        mDatabase = FirebaseDatabase.getInstance().getReference();
-        return binding.getRoot();
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.fragment_admin_login_page);
+        backbt = (ImageButton) findViewById(R.id.back_button_3);
+        backbt.setOnClickListener(this);
+        etxt = (EditText) findViewById(R.id.admin_email_address_input);
+        ptxt = (EditText) findViewById(R.id.admin_password_input);
+        loginbt = (Button) findViewById(R.id.admin_login_submit);
+        loginbt.setOnClickListener(this);
+        remem = (CheckBox) findViewById(R.id.Arem);
+        pref = getSharedPreferences("admins", Context.MODE_PRIVATE);
+        edit = pref.edit();
+
+
+        checkremember();
+        model = Model.getInstance();
+    }
+    private void checkremember() {
+        boolean remember = pref.getBoolean("remember", false);
+        String email = pref.getString("email", "");
+        String password = pref.getString("password", "");
+
+        etxt.setText(email);
+        ptxt.setText(password);
+        remem.setChecked(remember);
     }
 
-    public void onViewCreated(@NonNull View view, Bundle savedInstanceState){
-        super.onViewCreated(view, savedInstanceState);
-
-        binding.adminLoginSubmit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String email = binding.adminEmailAddressInput.getText().toString();
-                String password = binding.adminPasswordInput.getText().toString();
-
-                if ((email == null || email.length() == 0)||
-                        (password == null || password.length() == 0)) {
-                    Toast.makeText(getActivity(), "email or password cannot be empty.", Toast.LENGTH_LONG).show();
-                } else {
-                    mAuth.signInWithEmailAndPassword(email, password)
-                            .addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() {
-                                @Override
-                                public void onComplete(@NonNull Task<AuthResult> task) {
-                                    if (task.isSuccessful()) {
-                                        // If login succeeds
-                                        FirebaseUser userId = mAuth.getCurrentUser();
-
-                                        mDatabase.child("admins").child(userId.getUid()).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
-                                            @Override
-                                            public void onComplete(@NonNull Task<DataSnapshot> task) {
-                                                if (!task.isSuccessful()) {
-                                                    Toast.makeText(getActivity(), "Error getting data, so cannot login", Toast.LENGTH_LONG).show();
-                                                } else {
-                                                    if(task.getResult().getValue()==null){
-                                                        //if the user account is not an admin account
-                                                        Toast.makeText(getActivity(), "This is not an admin account", Toast.LENGTH_LONG).show();
-                                                    } else {
-                                                        //if the account is an admin account
-                                                        NavHostFragment.findNavController(AdminLoginPage.this)
-                                                                .navigate(R.id.action_adminLoginPage_to_adminFrontPage);
-                                                    }
-                                                }
-                                            }
-                                        });
-                                    } else {
-                                        // If login fails
-                                        Toast.makeText(getActivity(), "Email or password is incorrect.", Toast.LENGTH_LONG).show();
-                                    }
-                                }
-                            });
-                }
-            }
-        });
-
-        binding.backButton3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                NavHostFragment.findNavController(AdminLoginPage.this).navigate(R.id.action_adminLoginPage_to_studentFrontPage);
-            }
-        });
-    }
 
     @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        binding = null;
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.admin_login_submit:
+                logIn();
+                break;
+            case R.id.back_button_3:
+                startActivity(new Intent(this, MainActivity.class));
+                break;
+        }
+
+    }
+
+
+
+    private void logIn() {
+        String email = etxt.getText().toString().trim();
+        String password = ptxt.getText().toString().trim();
+        edit.putBoolean("remember", remem.isChecked());
+        edit.putString("Email", remem.isChecked()? email : "");
+        edit.putString("Password", remem.isChecked()? password : "");
+        edit.apply();
+
+        if (email.isEmpty()) {
+            etxt.setError("Email Required");
+            etxt.requestFocus();
+            return;
+        }
+
+        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            etxt.setError("Improper Email Address Provided");
+            etxt.requestFocus();
+            return;
+        }
+
+        if (password.isEmpty()) {
+            ptxt.setError("Password Required");
+            ptxt.requestFocus();
+            return;
+        }
+
+        if (password.length() < 5) {
+            ptxt.setError("Min Password length Is 5");
+            ptxt.requestFocus();
+            return;
+        }
+
+        model.alogin(email, password,this);
+
+
+    }
+
+    public void failedToLogin() {
+        Toast.makeText(this, "Failed To Login.", Toast.LENGTH_LONG).show();
+    }
+
+
+
+    public void redirectToAdminFrontPage(String id) {
+        Intent intent = new Intent(this,AdminFrontPage.class);
+        intent.putExtra("currentid", id);
+        startActivity(intent);
     }
 }

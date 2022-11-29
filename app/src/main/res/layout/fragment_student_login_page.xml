@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
 xmlns:app="http://schemas.android.com/apk/res-auto"
 xmlns:tools="http://schemas.android.com/tools"
-android:id="@+id/frameLayout"
+android:id="@+id/studentbt"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
 android:background="@color/uoft_blue"
@@ -12,8 +12,8 @@ tools:context=".StudentFrontPage">
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="329dp"
-        android:layout_height="0dp"
+        android:layout_width="313dp"
+        android:layout_height="243dp"
         android:layout_marginTop="24dp"
         android:contentDescription="@string/utsc_logo"
         android:src="@drawable/utsclogo"
@@ -33,6 +33,70 @@ tools:context=".StudentFrontPage">
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="SpeakableTextPresentCheck" />
 
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="288.8dp"
+        android:layout_height="59dp"
+        android:layout_marginTop="300dp"
+        android:background="@drawable/rounded_edittext"
+        android:gravity="center"
+        android:paddingRight="15dp"
+        android:text="Student Login"
+        android:textColor="@color/black"
+        android:textSize="32sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/student_email_address_input"
+        android:layout_width="288.8dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/rounded_edittext"
+        android:ems="10"
+        android:hint="Enter Email"
+        android:inputType="textEmailAddress"
+        android:textColorHint="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.656" />
+
+    <CheckBox
+        android:id="@+id/srbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Remember Me"
+        android:textColor="@color/white"
+        android:textColorHighlight="@color/button_green"
+        android:textColorLink="@color/button_green"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.821" />
+
+    <EditText
+        android:id="@+id/student_password_input"
+        android:layout_width="288.8dp"
+        android:layout_height="48dp"
+        android:background="@drawable/rounded_edittext"
+        android:ems="10"
+        android:hint="Enter Password"
+        android:inputType="textPassword"
+        android:textColorHint="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.729"
+        tools:textSize="20sp" />
+
     <Button
         android:id="@+id/student_login_submit"
         android:layout_width="240dp"
@@ -48,53 +112,9 @@ tools:context=".StudentFrontPage">
         app:cornerRadius="100dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/student_password_input" />
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="288.8dp"
-        android:layout_height="59dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/rounded_edittext"
-        android:gravity="center"
-        android:paddingRight="15dp"
-        android:text="Student Login"
-        android:textColor="@color/black"
-        android:textSize="32sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
-
-    <EditText
-        android:id="@+id/student_password_input"
-        android:layout_width="288.8dp"
-        android:layout_height="48dp"
-        android:background="@drawable/rounded_edittext"
-        android:ems="10"
-        android:hint="Enter Password"
-        android:inputType="textPassword"
-        android:textColorHint="@color/black"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
-        tools:textSize="20sp" />
-
-    <EditText
-        android:id="@+id/student_email_address_input"
-        android:layout_width="288.8dp"
-        android:layout_height="48dp"
-        android:layout_marginBottom="20dp"
-        android:background="@drawable/rounded_edittext"
-        android:ems="10"
-        android:hint="Enter Email"
-        android:inputType="textEmailAddress"
-        android:textColorHint="@color/black"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/student_password_input"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/student_password_input"
+        app:layout_constraintVertical_bias="0.65" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

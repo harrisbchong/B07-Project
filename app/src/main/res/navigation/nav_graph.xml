@@ -9,7 +9,7 @@
         android:id="@+id/studentFrontPage"
         android:name="com.example.b07project.StudentFrontPage"
         android:label="student_front_page"
-        tools:layout="@layout/fragment_student_front_page" >
+        tools:layout="@layout/activity_main" >
         <action
             android:id="@+id/action_studentFrontPage_to_studentLoginPage"
             app:destination="@id/studentLoginPage" />
