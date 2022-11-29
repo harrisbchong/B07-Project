@@ -25,7 +25,7 @@
         android:layout_width="346dp"
         android:layout_height="79dp"
         android:layout_marginTop="128dp"
-        android:background="@drawable/rounded_edittext"
+        android:background="@drawable/white_rounded_edittext"
         android:text="@string/hello_blank_fragment"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.492"
