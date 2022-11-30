@@ -19,3 +19,14 @@ What are you planning on doing today?
 
 Any impediments or stumbling blocks?
 	- None
+
+Name: Jason Liang
+
+What have you done since yesterday?
+	- Made the front pages for every type if user functional
+	
+What are you planning on doing today?
+	- uniting all the classes to use the same extension to more conveniently navigate.
+
+Any impediments or stumbling blocks?
+	- None
