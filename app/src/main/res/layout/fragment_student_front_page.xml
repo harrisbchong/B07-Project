@@ -14,17 +14,18 @@
         android:background="@color/uoft_blue"
         android:text="program"
         android:textColor="@color/white"
-        android:textSize="34sp"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.18" />
+        app:layout_constraintVertical_bias="0.177" />
 
     <Button
         android:id="@+id/bcbt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="216dp"
+        android:layout_height="57dp"
+        android:drawableRight="@drawable/folder"
         android:text="Browse Course"
         android:textColor="@color/black"
         app:backgroundTint="@color/white"
@@ -36,17 +37,17 @@
 
     <Button
         android:id="@+id/ahbt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Acamedic History"
+        android:layout_width="216dp"
+        android:layout_height="57dp"
+        android:drawableRight="@drawable/document"
+        android:text="Academic History"
         android:textColor="@color/black"
         app:backgroundTint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sname"
-        app:layout_constraintVertical_bias="0.324" />
+        app:layout_constraintVertical_bias="0.344" />
 
     <TextView
         android:id="@+id/sname"
@@ -60,37 +61,37 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.102" />
+        app:layout_constraintVertical_bias="0.066" />
 
     <Button
         android:id="@+id/addcoursebt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="216dp"
+        android:layout_height="57dp"
+        android:drawableRight="@drawable/calendar"
         android:text="Course Timeline"
         android:textColor="@color/black"
+        android:textSize="14sp"
         app:backgroundTint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sname"
-        app:layout_constraintVertical_bias="0.142" />
+        app:layout_constraintVertical_bias="0.191" />
 
     <Button
         android:id="@+id/alogoutbt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="160dp"
-        android:background="#344C4747"
         android:text="Log Out"
         android:textColor="#E41313"
-        app:backgroundTint="#615E5E"
-        app:cornerRadius="?android:attr/buttonCornerRadius"
+        app:backgroundTint="#B3AFAF"
+        app:cornerRadius="100dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintHorizontal_bias="0.487"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bcbt"
-        app:layout_constraintVertical_bias="0.037" />
+        app:layout_constraintVertical_bias="0.538" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

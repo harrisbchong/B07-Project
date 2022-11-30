@@ -12,18 +12,16 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.Toast;
 
 public class StudentLoginPage extends AppCompatActivity implements View.OnClickListener {
 
-    private Button loginbt;
+    private Button loginbt,backbt;
     private CheckBox remem;
     private Model model;
     private SharedPreferences pref;
     private SharedPreferences.Editor edit;
     private EditText etxt, ptxt;
-    private ImageButton backbt;
     private SPresenter presenter;
 
 
@@ -32,7 +30,7 @@ public class StudentLoginPage extends AppCompatActivity implements View.OnClickL
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_student_login_page);
-        backbt = (ImageButton) findViewById(R.id.back_button);
+        backbt = (Button) findViewById(R.id.slbackbt);
         backbt.setOnClickListener(this);
         etxt = (EditText) findViewById(R.id.student_email_address_input);
         ptxt = (EditText) findViewById(R.id.student_password_input);
@@ -53,7 +51,7 @@ public class StudentLoginPage extends AppCompatActivity implements View.OnClickL
             case R.id.student_login_submit:
                 logIn();
                 break;
-            case R.id.back_button:
+            case R.id.slbackbt:
                 startActivity(new Intent(this, MainActivity.class));
                 break;
         }

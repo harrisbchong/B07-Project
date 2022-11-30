@@ -17,20 +17,20 @@ import android.widget.Toast;
 
 public class AdminLoginPage extends AppCompatActivity implements View.OnClickListener {
 
-    private Button loginbt;
+    private Button loginbt,backbt;
     private CheckBox remem;
     private Model model;
     private SharedPreferences pref;
     private SharedPreferences.Editor edit;
     private EditText etxt, ptxt;
-    private ImageButton backbt;
+
     private APresenter presenter;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_admin_login_page);
-        backbt = (ImageButton) findViewById(R.id.back_button_3);
+        backbt = (Button) findViewById(R.id.abackbt);
         backbt.setOnClickListener(this);
         etxt = (EditText) findViewById(R.id.admin_email_address_input);
         ptxt = (EditText) findViewById(R.id.admin_password_input);
@@ -61,7 +61,7 @@ public class AdminLoginPage extends AppCompatActivity implements View.OnClickLis
             case R.id.admin_login_submit:
                 logIn();
                 break;
-            case R.id.back_button_3:
+            case R.id.abackbt:
                 startActivity(new Intent(this, MainActivity.class));
                 break;
         }
