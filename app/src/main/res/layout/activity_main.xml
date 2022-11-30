@@ -1,15 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/studentbt"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:background="@color/uoft_blue"
+    tools:context=".StudentFrontPage">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/Theme.B07Project.AppBarOverlay"/>
+    \
 
-    <include layout="@layout/content_main" />
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="329dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="24dp"
+        android:contentDescription="@string/utsc_logo"
+        android:src="@drawable/utsclogo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:contentDescription="@string/logo_content_description" />
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+    <Button
+        android:id="@+id/admin_login_button"
+        android:layout_width="164.45dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="70dp"
+        android:cursorVisible="false"
+        android:drawableRight="@drawable/setting"
+        android:drawablePadding="20dp"
+        android:includeFontPadding="false"
+        android:paddingLeft="40dp"
+        android:text="@string/front_page_admin_login"
+        android:textAllCaps="false"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:backgroundTint="@color/white"
+        app:cornerRadius="100dp"
+        app:elevation="2dp"
+        app:layout_constraintBottom_toTopOf="@+id/student_login_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+    <Button
+        android:id="@+id/student_login_button"
+        android:layout_width="164.45dp"
+        android:layout_height="50dp"
+        android:drawableRight="@drawable/profile"
+        android:paddingLeft="40dp"
+        android:text="@string/front_page_student_login"
+        android:textAllCaps="false"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:backgroundTint="@color/white"
+        app:cornerRadius="100dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+    <Button
+        android:id="@+id/signup_button"
+        android:layout_width="202dp"
+        android:layout_height="65dp"
+        android:layout_marginBottom="70dp"
+        android:drawableRight="@drawable/add_user"
+        android:paddingLeft="45dp"
+        android:text="@string/front_page_signup"
+        android:textAllCaps="false"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:backgroundTint="@color/white"
+        app:cornerRadius="100dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/student_login_button"
+        app:layout_constraintVertical_bias="0.503" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
