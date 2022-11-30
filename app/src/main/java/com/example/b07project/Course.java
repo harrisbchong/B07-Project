@@ -3,16 +3,44 @@ package com.example.b07project;
 import java.util.ArrayList;
 
 public class Course {
-    public String code;
+    private String courseCode;
+    private String courseName;
+    private String offeringSessions;
+    private String prerequisites;
 
-    public int w = 1;
+    public Course(){
 
-    public int f = 1;
+    }
 
-    public int s = 1;
+    public String getCourseCode() {
+        return courseCode;
+    }
 
+    public String getCourseName() {
+        return courseName;
+    }
 
-    public ArrayList<String> pre;
+    public String getOfferingSessions() {
+        return offeringSessions;
+    }
 
+    public String getPrerequisites() {
+        return prerequisites;
+    }
 
+    public void setCourseCode(String courseCode) {
+        this.courseCode = courseCode;
+    }
+
+    public void setCourseName(String courseName) {
+        this.courseName = courseName;
+    }
+
+    public void setPrerequisites(String prerequisites) {
+        this.prerequisites = prerequisites;
+    }
+
+    public void setSessions(String offeringSessions) {
+        this.offeringSessions = offeringSessions;
+    }
 }
