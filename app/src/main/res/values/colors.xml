@@ -10,4 +10,6 @@
     <color name="uoft_blue">#192852</color>
     <color name="button_tint">#D9D9D9</color>
     <color name="button_green">#2AB514</color>
+    <color name="background_gray">#DDDDDD</color>
+    <color name="button_background_gray">#DDDDDDCC</color>
 </resources>

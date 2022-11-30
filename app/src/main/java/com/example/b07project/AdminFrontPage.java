@@ -36,7 +36,16 @@ public class AdminFrontPage extends Fragment {
         binding.backButton4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                NavHostFragment.findNavController(AdminFrontPage.this).navigate(R.id.action_adminFrontPage_to_adminLoginPage);
+                NavHostFragment.findNavController(AdminFrontPage.this)
+                        .navigate(R.id.action_adminFrontPage_to_adminLoginPage);
+            }
+        });
+
+        binding.adminFrontPageAddButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                NavHostFragment.findNavController(AdminFrontPage.this)
+                        .navigate(R.id.action_adminFrontPage_to_adminCourseAdd);
             }
         });
     }
