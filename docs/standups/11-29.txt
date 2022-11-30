@@ -1,0 +1,10 @@
+Name: Cheng Liang Huang
+
+What have you done since yesterday?
+	- Completed first prototype of the course add page for admins, which is pushed to course_add branch
+	
+What are you planning on doing today?
+	- Review the code (review for bugs, fix style errors, add comments) and test the page with various inputs
+
+Any impediments or stumbling blocks?
+	- None
