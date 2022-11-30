@@ -39,9 +39,10 @@ public class StudentLoginPage extends AppCompatActivity implements View.OnClickL
         remem = (CheckBox) findViewById(R.id.srbox);
         pref = getSharedPreferences("students", Context.MODE_PRIVATE);
         edit = pref.edit();
+        checkremember();
         model = Model.getInstance();
         presenter = new SPresenter(model,this);
-        checkremember();
+
     }
 
 

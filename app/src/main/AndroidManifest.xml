@@ -13,6 +13,9 @@
         <activity android:name=".AdminLoginPage" />
         <activity android:name=".AdminFrontPage" />
         <activity android:name=".StudentFrontPage" />
+        <activity android:name=".AdminAddCourse" />
+        <activity android:name=".StudentCourseTimeline" />
+        <activity android:name=".StudentAcademicHistory" />
         <activity
             android:exported="true"
             android:name=".MainActivity"

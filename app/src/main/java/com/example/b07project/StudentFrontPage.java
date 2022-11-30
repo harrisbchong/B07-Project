@@ -24,7 +24,7 @@ public class StudentFrontPage extends AppCompatActivity implements View.OnClickL
     private FirebaseUser stu;
     private DatabaseReference stuRef;
     private String id;
-    private Button logoutbt;
+    private Button logoutbt,ctbt,ahbt,bcbt;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -33,6 +33,13 @@ public class StudentFrontPage extends AppCompatActivity implements View.OnClickL
         stuRef = FirebaseDatabase.getInstance().getReference("students");
         logoutbt = (Button) findViewById(R.id.alogoutbt);
         logoutbt.setOnClickListener(this);
+        bcbt = (Button) findViewById(R.id.bcbt);
+        bcbt.setOnClickListener(this);
+        ctbt = (Button) findViewById(R.id.ctbt);
+        ctbt.setOnClickListener(this);
+        ahbt = (Button) findViewById(R.id.ahbt);
+        ahbt.setOnClickListener(this);
+
         stu = FirebaseAuth.getInstance().getCurrentUser();
         id = stu.getUid();
 
@@ -68,6 +75,16 @@ public class StudentFrontPage extends AppCompatActivity implements View.OnClickL
                 Toast.makeText(this, "logOut successfully", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(this, MainActivity.class));
                 break;
+            case R.id.ctbt:
+                startActivity(new Intent(this, StudentCourseTimeline.class));
+                break;
+            case R.id.bcbt:
+                startActivity(new Intent(this, StudentCourseView.class));
+                break;
+            case R.id.ahbt:
+                startActivity(new Intent(this, StudentAcademicHistory.class));
+                break;
+
         }
     }
 }
