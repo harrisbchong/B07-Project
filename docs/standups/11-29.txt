@@ -8,3 +8,14 @@ What are you planning on doing today?
 
 Any impediments or stumbling blocks?
 	- None
+
+Name: Mark Lin
+
+What have you done since yesterday?
+	- Did research on how to make course list using recyclerView and firebase
+	
+What are you planning on doing today?
+	- Implementing a recyclerView to display course data from firebase
+
+Any impediments or stumbling blocks?
+	- None
