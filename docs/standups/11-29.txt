@@ -41,3 +41,14 @@ What are you planning on doing today?
 
 Any impediments or stumbling blocks?
 	- None
+
+Name: Harris Chong
+
+What have you done since yesterday?
+	- Nothing
+	
+What are you planning on doing today?
+	- Delete and edit admin course
+
+Any impediments or stumbling blocks?
+	- None
