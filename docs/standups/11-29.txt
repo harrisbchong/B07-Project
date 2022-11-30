@@ -30,3 +30,14 @@ What are you planning on doing today?
 
 Any impediments or stumbling blocks?
 	- None
+	
+Name: Yuchuan Xue
+
+What have you done since yesterday?
+	- implement the prototype of displaying all the offered class information on student browse course page
+	
+What are you planning on doing today?
+	- Divide the information about different classes into different views and generate these views programatically
+
+Any impediments or stumbling blocks?
+	- None
