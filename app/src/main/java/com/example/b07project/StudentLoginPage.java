@@ -96,7 +96,7 @@ public class StudentLoginPage extends AppCompatActivity implements View.OnClickL
             etxt.requestFocus();
             return;
         }
-
+s
         if (password.isEmpty()) {
             ptxt.setError("Password Required");
             ptxt.requestFocus();
