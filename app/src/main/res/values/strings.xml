@@ -28,4 +28,8 @@
     <string name="utsc_logo">UTSC Logo</string>
     <string name="course_codes">Course Codes:</string>
     <string name="course_offering">Course Offering</string>
+    <string name="academic_history">Academic History</string>
+    <string name="course_taken">Course Taken:</string>
+
+
 </resources>
