@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 public class SCourseViewAdapter extends RecyclerView.Adapter<SCourseViewAdapter.MyHolder>{
-    private List mList;//数据源
+    private List mList;
 
     SCourseViewAdapter(List list) {
         mList = list;
@@ -20,12 +20,9 @@ public class SCourseViewAdapter extends RecyclerView.Adapter<SCourseViewAdapter.
 
     @Override
     public MyHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        //将我们自定义的item布局R.layout.item_one转换为View
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.stucourse, parent, false);
-        //将view传递给我们自定义的ViewHolder
         MyHolder holder = new MyHolder(view);
-        //返回这个MyHolder实体
         return holder;
     }
 
@@ -35,15 +32,12 @@ public class SCourseViewAdapter extends RecyclerView.Adapter<SCourseViewAdapter.
     }
 
 
-    //获取数据源总的条数
     @Override
     public int getItemCount() {
         return mList.size();
     }
 
-    /**
-     * 自定义的ViewHolder
-     */
+
     class MyHolder extends RecyclerView.ViewHolder {
 
         TextView textView;
