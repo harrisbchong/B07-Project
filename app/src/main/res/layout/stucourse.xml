@@ -16,7 +16,7 @@
         android:layout_marginEnd="28dp"
         android:layout_marginRight="28dp"
         android:background="@color/white"
-        android:gravity="center"
+        android:gravity="left"
         android:text="HELLO!!!!!!!"
         app:layout_constraintEnd_toStartOf="@+id/imageButton2"
         app:layout_constraintStart_toStartOf="parent"
