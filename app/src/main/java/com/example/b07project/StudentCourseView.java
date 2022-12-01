@@ -89,8 +89,8 @@ public class StudentCourseView extends AppCompatActivity implements View.OnClick
     }
 
     public void initData(List list){
-        for(int i = 0; i < allCourseCodes.length; i++){
-            list.add(allCourseCodes[i] + "hello\n");
+        for(int i = 0; i < 40; i++){
+            list.add("CSCB07\nSoftware Engineering\nSessions: Fall, Summer\n No prerequisite");
         }
     }
 
