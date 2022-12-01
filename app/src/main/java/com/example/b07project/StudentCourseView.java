@@ -1,64 +1,98 @@
 package com.example.b07project;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
-import androidx.fragment.app.Fragment;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-import android.view.LayoutInflater;
+import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
+import android.widget.Toast;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link StudentCourseView#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class StudentCourseView extends Fragment {
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+import java.util.ArrayList;
+import java.util.List;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+public class StudentCourseView extends AppCompatActivity implements View.OnClickListener{
 
-    public StudentCourseView() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment StudentCourseView.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static StudentCourseView newInstance(String param1, String param2) {
-        StudentCourseView fragment = new StudentCourseView();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
+    private Button backbt;
+    private DatabaseReference courseData;
+    private String[] allCourseCodes = new String[]{};
+    private String[] allCourseNames = new String[]{};
+    private String[] allCourseKeys = new String[]{};
+    private RecyclerView mRecycleView;
+    private SCourseViewAdapter mAdapter;
+    private LinearLayoutManager mLinearLayoutManager;
+    private List mList;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+        setContentView(R.layout.fragment_student_course_view);
+        this.courseData = FirebaseDatabase.getInstance().getReference();
+        this.courseData.child("courses").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                if (!task.isSuccessful()) {
+                    Log.e("firebase", "Error getting data", task.getException());
+                } else {
+                    Iterable<DataSnapshot> courses = task.getResult().getChildren();
+                    allCourseCodes = new String[(int) task.getResult().getChildrenCount()];
+                    allCourseNames = new String[(int) task.getResult().getChildrenCount()];
+                    allCourseKeys = new String[(int) task.getResult().getChildrenCount()];
+                    int index = 0;
+                    for (DataSnapshot childSnapshot : courses) {
+                        Course course = childSnapshot.getValue(Course.class);
+                        allCourseCodes[index] = course == null ? "NULL" : course.courseCode;
+                        allCourseNames[index] = course == null ? "NULL" : course.courseName;
+                        allCourseKeys[index] = childSnapshot.getKey();
+                        index++;
+                    }
+
+                }
+
+            }
+
+        });
+        backbt = (Button) findViewById(R.id.scwbackbt);
+        backbt.setOnClickListener(this);
+        mList = new ArrayList<>();
+        mRecycleView = findViewById(R.id.rv_list);
+        initData(mList);
+        mLinearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+        mAdapter = new SCourseViewAdapter(mList);
+        mRecycleView.setLayoutManager(mLinearLayoutManager);
+        mRecycleView.setAdapter(mAdapter);
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_student_course_view, container, false);
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.scwbackbt:
+                startActivity(new Intent(this, StudentFrontPage.class));
+                break;
+        }
+
     }
+
+    public void initData(List list){
+        for(int i = 0; i < allCourseCodes.length; i++){
+            list.add(allCourseCodes[i] + "hello\n");
+        }
+    }
+
+
 }
