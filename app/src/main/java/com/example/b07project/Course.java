@@ -30,5 +30,29 @@ public class Course {
         }
     }
 
+    public String getPrerequisites(){
+        String result = "Prerequisites: ";
+        int n = prerequisites.size();
+        if((n == 0)||(prerequisites == null)){
+            return "No prerequisites";
+        }
+        for (int i = 0;i < n - 1; i++){
+            result = result + prerequisites.get(i) + ", ";
+        }
+        return result + prerequisites.get(n-1);
+    }
+
+    public String getSessions(){
+        String result = "Sessions: ";
+        int n = offeringSessions.size();
+        if((n == 0)||(offeringSessions == null)){
+            return "Please implement sessions for this course";
+        }
+        for (int i = 0;i < n - 1; i++){
+            result = result + offeringSessions.get(i) + ", ";
+        }
+        return result + offeringSessions.get(n-1);
+    }
+
 
 }

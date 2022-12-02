@@ -32,7 +32,10 @@ public class StudentCourseView extends AppCompatActivity implements View.OnClick
     private DatabaseReference courseData;
     private String[] allCourseCodes = new String[]{};
     private String[] allCourseNames = new String[]{};
+    private String[] allCoursePrerequisites = new String[]{};
+    private String[] allCourseSessions = new String[]{};
     private String[] allCourseKeys = new String[]{};
+    private int courseNum;
     private RecyclerView mRecycleView;
     private SCourseViewAdapter mAdapter;
     private LinearLayoutManager mLinearLayoutManager;
@@ -42,40 +45,53 @@ public class StudentCourseView extends AppCompatActivity implements View.OnClick
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_student_course_view);
-        this.courseData = FirebaseDatabase.getInstance().getReference();
-        this.courseData.child("courses").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+        courseData = FirebaseDatabase.getInstance().getReference("courses");
+
+        mRecycleView = findViewById(R.id.rv_list);
+        mLinearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+        mList = new ArrayList<>();
+        initData(mList);
+        mAdapter = new SCourseViewAdapter(mList);
+        mRecycleView.setLayoutManager(mLinearLayoutManager);
+        mRecycleView.setAdapter(mAdapter);
+        courseData.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
                 if (!task.isSuccessful()) {
                     Log.e("firebase", "Error getting data", task.getException());
                 } else {
+                    courseNum = (int)task.getResult().getChildrenCount();
+                    Log.d("firebase", String.valueOf(task.getResult().getChildrenCount()));
+                    Log.d("firebase", String.valueOf(courseNum));
                     Iterable<DataSnapshot> courses = task.getResult().getChildren();
-                    allCourseCodes = new String[(int) task.getResult().getChildrenCount()];
-                    allCourseNames = new String[(int) task.getResult().getChildrenCount()];
-                    allCourseKeys = new String[(int) task.getResult().getChildrenCount()];
+                    allCourseCodes = new String[courseNum];
+                    allCourseNames = new String[courseNum];
+                    allCourseKeys = new String[courseNum];
+                    allCoursePrerequisites = new String[courseNum];
+                    allCourseSessions = new String[courseNum];
                     int index = 0;
                     for (DataSnapshot childSnapshot : courses) {
                         Course course = childSnapshot.getValue(Course.class);
                         allCourseCodes[index] = course == null ? "NULL" : course.courseCode;
                         allCourseNames[index] = course == null ? "NULL" : course.courseName;
+                        allCoursePrerequisites[index] = course.getPrerequisites();
+                        allCourseSessions[index] = course.getSessions();
                         allCourseKeys[index] = childSnapshot.getKey();
                         index++;
                     }
-
+                    mList = new ArrayList<>();
+                    initData(mList);
+                    mAdapter = new SCourseViewAdapter(mList);
+                    mRecycleView.setLayoutManager(mLinearLayoutManager);
+                    mRecycleView.setAdapter(mAdapter);
                 }
 
             }
 
         });
+
         backbt = (Button) findViewById(R.id.scwbackbt);
         backbt.setOnClickListener(this);
-        mList = new ArrayList<>();
-        mRecycleView = findViewById(R.id.rv_list);
-        initData(mList);
-        mLinearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
-        mAdapter = new SCourseViewAdapter(mList);
-        mRecycleView.setLayoutManager(mLinearLayoutManager);
-        mRecycleView.setAdapter(mAdapter);
     }
 
     @Override
@@ -89,8 +105,9 @@ public class StudentCourseView extends AppCompatActivity implements View.OnClick
     }
 
     public void initData(List list){
-        for(int i = 0; i < 40; i++){
-            list.add("CSCB07\nSoftware Engineering\nSessions: Fall, Summer\n No prerequisite");
+        for(int i = 0; i < courseNum; i++){
+            list.add(allCourseCodes[i] + "\n" + allCourseNames[i] + "\n" + allCourseSessions[i]
+                    + "\n" + allCoursePrerequisites[i]);
         }
     }
 

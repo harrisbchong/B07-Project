@@ -12,10 +12,18 @@ import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.List;
 
 public class SCourseViewAdapter extends RecyclerView.Adapter<SCourseViewAdapter.MyHolder>{
     private List mList;
+    private DatabaseReference m;
+    private FirebaseAuth auth;
+    private FirebaseUser userId;
 
     SCourseViewAdapter(List list) {
         mList = list;
@@ -26,6 +34,9 @@ public class SCourseViewAdapter extends RecyclerView.Adapter<SCourseViewAdapter.
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.stucourse, parent, false);
         MyHolder holder = new MyHolder(view);
+        m = FirebaseDatabase.getInstance().getReference();
+        auth = FirebaseAuth.getInstance();
+        userId = auth.getCurrentUser();
         return holder;
     }
 
@@ -35,7 +46,9 @@ public class SCourseViewAdapter extends RecyclerView.Adapter<SCourseViewAdapter.
         holder.ibt.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                holder.textView.setText("Testing!!!" + position);
+                String str = holder.textView.getText().toString();
+                String [] test = str.split("\n");
+                m.child("students").child(userId.getUid()).child("taken").child(test[0]).setValue(test[0]);
             }
         });
     }
