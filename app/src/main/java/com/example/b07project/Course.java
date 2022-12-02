@@ -1,46 +1,35 @@
 package com.example.b07project;
 
+import android.text.TextUtils;
+
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 public class Course {
-    private String courseCode;
-    private String courseName;
-    private String offeringSessions;
-    private String prerequisites;
+    public String courseCode;
+
+    public String courseName;
+
+    public List<String> prerequisites;
+
+    public List<String> offeringSessions;
 
     public Course(){
-
+        this.prerequisites = new ArrayList<>();
+        this.offeringSessions = new ArrayList<>();
     }
 
-    public String getCourseCode() {
-        return courseCode;
-    }
-
-    public String getCourseName() {
-        return courseName;
-    }
-
-    public String getOfferingSessions() {
-        return offeringSessions;
-    }
-
-    public String getPrerequisites() {
-        return prerequisites;
-    }
-
-    public void setCourseCode(String courseCode) {
+    public Course(String courseCode, String courseName, List<String> prerequisites,
+                  List<UniversitySession> sessions) {
         this.courseCode = courseCode;
-    }
-
-    public void setCourseName(String courseName) {
         this.courseName = courseName;
-    }
-
-    public void setPrerequisites(String prerequisites) {
         this.prerequisites = prerequisites;
-    }
-
-    public void setSessions(String offeringSessions) {
-        this.offeringSessions = offeringSessions;
+        this.offeringSessions = new ArrayList<>();
+        Collections.sort(sessions, (o1, o2) -> Integer.compare(o1.getSessionOrder(), o2.getSessionOrder()));
+        for (UniversitySession session: sessions) {
+            this.offeringSessions.add(session.getSessionName());
+        }
     }
 }

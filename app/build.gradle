@@ -4,16 +4,16 @@ plugins {
 }
 
 android {
-    compileSdkVersion 33
+    compileSdkVersion 30
     buildToolsVersion "30.0.3"
 
     defaultConfig {
         applicationId "com.example.b07project"
         minSdkVersion 16
-        targetSdkVersion 33
+        targetSdkVersion 30
         versionCode 1
         versionName "1.0"
-
+        multiDexEnabled = true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -29,6 +29,7 @@ android {
     }
     buildFeatures {
         viewBinding true
+        dataBinding true
     }
     namespace 'com.example.b07project'
 }

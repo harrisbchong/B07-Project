@@ -8,16 +8,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 
-public class courseAdapter extends FirebaseRecyclerAdapter<Course,
+public class courseAdapter extends FirebaseRecyclerAdapter<CourseAdapterModel,
         courseAdapter.coursesViewholder> {
 
-    public courseAdapter(@NonNull FirebaseRecyclerOptions<Course> options) {
+    public courseAdapter(@NonNull FirebaseRecyclerOptions<CourseAdapterModel> options) {
         super(options);
     }
 
     @Override
     protected void onBindViewHolder(@NonNull coursesViewholder holder, int position,
-                                    @NonNull Course model) {
+                                    @NonNull CourseAdapterModel model) {
         holder.courseCode.setText(model.getCourseCode());
         holder.courseName.setText(model.getCourseName());
         holder.offeringSessions.setText(model.getOfferingSessions());
