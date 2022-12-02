@@ -171,7 +171,7 @@ public class AdminCourseAdd extends Fragment {
             List<String> selectedCourses = new ArrayList<>();
             for (int i = 0; i < allCourseNames.length; i++) {
                 if (allCourseSelected[i]) {
-                    selectedCourses.add(allCourseNames[i]);
+                    selectedCourses.add(allCourseKeys[i]);
                 }
             }
 
