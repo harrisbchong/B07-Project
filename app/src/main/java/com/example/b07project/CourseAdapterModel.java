@@ -15,7 +15,7 @@ public class CourseAdapterModel {
     }
 
     public String getCourseCode() {
-        return courseData.courseName;
+        return courseData.courseCode;
     }
 
     public String getCourseName() {
@@ -27,7 +27,9 @@ public class CourseAdapterModel {
     }
 
     public String getPrerequisites() {
-        return TextUtils.join(CourseAdapterModel.DELIMITER, courseData.prerequisites);
+        String pre = TextUtils.join(CourseAdapterModel.DELIMITER, courseData.prerequisites);
+        if(pre.isEmpty()) return "No prerequisites";
+        return pre;
     }
 
     public void setCourseCode(String courseCode) {
