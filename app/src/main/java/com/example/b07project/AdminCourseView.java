@@ -49,7 +49,8 @@ public class AdminCourseView extends AppCompatActivity {
                     @Override
                     public CourseAdapterModel parseSnapshot(@NonNull @NotNull DataSnapshot snapshot) {
                         Course c = snapshot.getValue(Course.class);
-                        CourseAdapterModel data = new CourseAdapterModel(c);
+                        DatabaseReference r = snapshot.getRef();
+                        CourseAdapterModel data = new CourseAdapterModel(c, r);
                         return data;
                     }
                 }).build();

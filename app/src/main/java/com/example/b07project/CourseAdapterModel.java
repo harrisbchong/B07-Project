@@ -2,17 +2,23 @@ package com.example.b07project;
 
 import android.text.TextUtils;
 
+import com.google.firebase.database.DatabaseReference;
+
 import java.util.Arrays;
 
 public class CourseAdapterModel {
     public static final String DELIMITER = ", ";
     Course courseData;
+    DatabaseReference ref;
 
     public CourseAdapterModel() {}
 
-    public CourseAdapterModel(Course courseData) {
+    public CourseAdapterModel(Course courseData, DatabaseReference ref) {
         this.courseData = courseData;
+        this.ref = ref;
     }
+
+    public DatabaseReference getRef(){ return ref;}
 
     public String getCourseCode() {
         return courseData.courseCode;
