@@ -18,3 +18,14 @@ What are you planning on doing today?
 	- implement the major functions of the student course view page
 Any impediments or stumbling blocks?
 	- None
+	
+Name: Mark Lin
+
+What have you done since yesterday?
+	- Implemented course list for admin course view
+	
+What are you planning on doing today?
+	- Work on refactoring admin course view to work with current data format
+
+Any impediments or stumbling blocks?
+	- None
