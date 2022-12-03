@@ -1,0 +1,10 @@
+Name: Cheng Liang Huang
+
+What have you done since yesterday?
+	- Fixed code in Mark's admin_course_view branch, to allow it to read course data from database
+	
+What are you planning on doing today?
+	- Do research into how to perform branch merges in Android Studio
+
+Any impediments or stumbling blocks?
+	- None
