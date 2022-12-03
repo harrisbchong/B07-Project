@@ -1,0 +1,10 @@
+Name: Cheng Liang Huang
+
+What have you done since yesterday?
+	- Nothing
+	
+What are you planning on doing today?
+	- Help Mark refactor his Admin Course View code to show the ArrayList values stored on the realtime database
+
+Any impediments or stumbling blocks?
+	- None
