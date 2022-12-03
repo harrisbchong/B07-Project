@@ -1,5 +1,6 @@
 package com.example.b07project;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,9 +17,11 @@ import com.firebase.ui.database.FirebaseRecyclerOptions;
 
 public class courseAdapter extends FirebaseRecyclerAdapter<CourseAdapterModel,
         courseAdapter.coursesViewholder> {
+    Context c;
 
-    public courseAdapter(@NonNull FirebaseRecyclerOptions<CourseAdapterModel> options) {
+    public courseAdapter(@NonNull FirebaseRecyclerOptions<CourseAdapterModel> options, Context c) {
         super(options);
+        this.c = c;
     }
 
     @Override
@@ -31,7 +34,23 @@ public class courseAdapter extends FirebaseRecyclerAdapter<CourseAdapterModel,
         holder.deletebt.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                model.getRef().removeValue();
+                AlertDialog.Builder builder = new AlertDialog.Builder(c);
+                builder.setTitle("Course Deletion");
+                builder.setMessage("Are you sure you want to delete " + model.getCourseCode());
+                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        model.getRef().removeValue();
+                        dialog.dismiss();
+                    }
+                });
+                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.dismiss();
+                    }
+                });
+                AlertDialog alert = builder.create();
+                alert.show();
+
             }
         });
 

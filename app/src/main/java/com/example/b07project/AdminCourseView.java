@@ -54,7 +54,7 @@ public class AdminCourseView extends AppCompatActivity {
                         return data;
                     }
                 }).build();
-        adapter = new courseAdapter(options);
+        adapter = new courseAdapter(options,this);
         recyclerView.setAdapter(adapter);
     }
 
