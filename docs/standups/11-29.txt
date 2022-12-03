@@ -1,0 +1,54 @@
+Name: Cheng Liang Huang
+
+What have you done since yesterday?
+	- Completed first prototype of the course add page for admins, which is pushed to course_add branch
+	
+What are you planning on doing today?
+	- Review the code (review for bugs, fix style errors, add comments) and test the page with various inputs
+
+Any impediments or stumbling blocks?
+	- None
+
+Name: Mark Lin
+
+What have you done since yesterday?
+	- Did research on how to make course list using recyclerView and firebase
+	
+What are you planning on doing today?
+	- Implementing a recyclerView to display course data from firebase
+
+Any impediments or stumbling blocks?
+	- None
+
+Name: Jason Liang
+
+What have you done since yesterday?
+	- Made the front pages for every type if user functional
+	
+What are you planning on doing today?
+	- uniting all the classes to use the same extension to more conveniently navigate.
+
+Any impediments or stumbling blocks?
+	- None
+	
+Name: Yuchuan Xue
+
+What have you done since yesterday?
+	- implement the prototype of displaying all the offered class information on student browse course page
+	
+What are you planning on doing today?
+	- Divide the information about different classes into different views and generate these views programatically
+
+Any impediments or stumbling blocks?
+	- None
+
+Name: Harris Chong
+
+What have you done since yesterday?
+	- Nothing
+	
+What are you planning on doing today?
+	- Delete and edit admin course
+
+Any impediments or stumbling blocks?
+	- None

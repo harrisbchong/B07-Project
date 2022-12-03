@@ -1,13 +1,11 @@
 package com.example.b07project;
 
-import android.text.TextUtils;
-
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
 public class Course {
+
     public String courseCode;
 
     public String courseName;
@@ -16,7 +14,7 @@ public class Course {
 
     public List<String> offeringSessions;
 
-    public Course(){
+    public Course() {
         this.prerequisites = new ArrayList<>();
         this.offeringSessions = new ArrayList<>();
     }

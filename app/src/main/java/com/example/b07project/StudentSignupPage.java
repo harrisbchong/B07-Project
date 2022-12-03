@@ -1,6 +1,5 @@
 package com.example.b07project;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -10,14 +9,12 @@ import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
 public class StudentSignupPage extends AppCompatActivity implements View.OnClickListener {
 
-    private Button btnFinish;
-    private ImageButton backbt;
+    private Button btnFinish, backbt;
     private EditText progtxt,nametxt,emailtxt,passtxt;
     private RadioButton adminbt, studentbt;
     private Model model;
@@ -27,7 +24,7 @@ public class StudentSignupPage extends AppCompatActivity implements View.OnClick
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_student_signup_page);
-        backbt = (ImageButton) findViewById(R.id.backbt);
+        backbt = (Button) findViewById(R.id.rbackbt);
         backbt.setOnClickListener(this);
         btnFinish = (Button) findViewById(R.id.btnFinish);
         btnFinish.setOnClickListener(this);
@@ -44,7 +41,7 @@ public class StudentSignupPage extends AppCompatActivity implements View.OnClick
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.backbt:
+            case R.id.rbackbt:
                 startActivity(new Intent(this, MainActivity.class));
                 break;
             case R.id.btnFinish:

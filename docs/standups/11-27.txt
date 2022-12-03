@@ -1,21 +1,44 @@
-Name: Harris Chong
+Name: Mark Lin
+
+What have you done since yesterday?
+	- worked on UI for admin view courses
+	
+What are you planning on doing today?
+	- Started working on the UI for the updating course list
+
+Any impediments or stumbling blocks?
+	- None
+	
+Name: Cheng Liang Huang
 
 What have you done since yesterday?
 	- Nothing
-
+	
 What are you planning on doing today?
-	- Nothing
+	- Start making UI for admin to add courses
 
 Any impediments or stumbling blocks?
 	- None
 
-Name: Mark Lin
+Name: Harris Chong
 
 What have you done since yesterday?
 	- Nothing
-
+	
 What are you planning on doing today?
-	- Nothing
+	- Work on one of the homepages for student or admin
+
+Any impediments or stumbling blocks?
+	- None
+
+
+Name: Jason Liang
+
+What have you done since yesterday?
+	- Trying out new methods for list view, and see if I can make a search implementation for course library.
+	
+What are you planning on doing today?
+	- Make the model class work, to simplify the fucntions in other class.
 
 Any impediments or stumbling blocks?
 	- None
@@ -23,32 +46,10 @@ Any impediments or stumbling blocks?
 Name: Yuchuan Xue
 
 What have you done since yesterday?
-	- Nothing
-
+	- waiting for others to finish the homepages while learning how scrollview works
+	
 What are you planning on doing today?
-	- Nothing
-
-Any impediments or stumbling blocks?
-	- None
-
-Name: Jason Liang
-
-What have you done since yesterday?
-	- nothin
-
-What are you planning on doing today?
-	- plan out the first user story.
-
-Any impediments or stumbling blocks?
-	- None
-
-Name: Cheng Liang Huang
-
-What have you done since yesterday?
-	- Nothing
-
-What are you planning on doing today?
-	- Nothing
+	- Work on the UI for the student course taken page and browse course view page
 
 Any impediments or stumbling blocks?
 	- None

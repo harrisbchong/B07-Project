@@ -1,0 +1,55 @@
+
+Name:Jason Liang
+
+What have you done since yesterday?
+	- Fix the errors when tryingt to simplify the code
+	
+What are you planning on doing today?
+	- discuss the new implementation made with teammate to see if we should use the new login/sign up method.
+
+Any impediments or stumbling blocks?
+	- None
+
+Name: Mark Lin
+
+What have you done since yesterday?
+	- Done some of the UI for admin course view page
+	
+What are you planning on doing today?
+	- Do research on how to implement recycler view to make an updating course list
+
+Any impediments or stumbling blocks?
+	- None
+	
+Name: Cheng Liang Huang
+
+What have you done since yesterday?
+	- Made UI for admin add page
+	
+What are you planning on doing today?
+	- Do research on how to read lists and objects from realtime database and make it update UI
+
+Any impediments or stumbling blocks?
+	- None
+
+Name: Harris Chong
+
+What have you done since yesterday?
+	- Researched and planned out design for UI
+	
+What are you planning on doing today?
+	- Do research on how to display/update data from realtime firebase database
+
+Any impediments or stumbling blocks?
+	- None
+
+Name: Yuchuan Xue
+
+What have you done since yesterday?
+	- Design the UI for student course taken page and student browse course page
+	
+What are you planning on doing today?
+	- Investigate how to display the data read from realtime database on scrollview
+
+Any impediments or stumbling blocks?
+	- None

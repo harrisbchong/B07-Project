@@ -1,0 +1,31 @@
+Name: Cheng Liang Huang
+
+What have you done since yesterday?
+	- Nothing
+	
+What are you planning on doing today?
+	- Help Mark refactor his Admin Course View code to show the ArrayList values stored on the realtime database
+
+Any impediments or stumbling blocks?
+	- None
+	
+Name: Yuchuan Xue	
+	
+What have you done since yesterday?
+	- Design the UI of the student course view page and the views that display all courses information
+	
+What are you planning on doing today?
+	- implement the major functions of the student course view page
+Any impediments or stumbling blocks?
+	- None
+	
+Name: Mark Lin
+
+What have you done since yesterday?
+	- Implemented course list for admin course view
+	
+What are you planning on doing today?
+	- Work on refactoring admin course view to work with current data format
+
+Any impediments or stumbling blocks?
+	- None

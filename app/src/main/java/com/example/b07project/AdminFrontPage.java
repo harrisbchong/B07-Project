@@ -5,21 +5,12 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.navigation.fragment.NavHostFragment;
 
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.b07project.databinding.FragmentAdminFrontPageBinding;
-import com.example.b07project.databinding.FragmentAdminLoginPageBinding;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -33,7 +24,7 @@ public class AdminFrontPage extends AppCompatActivity implements View.OnClickLis
     private FirebaseUser ad;
     private DatabaseReference aRef;
     private String id;
-    private Button logoutbt;
+    private Button logoutbt, bcbt, acbt;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -42,6 +33,10 @@ public class AdminFrontPage extends AppCompatActivity implements View.OnClickLis
         aRef = FirebaseDatabase.getInstance().getReference("admins");
         logoutbt = (Button) findViewById(R.id.alogoutbt);
         logoutbt.setOnClickListener(this);
+        bcbt = (Button) findViewById(R.id.bcbt);
+        bcbt.setOnClickListener(this);
+        acbt = (Button) findViewById(R.id.ctbt);
+        acbt.setOnClickListener(this);
         ad = FirebaseAuth.getInstance().getCurrentUser();
         id = ad.getUid();
 
@@ -73,7 +68,12 @@ public class AdminFrontPage extends AppCompatActivity implements View.OnClickLis
                 Toast.makeText(this, "Logged Out", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(this, MainActivity.class));
                 break;
+            case R.id.ctbt:
+                startActivity(new Intent(this, AdminAddCourse.class));
+                break;
+            case R.id.bcbt:
+                startActivity(new Intent(this, AdminCourseView.class));
+                break;
         }
     }
-
 }

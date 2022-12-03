@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.util.Patterns;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -17,20 +18,21 @@ import android.widget.Toast;
 
 public class AdminLoginPage extends AppCompatActivity implements View.OnClickListener {
 
-    private Button loginbt;
+    private Button loginbt,backbt;
     private CheckBox remem;
     private Model model;
+    private String email,password;
     private SharedPreferences pref;
     private SharedPreferences.Editor edit;
     private EditText etxt, ptxt;
-    private ImageButton backbt;
+    private Boolean savedLogin;
     private APresenter presenter;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_admin_login_page);
-        backbt = (ImageButton) findViewById(R.id.back_button_3);
+        backbt = (Button) findViewById(R.id.abackbt);
         backbt.setOnClickListener(this);
         etxt = (EditText) findViewById(R.id.admin_email_address_input);
         ptxt = (EditText) findViewById(R.id.admin_password_input);
@@ -41,27 +43,38 @@ public class AdminLoginPage extends AppCompatActivity implements View.OnClickLis
         edit = pref.edit();
         model = Model.getInstance();
         presenter = new APresenter(model, this);
-        checkremember();
+        savedLogin = pref.getBoolean("saveLogin", false);
+        if (savedLogin == true) {
+            etxt.setText(pref.getString("email", ""));
+            ptxt.setText(pref.getString("password", ""));
+            remem.setChecked(true);
+        }
+
 
     }
-    private void checkremember() {
-        boolean remember = pref.getBoolean("remember", false);
-        String email = pref.getString("email", "");
-        String password = pref.getString("password", "");
 
-        etxt.setText(email);
-        ptxt.setText(password);
-        remem.setChecked(remember);
-    }
 
 
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.admin_login_submit:
+                InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(etxt.getWindowToken(), 0);
+                email = etxt.getText().toString();
+                password = ptxt.getText().toString();
+                if (remem.isChecked()) {
+                    edit.putBoolean("saveLogin", true);
+                    edit.putString("email", email);
+                    edit.putString("password", password);
+                    edit.commit();
+                } else {
+                    edit.clear();
+                    edit.commit();
+                }
                 logIn();
                 break;
-            case R.id.back_button_3:
+            case R.id.abackbt:
                 startActivity(new Intent(this, MainActivity.class));
                 break;
         }
@@ -71,12 +84,6 @@ public class AdminLoginPage extends AppCompatActivity implements View.OnClickLis
 
 
     private void logIn() {
-        String email = etxt.getText().toString().trim();
-        String password = ptxt.getText().toString().trim();
-        edit.putBoolean("remember", remem.isChecked());
-        edit.putString("Email", remem.isChecked()? email : "");
-        edit.putString("Password", remem.isChecked()? password : "");
-        edit.apply();
 
         if (email.isEmpty()) {
             etxt.setError("Email Required");
