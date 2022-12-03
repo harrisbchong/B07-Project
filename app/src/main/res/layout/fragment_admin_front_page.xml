@@ -2,44 +2,73 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/frameLayout3"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AdminFrontPage">
-
-
-    <ImageButton
-        android:id="@+id/back_button_4"
-        android:layout_width="31dp"
-        android:layout_height="49dp"
-        android:background="@color/uoft_blue"
-        android:contentDescription="return"
-        android:src="@drawable/abc_vector_test"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="SpeakableTextPresentCheck" />
-
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="346dp"
-        android:layout_height="79dp"
-        android:layout_marginTop="128dp"
-        android:background="@drawable/rounded_edittext"
-        android:text="@string/hello_blank_fragment"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    android:background="@color/button_tint"
+    android:scrollbarThumbHorizontal="@color/white">
 
     <Button
-        android:id="@+id/adminFrontPageAddButton"
+        android:id="@+id/bcbt"
+        android:layout_width="216dp"
+        android:layout_height="57dp"
+        android:drawableRight="@drawable/folder"
+        android:text="Browse Course"
+        android:textColor="@color/black"
+        app:backgroundTint="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sname"
+        app:layout_constraintVertical_bias="0.291" />
+
+    <TextView
+        android:id="@+id/sname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add Course"
+        android:background="@drawable/blue_rounded_edittext"
+        android:paddingRight="15dp"
+        android:text="Name"
+        android:textColor="@color/white"
+        android:textSize="34sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.102" />
+
+    <Button
+        android:id="@+id/ctbt"
+        android:layout_width="216dp"
+        android:layout_height="57dp"
+        android:drawableRight="@drawable/plus"
+        android:text="Add Course"
+        android:textColor="@color/black"
+        app:backgroundTint="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sname"
+        app:layout_constraintVertical_bias="0.142" />
+
+    <Button
+        android:id="@+id/alogoutbt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="160dp"
+        android:text="Log Out"
+        android:textColor="#E41313"
+        android:textColorHint="#00FFFFFF"
+        app:backgroundTint="#B3AFAF"
+        app:cornerRadius="100dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bcbt"
+        app:layout_constraintVertical_bias="0.746"
+        app:rippleColor="#00FFFFFF" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

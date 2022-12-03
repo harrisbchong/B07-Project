@@ -43,3 +43,13 @@ What are you planning on doing today?
 Any impediments or stumbling blocks?
 	- None
 
+Name: Yuchuan Xue
+
+What have you done since yesterday?
+	- waiting for others to finish the homepages while learning how scrollview works
+	
+What are you planning on doing today?
+	- Work on the UI for the student course taken page and browse course view page
+
+Any impediments or stumbling blocks?
+	- None
