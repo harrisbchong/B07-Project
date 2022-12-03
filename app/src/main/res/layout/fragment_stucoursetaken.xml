@@ -16,7 +16,7 @@
         android:layout_marginEnd="28dp"
         android:layout_marginRight="28dp"
         android:background="@color/white"
-        android:gravity="center"
+        android:gravity="left"
         android:text="HELLO!!!!!!!"
         app:layout_constraintEnd_toStartOf="@+id/imageButton2"
         app:layout_constraintStart_toStartOf="parent"
@@ -29,5 +29,14 @@
         app:layout_constraintStart_toEndOf="@+id/tv_content_1"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/delete" />
+
+    <TextView
+        android:id="@+id/k_content_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:textColor="#FAF8F8"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/tv_content_1" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
