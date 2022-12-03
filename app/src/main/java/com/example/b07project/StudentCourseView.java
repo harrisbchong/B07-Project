@@ -24,6 +24,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class StudentCourseView extends AppCompatActivity implements View.OnClickListener{
@@ -39,7 +40,7 @@ public class StudentCourseView extends AppCompatActivity implements View.OnClick
     private RecyclerView mRecycleView;
     private SCourseViewAdapter mAdapter;
     private LinearLayoutManager mLinearLayoutManager;
-    private List mList;
+    private List mList, kList;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -50,8 +51,9 @@ public class StudentCourseView extends AppCompatActivity implements View.OnClick
         mRecycleView = findViewById(R.id.rv_list);
         mLinearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         mList = new ArrayList<>();
-        initData(mList);
-        mAdapter = new SCourseViewAdapter(mList);
+        kList = new ArrayList<>();
+        initData(mList, kList);
+        mAdapter = new SCourseViewAdapter(mList, kList);
         mRecycleView.setLayoutManager(mLinearLayoutManager);
         mRecycleView.setAdapter(mAdapter);
         courseData.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
@@ -61,8 +63,6 @@ public class StudentCourseView extends AppCompatActivity implements View.OnClick
                     Log.e("firebase", "Error getting data", task.getException());
                 } else {
                     courseNum = (int)task.getResult().getChildrenCount();
-                    Log.d("firebase", String.valueOf(task.getResult().getChildrenCount()));
-                    Log.d("firebase", String.valueOf(courseNum));
                     Iterable<DataSnapshot> courses = task.getResult().getChildren();
                     allCourseCodes = new String[courseNum];
                     allCourseNames = new String[courseNum];
@@ -80,8 +80,8 @@ public class StudentCourseView extends AppCompatActivity implements View.OnClick
                         index++;
                     }
                     mList = new ArrayList<>();
-                    initData(mList);
-                    mAdapter = new SCourseViewAdapter(mList);
+                    initData(mList, kList);
+                    mAdapter = new SCourseViewAdapter(mList, kList);
                     mRecycleView.setLayoutManager(mLinearLayoutManager);
                     mRecycleView.setAdapter(mAdapter);
                 }
@@ -104,10 +104,11 @@ public class StudentCourseView extends AppCompatActivity implements View.OnClick
 
     }
 
-    public void initData(List list){
+    public void initData(List list_1, List list_2){
         for(int i = 0; i < courseNum; i++){
-            list.add(allCourseCodes[i] + "\n" + allCourseNames[i] + "\n" + allCourseSessions[i]
+            list_1.add(allCourseCodes[i] + "\n" + allCourseNames[i] + "\n" + allCourseSessions[i]
                     + "\n" + allCoursePrerequisites[i]);
+            list_2.add(allCourseKeys[i]);
         }
     }
 
