@@ -2,8 +2,7 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/nav_graph"
-    app:startDestination="@id/adminCourseAdd">
+    android:id="@+id/nav_graph">
 
     <fragment
         android:id="@+id/studentFrontPage"
@@ -45,9 +44,6 @@
         <action
             android:id="@+id/action_adminFrontPage_to_adminLoginPage"
             app:destination="@id/adminLoginPage" />
-        <action
-            android:id="@+id/action_adminFrontPage_to_adminCourseAdd"
-            app:destination="@id/adminCourseAdd" />
     </fragment>
     <fragment
         android:id="@+id/adminLoginPage"
@@ -74,15 +70,6 @@
             app:destination="@id/studentFrontPage" />
         <action
             android:id="@+id/action_studentSignupPage_to_adminFrontPage"
-            app:destination="@id/adminFrontPage" />
-    </fragment>
-    <fragment
-        android:id="@+id/adminCourseAdd"
-        android:name="com.example.b07project.AdminCourseAdd"
-        android:label="fragment_admin_course_add"
-        tools:layout="@layout/admin_add_course" >
-        <action
-            android:id="@+id/action_adminCourseAdd_to_adminFrontPage"
             app:destination="@id/adminFrontPage" />
     </fragment>
 </navigation>
