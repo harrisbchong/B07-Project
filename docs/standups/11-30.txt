@@ -8,3 +8,13 @@ What are you planning on doing today?
 
 Any impediments or stumbling blocks?
 	- None
+	
+Name: Yuchuan Xue	
+	
+What have you done since yesterday?
+	- Design the UI of the student course view page and the views that display all courses information
+	
+What are you planning on doing today?
+	- implement the major functions of the student course view page
+Any impediments or stumbling blocks?
+	- None
