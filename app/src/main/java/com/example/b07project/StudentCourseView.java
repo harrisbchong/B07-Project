@@ -46,7 +46,7 @@ public class StudentCourseView extends AppCompatActivity implements View.OnClick
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_student_course_view);
-        courseData = FirebaseDatabase.getInstance().getReference("courses");
+        courseData = FirebaseDatabase.getInstance().getReference();
 
         mRecycleView = findViewById(R.id.rv_list);
         mLinearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
@@ -56,7 +56,7 @@ public class StudentCourseView extends AppCompatActivity implements View.OnClick
         mAdapter = new SCourseViewAdapter(mList, kList);
         mRecycleView.setLayoutManager(mLinearLayoutManager);
         mRecycleView.setAdapter(mAdapter);
-        courseData.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+        courseData.child("courses").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
                 if (!task.isSuccessful()) {
@@ -72,14 +72,13 @@ public class StudentCourseView extends AppCompatActivity implements View.OnClick
                     int index = 0;
                     for (DataSnapshot childSnapshot : courses) {
                         Course course = childSnapshot.getValue(Course.class);
-                        allCourseCodes[index] = course == null ? "NULL" : course.courseCode;
-                        allCourseNames[index] = course == null ? "NULL" : course.courseName;
+                        allCourseCodes[index] = course.getCode();
+                        allCourseNames[index] = course.getName();
                         allCoursePrerequisites[index] = course.getPrerequisites();
                         allCourseSessions[index] = course.getSessions();
                         allCourseKeys[index] = childSnapshot.getKey();
                         index++;
                     }
-                    mList = new ArrayList<>();
                     initData(mList, kList);
                     mAdapter = new SCourseViewAdapter(mList, kList);
                     mRecycleView.setLayoutManager(mLinearLayoutManager);

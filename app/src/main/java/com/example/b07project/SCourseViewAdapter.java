@@ -143,37 +143,3 @@ public class SCourseViewAdapter extends RecyclerView.Adapter<SCourseViewAdapter.
     }
 }
 
-/*
-m.child("students").child(userId.getUid()).child("taken").addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DataSnapshot> task) {
-                if (!task.isSuccessful()) {
-                    Log.e("firebase", "Error getting data", task.getException());
-                } else {
-                    courseNum = (int)task.getResult().getChildrenCount();
-                    Iterable<DataSnapshot> courses = task.getResult().getChildren();
-                    CourseCodes = new String[courseNum];
-                    CourseKeys = new String[courseNum];
-
-                    int index = 0;
-                    for (DataSnapshot childSnapshot : courses) {
-                        CourseCodes[index] = childSnapshot.getValue(String.class);
-                        CourseKeys[index] = childSnapshot.getKey();
-                        index++;
-                    }
-                    if(holder.exist(k, CourseKeys) == 1){
-                        Toast.makeText(v.getContext(), You have already taken this course",
-                            Toast.LENGTH_SHORT).show();
-                    }
-                    else if(test[3] == "No prerequisites"){
-                        m.child("students").child(userId.getUid()).child("taken").child(k).setValue(test[0]);
-                        Toast.makeText(v.getContext(), test[0] + " is successfully added to the taken courses",
-                            Toast.LENGTH_SHORT).show();
-                    }
-
-                }
-
-            }
-
-        });
- */

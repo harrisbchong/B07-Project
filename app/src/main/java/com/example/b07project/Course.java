@@ -1,5 +1,14 @@
 package com.example.b07project;
 
+import android.util.Log;
+
+import androidx.annotation.NonNull;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseReference;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -30,14 +39,22 @@ public class Course {
         }
     }
 
+    public String getCode(){
+        return this.courseCode;
+    }
+
+    public String getName(){
+        return this.courseName;
+    }
+
     public String getPrerequisites(){
         String result = "Prerequisites: ";
         int n = prerequisites.size();
         if((n == 0)||(prerequisites == null)){
             return "No prerequisites";
         }
-        for (int i = 0;i < n - 1; i++){
-            result = result + prerequisites.get(i) + ", ";
+        for(int i = 0; i < n - 1; i++){
+            result = result + prerequisites.get(i) +  ", ";
         }
         return result + prerequisites.get(n-1);
     }
@@ -56,3 +73,20 @@ public class Course {
 
 
 }
+
+/*
+for (int i = 0;i < n; i++){
+            String part = m.child("courses").child(prerequisites.get(i)).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<DataSnapshot> task) {
+                    if (!task.isSuccessful()) {
+                        Log.e("firebase", "Error getting data", task.getException());
+                    } else {
+                        String course = task.getResult().getValue(Course.class).getCode();
+                        result = result + course + ", ";
+                        }
+                    }
+                }
+            });
+        }
+ */
