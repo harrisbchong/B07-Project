@@ -8,3 +8,14 @@ What are you planning on doing today?
 
 Any impediments or stumbling blocks?
 	- None
+
+Name: Yuchuan Xue	
+	
+What have you done since yesterday?
+	- Add SCourseViewAdapterClass for the recycleview in StudentCourseViewPage and then implementing the major funcions of StudentCourseViewPage
+	to let it display all courses' information stored in realtime database and add the courses to students' "taken courses"
+	
+What are you planning on doing today?
+	- adjusting the functions to distinguish whether the course is able to be added to the "taken course" according to whether the prerequisites are 	met
+Any impediments or stumbling blocks?
+	- None
