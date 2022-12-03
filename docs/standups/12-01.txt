@@ -16,6 +16,7 @@ What have you done since yesterday?
 	to let it display all courses' information stored in realtime database and add the courses to students' "taken courses"
 	
 What are you planning on doing today?
-	- adjusting the functions to distinguish whether the course is able to be added to the "taken course" according to whether the prerequisites are 	met
+	- adjusting the functions to distinguish whether the course is able to be added to the "taken course" according to the prerequisites
+	
 Any impediments or stumbling blocks?
 	- None
