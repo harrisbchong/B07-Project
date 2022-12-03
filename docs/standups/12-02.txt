@@ -1,0 +1,10 @@
+Name: Cheng Liang Huang
+
+What have you done since yesterday?
+	- Began merging the admin add course user story (from course_add) into main
+	
+What are you planning on doing today?
+	- Finish merging the course_add branch into main (i.e. resolve all merge conflicts)
+
+Any impediments or stumbling blocks?
+	- None
