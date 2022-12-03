@@ -76,5 +76,4 @@ public class AdminFrontPage extends AppCompatActivity implements View.OnClickLis
                 break;
         }
     }
-
 }
