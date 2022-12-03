@@ -19,3 +19,14 @@ What are you planning on doing today?
 	
 Any impediments or stumbling blocks?
 	- None
+
+Name: Mark Lin
+
+What have you done since yesterday?
+	- Nothing
+	
+What are you planning on doing today?
+	- Changed Courses in course List on Admin Course View to contain buttons for editing and deleting
+
+Any impediments or stumbling blocks?
+	- None
