@@ -21,20 +21,18 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class SCourseViewAdapter extends RecyclerView.Adapter<SCourseViewAdapter.MyHolder>{
-    private List mList, kList;
     private DatabaseReference m;
     private FirebaseAuth auth;
     private FirebaseUser userId;
-    private String[] CourseCodes = new String[]{};
-    private String[] CourseKeys = new String[]{};
-    private int courseNum;
 
-    SCourseViewAdapter(List list_1, List list_2) {
-        mList = list_1;
-        kList = list_2;
+    private HashMap<String, Course> courses;
+
+    SCourseViewAdapter(HashMap<String, Course> courses) {
+        this.courses = courses;
     }
 
     @Override
@@ -48,68 +46,68 @@ public class SCourseViewAdapter extends RecyclerView.Adapter<SCourseViewAdapter.
         return holder;
     }
 
-    public int exist(String m, String[] list){
-        for(String str: list){
-            if (str.equals(m)){
-                return 1;
-            }
-        }
-        return 0;
-    }
-
     @Override
     public void onBindViewHolder(MyHolder holder, int position) {
-        holder.textView.setText(mList.get(position).toString());
-        holder.kView.setText(kList.get(position).toString());
+        String[] keys = courses.keySet().toArray(new String[0]);
+        Course currentCourse = courses.get(keys[position]);
+
+        holder.textView.setText(currentCourse.courseCode + "\n" +
+                currentCourse.courseName + "\n" +
+                currentCourse.getSessions() + "\n" +
+                currentCourse.getPrerequisites(courses));
+        holder.kView.setText(keys[position]);
+
         holder.ibt.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 String k = holder.kView.getText().toString();
-                String str = holder.textView.getText().toString();
-                String [] test = str.split("\n");
-                m.child("students").child(userId.getUid()).child("taken").get().addOnCompleteListener
+
+                m.child("students").child(userId.getUid()).get().addOnCompleteListener
                         (new OnCompleteListener<DataSnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<DataSnapshot> task) {
                         if (!task.isSuccessful()) {
                             Log.e("firebase", "Error getting data", task.getException());
                         } else {
-                            courseNum = (int)task.getResult().getChildrenCount();
-                            Iterable<DataSnapshot> courses = task.getResult().getChildren();
-                            CourseCodes = new String[courseNum];
-                            CourseKeys = new String[courseNum];
-
-                            int index = 0;
-                            for (DataSnapshot childSnapshot : courses) {
-                                CourseCodes[index] = childSnapshot.getValue(String.class);
-                                CourseKeys[index] = childSnapshot.getKey();
-                                index++;
+                            Course courseSelected = null;
+                            if (courses.containsKey(k)) {
+                                courseSelected = courses.get(k);
                             }
 
-                            Log.e("TextView", test[3]);
+                            Student student = task.getResult().getValue(Student.class);
 
-                            if(exist(k, CourseKeys) == 1){
+                            if (student.taken.contains(k)) {
+                                // if the student has already taken the course
                                 Toast.makeText(v.getContext(), "You have already taken this course",
-                                Toast.LENGTH_SHORT).show();
-                            }
-                            else if(test[3].equals("No prerequisites")){
-                                m.child("students").child(userId.getUid()).child("taken").child(k).setValue(test[0]);
-                                Toast.makeText(v.getContext(), test[0] + " is successfully added to the taken courses",
+                                        Toast.LENGTH_SHORT).show();
+                            } else if (courseSelected.prerequisites.isEmpty()) {
+                                student.taken.add(k);
+                                m.child("students").child(userId.getUid()).setValue(student);
+                                holder.textView.setText(courseSelected.courseCode +
+                                        " added to the taken courses");
+                                Toast.makeText(v.getContext(), courseSelected.courseCode +
+                                                " is successfully added to the taken courses",
                                         Toast.LENGTH_SHORT).show();
                             }
                             else{
-                                String s = test[3].substring(15);
-                                String [] pre = s.split(", ");
-                                int n = pre.length, count = 0;
-                                for(int i = 0; i < n; i++){
-                                    count = count + exist(pre[i], CourseCodes);
+                                boolean tookAllPrereqs = true;
+                                for (String prereq : courseSelected.prerequisites) {
+                                    if (!student.taken.contains(prereq)) {
+                                        tookAllPrereqs = false;
+                                        break;
+                                    }
                                 }
-                                if(count == n){
-                                    m.child("students").child(userId.getUid()).child("taken").child(k).setValue(test[0]);
-                                    Toast.makeText(v.getContext(), test[0] + " is successfully added to the taken courses",
+                                if(tookAllPrereqs){
+                                    student.taken.add(k);
+                                    m.child("students").child(userId.getUid()).setValue(student);
+                                    holder.textView.setText(courseSelected.courseCode +
+                                            " added to the taken courses");
+                                    Toast.makeText(v.getContext(), courseSelected.courseCode +
+                                                    " is successfully added to the taken courses",
                                             Toast.LENGTH_SHORT).show();
                                 } else{
-                                    Toast.makeText(v.getContext(), "The prerequisites for this course are not met",
+                                    Toast.makeText(v.getContext(),
+                                            "The prerequisites for this course are not met",
                                             Toast.LENGTH_SHORT).show();
                                 }
                             }
@@ -126,7 +124,7 @@ public class SCourseViewAdapter extends RecyclerView.Adapter<SCourseViewAdapter.
 
     @Override
     public int getItemCount() {
-        return mList.size();
+        return this.courses.keySet().size();
     }
 
 

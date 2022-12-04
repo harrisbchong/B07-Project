@@ -45,7 +45,6 @@ public class StudentCourseView extends AppCompatActivity implements View.OnClick
     private RecyclerView mRecycleView;
     private SCourseViewAdapter mAdapter;
     private LinearLayoutManager mLinearLayoutManager;
-    private List mList, kList;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -56,16 +55,12 @@ public class StudentCourseView extends AppCompatActivity implements View.OnClick
         mRecycleView = findViewById(R.id.rv_list);
         mLinearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,
                 false);
-        mList = new ArrayList<>();
-        kList = new ArrayList<>();
         courseDirectory = new HashMap<>();
         prerequisiteCodes = new HashMap<>();
 
-        initData(mList, kList);
-        mAdapter = new SCourseViewAdapter(mList, kList);
-        mRecycleView.setLayoutManager(mLinearLayoutManager);
-        mRecycleView.setAdapter(mAdapter);
-        courseData.child("courses").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+
+        courseData.child("courses").get().addOnCompleteListener(
+                new OnCompleteListener<DataSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
                 if (!task.isSuccessful()) {
@@ -86,8 +81,7 @@ public class StudentCourseView extends AppCompatActivity implements View.OnClick
                         prerequisiteCodes.put(course.getKey(),
                                 course.getValue().getPrerequisites(courseDirectory));
                     }
-                    initData(mList, kList);
-                    mAdapter = new SCourseViewAdapter(mList, kList);
+                    mAdapter = new SCourseViewAdapter(courseDirectory);
                     mRecycleView.setLayoutManager(mLinearLayoutManager);
                     mRecycleView.setAdapter(mAdapter);
                 }
@@ -95,6 +89,10 @@ public class StudentCourseView extends AppCompatActivity implements View.OnClick
             }
 
         });
+
+        mAdapter = new SCourseViewAdapter(courseDirectory);
+        mRecycleView.setLayoutManager(mLinearLayoutManager);
+        mRecycleView.setAdapter(mAdapter);
 
         backbt = findViewById(R.id.scwbackbt);
         backbt.setOnClickListener(this);
@@ -109,17 +107,4 @@ public class StudentCourseView extends AppCompatActivity implements View.OnClick
         }
 
     }
-
-    public void initData(List list_1, List list_2) {
-        for (Map.Entry<String, Course> course : courseDirectory.entrySet()) {
-            Course values = course.getValue();
-            list_1.add(values.courseCode + "\n" +
-                    values.courseName + "\n" +
-                    values.getSessions() + "\n" +
-                    prerequisiteCodes.get(course.getKey()));
-            list_2.add(course.getKey());
-        }
-    }
-
-
 }
