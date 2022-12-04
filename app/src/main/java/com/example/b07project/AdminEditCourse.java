@@ -6,6 +6,7 @@ import androidx.paging.multicast.ChannelManager;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.ContactsContract;
@@ -171,6 +172,12 @@ public class AdminEditCourse extends AppCompatActivity {
                 }
             }
 
+            Boolean selfPrereq = false;
+            if(selectedCourses.contains(oldCode)){
+                selectedCourses.remove(oldCode);
+                selfPrereq = true;
+            }
+
             // extract offering sessions data
             CheckBox adminEditCourseFallCheckbox = findViewById(R.id.adminEditCourseFallCheckbox);
             CheckBox adminEditCourseWinterCheckbox = findViewById(R.id.adminEditCourseWinterCheckbox);
@@ -191,18 +198,17 @@ public class AdminEditCourse extends AppCompatActivity {
                     offeringSessions);
             ref.setValue(newCourse);
 
-            // reset the interface fields
-            adminEditCourseNameInput.setText("");
-            adminEditCourseCodeInput.setText("");
-            Arrays.fill(allCourseSelected, false);
-            adminEditCourseFallCheckbox.setChecked(false);
-            adminEditCourseWinterCheckbox.setChecked(false);
-            adminEditCourseSummerCheckbox.setChecked(false);
-
             // display a success message
             AlertDialog.Builder successDialog = new AlertDialog.Builder(view.getContext());
-            successDialog.setTitle("Success");
-            successDialog.setMessage("The course was successfully edited.");
+            if(!selfPrereq){
+                successDialog.setTitle("Success");
+                successDialog.setMessage("The course was successfully edited.");
+            }
+            else{
+                successDialog.setTitle("Success with self prerequisite removed");
+                successDialog.setMessage("The course was successfully edited but self " +
+                        "prerequisite was removed");
+            }
             successDialog.setPositiveButton("OK", (dialogInterface, i) -> onEditSuccess());
             successDialog.setCancelable(false);
             successDialog.show();

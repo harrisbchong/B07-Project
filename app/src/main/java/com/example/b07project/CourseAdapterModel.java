@@ -1,10 +1,18 @@
 package com.example.b07project;
 
 import android.text.TextUtils;
+import android.util.Log;
 
+import androidx.annotation.NonNull;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.Arrays;
+import java.util.List;
 
 public class CourseAdapterModel {
     public static final String DELIMITER = ", ";
