@@ -30,3 +30,14 @@ What are you planning on doing today?
 
 Any impediments or stumbling blocks?
 	- None
+
+Name: Harris Chong
+
+What have you done since yesterday?
+	- Researched and planned out the junit test cases
+	
+What are you planning on doing today?
+	- Coding the actual tests
+
+Any impediments or stumbling blocks?
+	- None

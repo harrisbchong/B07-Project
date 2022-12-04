@@ -30,6 +30,7 @@
         <activity android:name=".AdminAddCourse" />
         <activity android:name=".StudentCourseTimeline" />
         <activity android:name=".StudentAcademicHistory" />
+        <activity android:name=".StudentCourseView" />
         <activity
             android:name=".MainActivity"
             android:exported="true"

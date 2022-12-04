@@ -31,3 +31,14 @@ What are you planning on doing today?
 
 Any impediments or stumbling blocks?
 	- None
+
+Name: Harris Chong
+
+What have you done since yesterday?
+	- Worked on Edit course UI
+	
+What are you planning on doing today?
+	- Work on the unit tests for login 
+
+Any impediments or stumbling blocks?
+	- None
