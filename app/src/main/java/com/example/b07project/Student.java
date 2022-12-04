@@ -1,5 +1,7 @@
 package com.example.b07project;
 
+import com.google.firebase.database.DatabaseReference;
+
 import java.util.ArrayList;
 
 public class Student {
@@ -7,10 +9,6 @@ public class Student {
     public  String email;
     public String id;
     public String program;
-
-    public ArrayList<String> tcourse;
-
-
 
     public Student(){}
 

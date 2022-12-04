@@ -12,4 +12,6 @@ public enum UTSCSessions implements UniversitySession {
     public int getSessionOrder() {
         return ordinal();
     }
+
 }
+
