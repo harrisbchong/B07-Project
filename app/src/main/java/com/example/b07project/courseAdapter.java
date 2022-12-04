@@ -3,6 +3,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +16,15 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 public class courseAdapter extends FirebaseRecyclerAdapter<CourseAdapterModel,
         courseAdapter.coursesViewholder> {
@@ -32,7 +41,7 @@ public class courseAdapter extends FirebaseRecyclerAdapter<CourseAdapterModel,
         holder.courseCode.setText(model.getCourseCode());
         holder.courseName.setText(model.getCourseName());
         holder.offeringSessions.setText(model.getOfferingSessions());
-        holder.prerequisites.setText(model.getPrerequisites());
+        getPrerequisites(model, holder);
         holder.deletebt.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
@@ -76,6 +85,33 @@ public class courseAdapter extends FirebaseRecyclerAdapter<CourseAdapterModel,
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.course, parent, false);
         return new courseAdapter.coursesViewholder(view);
+    }
+
+    public void getPrerequisites(@NonNull CourseAdapterModel model, @NonNull coursesViewholder holder) {
+        HashMap<String, String> prereqCodes = new HashMap<>();
+        FirebaseDatabase.getInstance().getReference("courses").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Iterable<DataSnapshot> courses = snapshot.getChildren();
+                List<String> preList = new ArrayList<>();
+                for(DataSnapshot child : courses){
+                    prereqCodes.put(child.getKey(),child.child("courseCode").getValue(String.class));
+                }
+                for(int i = 0 ; i < model.courseData.prerequisites.size(); i++){
+                    preList.add(prereqCodes.get(model.courseData.prerequisites.get(i)));
+                }
+
+                String pre= TextUtils.join(CourseAdapterModel.DELIMITER, preList);
+                if(pre.isEmpty()) holder.prerequisites.setText("No prerequisites");
+                else {
+                    holder.prerequisites.setText(pre);
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
     class coursesViewholder extends RecyclerView.ViewHolder {
