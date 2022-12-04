@@ -27,9 +27,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         adminbt.setOnClickListener(this);
         studentbt = (Button) findViewById(R.id.student_login_button);
         studentbt.setOnClickListener(this);
-
-
-
     }
 
 

@@ -6,7 +6,7 @@
     android:background="@color/button_tint"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".StudentCourseView">
+    >
 
     <!-- TODO: Update blank fragment layout -->
 
