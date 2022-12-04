@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/UI_background"
+    tools:context=".fragment_student_course_planner">
+
+    <TextView
+        android:id="@+id/Courseplanner"
+        android:layout_width="206.7dp"
+        android:layout_height="44.5dp"
+        android:layout_marginTop="56dp"
+        android:background="@drawable/grey_rounded_edittext"
+        android:fontFamily="sans-serif"
+        android:gravity="center"
+        android:text="Course Planner"
+        android:textColor="@color/uoft_blue"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/scpbackbt"
+        android:layout_width="54dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:drawableBottom="@drawable/arrow_left"
+        app:backgroundTint="@color/white"
+        app:cornerRadius="100dp"
+        app:layout_constraintEnd_toStartOf="@+id/courseOffering"
+        app:layout_constraintHorizontal_bias="0.333"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/gtbt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="404dp"
+        android:text="Generate Timeline"
+        android:textColor="@color/uoft_blue"
+        app:backgroundTint="@color/white"
+        app:cornerRadius="90dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/cctxt"
+        android:layout_width="280dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="136dp"
+        android:background="@drawable/white_rounded_edittext"
+        android:ems="10"
+        android:hint="Enter Desired Course Code"
+        android:inputType="textPersonName"
+        android:textColorHint="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/plantable"
+        android:layout_width="310dp"
+        android:layout_height="356dp"
+        android:layout_marginBottom="28dp"
+        android:background="@drawable/white_rounded_edittext"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
