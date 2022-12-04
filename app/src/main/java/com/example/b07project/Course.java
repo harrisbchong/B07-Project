@@ -1,5 +1,6 @@
 package com.example.b07project;
 
+import android.text.TextUtils;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
@@ -11,6 +12,7 @@ import com.google.firebase.database.DatabaseReference;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 
 public class Course {
@@ -48,16 +50,18 @@ public class Course {
         return this.courseName;
     }
 
-    public String getPrerequisites(){
+    public String getPrerequisites(HashMap<String, Course> courseDirectory){
+        List<String> codes = new ArrayList<>();
+        for (String courseId : this.prerequisites) {
+            codes.add(courseDirectory.get(courseId).courseCode);
+        }
+
         String result = "Prerequisites: ";
         int n = prerequisites.size();
-        if((n == 0)||(prerequisites == null)){
+        if (n == 0 || prerequisites == null) {
             return "No prerequisites";
         }
-        for(int i = 0; i < n - 1; i++){
-            result = result + prerequisites.get(i) +  ", ";
-        }
-        return result + prerequisites.get(n-1);
+        return result + TextUtils.join(", ", codes);
     }
 
     public String getSessions(){

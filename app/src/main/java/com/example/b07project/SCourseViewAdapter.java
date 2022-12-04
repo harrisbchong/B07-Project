@@ -87,6 +87,7 @@ public class SCourseViewAdapter extends RecyclerView.Adapter<SCourseViewAdapter.
                             }
 
                             Log.e("TextView", test[3]);
+
                             if(exist(k, CourseKeys) == 1){
                                 Toast.makeText(v.getContext(), "You have already taken this course",
                                 Toast.LENGTH_SHORT).show();

@@ -59,7 +59,8 @@ public class StudentAcademicHistory extends AppCompatActivity implements View.On
         mAdapter = new SCourseTakenAdapter(mList, kList);
         mRecycleView.setLayoutManager(mLinearLayoutManager);
         mRecycleView.setAdapter(mAdapter);
-        mDR.child("students").child(userId.getUid()).child("taken").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+        mDR.child("students").child(userId.getUid()).child("taken").get().addOnCompleteListener(
+                new OnCompleteListener<DataSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
                 if (!task.isSuccessful()) {

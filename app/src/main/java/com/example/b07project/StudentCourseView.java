@@ -24,19 +24,24 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class StudentCourseView extends AppCompatActivity implements View.OnClickListener{
 
     private Button backbt;
     private DatabaseReference courseData;
-    private String[] allCourseCodes = new String[]{};
-    private String[] allCourseNames = new String[]{};
-    private String[] allCoursePrerequisites = new String[]{};
-    private String[] allCourseSessions = new String[]{};
-    private String[] allCourseKeys = new String[]{};
-    private int courseNum;
+    /**
+     * All courses retrieved from database.
+     * Key = course key/id, Value = course object
+     */
+    private HashMap<String, Course> courseDirectory;
+    /**
+     * A list of prerequisites for each coruse.
+     * Key = course key/id, Value = comma-separated list of course codes representing the prerequisites
+     */
+    private HashMap<String, String> prerequisiteCodes = new HashMap<>();
     private RecyclerView mRecycleView;
     private SCourseViewAdapter mAdapter;
     private LinearLayoutManager mLinearLayoutManager;
@@ -49,9 +54,13 @@ public class StudentCourseView extends AppCompatActivity implements View.OnClick
         courseData = FirebaseDatabase.getInstance().getReference();
 
         mRecycleView = findViewById(R.id.rv_list);
-        mLinearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+        mLinearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,
+                false);
         mList = new ArrayList<>();
         kList = new ArrayList<>();
+        courseDirectory = new HashMap<>();
+        prerequisiteCodes = new HashMap<>();
+
         initData(mList, kList);
         mAdapter = new SCourseViewAdapter(mList, kList);
         mRecycleView.setLayoutManager(mLinearLayoutManager);
@@ -62,22 +71,20 @@ public class StudentCourseView extends AppCompatActivity implements View.OnClick
                 if (!task.isSuccessful()) {
                     Log.e("firebase", "Error getting data", task.getException());
                 } else {
-                    courseNum = (int)task.getResult().getChildrenCount();
                     Iterable<DataSnapshot> courses = task.getResult().getChildren();
-                    allCourseCodes = new String[courseNum];
-                    allCourseNames = new String[courseNum];
-                    allCourseKeys = new String[courseNum];
-                    allCoursePrerequisites = new String[courseNum];
-                    allCourseSessions = new String[courseNum];
-                    int index = 0;
+                    courseDirectory = new HashMap<>();
+                    prerequisiteCodes = new HashMap<>();
+
+                    // retrieve all courses available
                     for (DataSnapshot childSnapshot : courses) {
                         Course course = childSnapshot.getValue(Course.class);
-                        allCourseCodes[index] = course.getCode();
-                        allCourseNames[index] = course.getName();
-                        allCoursePrerequisites[index] = course.getPrerequisites();
-                        allCourseSessions[index] = course.getSessions();
-                        allCourseKeys[index] = childSnapshot.getKey();
-                        index++;
+                        courseDirectory.put(childSnapshot.getKey(), course);
+                    }
+
+                    // retrieve the prerequisite course names based on the course ids
+                    for (Map.Entry<String, Course> course : courseDirectory.entrySet()) {
+                        prerequisiteCodes.put(course.getKey(),
+                                course.getValue().getPrerequisites(courseDirectory));
                     }
                     initData(mList, kList);
                     mAdapter = new SCourseViewAdapter(mList, kList);
@@ -89,7 +96,7 @@ public class StudentCourseView extends AppCompatActivity implements View.OnClick
 
         });
 
-        backbt = (Button) findViewById(R.id.scwbackbt);
+        backbt = findViewById(R.id.scwbackbt);
         backbt.setOnClickListener(this);
     }
 
@@ -103,11 +110,14 @@ public class StudentCourseView extends AppCompatActivity implements View.OnClick
 
     }
 
-    public void initData(List list_1, List list_2){
-        for(int i = 0; i < courseNum; i++){
-            list_1.add(allCourseCodes[i] + "\n" + allCourseNames[i] + "\n" + allCourseSessions[i]
-                    + "\n" + allCoursePrerequisites[i]);
-            list_2.add(allCourseKeys[i]);
+    public void initData(List list_1, List list_2) {
+        for (Map.Entry<String, Course> course : courseDirectory.entrySet()) {
+            Course values = course.getValue();
+            list_1.add(values.courseCode + "\n" +
+                    values.courseName + "\n" +
+                    values.getSessions() + "\n" +
+                    prerequisiteCodes.get(course.getKey()));
+            list_2.add(course.getKey());
         }
     }
 
