@@ -17,8 +17,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button adminbt;
     private Button studentbt;
 
-    private Button tempbt;
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,10 +27,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         adminbt.setOnClickListener(this);
         studentbt = (Button) findViewById(R.id.student_login_button);
         studentbt.setOnClickListener(this);
-
-        tempbt = (Button) findViewById(R.id.temp);
-        tempbt.setOnClickListener(this);
-
     }
 
 
@@ -49,10 +43,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.signup_button:
                 startActivity(new Intent(this,StudentSignupPage.class));
-                break;
-
-            case R.id.temp:
-                startActivity(new Intent(this,AdminCourseView.class));
                 break;
         }
     }
