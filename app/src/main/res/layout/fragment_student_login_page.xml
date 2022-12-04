@@ -42,7 +42,7 @@ tools:context=".StudentFrontPage">
         android:id="@+id/textView4"
         android:layout_width="288.8dp"
         android:layout_height="59dp"
-        android:layout_marginTop="300dp"
+        android:layout_marginTop="292dp"
         android:background="@drawable/white_rounded_edittext"
         android:gravity="center"
         android:paddingRight="15dp"
@@ -68,7 +68,7 @@ tools:context=".StudentFrontPage">
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.656" />
+        app:layout_constraintVertical_bias="0.644" />
 
     <CheckBox
         android:id="@+id/srbox"

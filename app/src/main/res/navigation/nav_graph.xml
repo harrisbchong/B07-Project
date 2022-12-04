@@ -60,9 +60,9 @@
     </fragment>
     <fragment
         android:id="@+id/studentSignupPage"
-        android:name="com.example.b07project.StudentSignupPage"
+        android:name="com.example.b07project.SignupPage"
         android:label="fragment_student_signup_page"
-        tools:layout="@layout/fragment_student_signup_page" >
+        tools:layout="@layout/fragment_signup_page" >
         <action
             android:id="@+id/action_studentSignupPage_to_studentCourseView"
             app:destination="@id/studentCourseView" />

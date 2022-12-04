@@ -76,7 +76,9 @@ public class StudentFrontPage extends AppCompatActivity implements View.OnClickL
                 startActivity(new Intent(this, MainActivity.class));
                 break;
             case R.id.ctbt:
-                startActivity(new Intent(this, StudentCourseTimeline.class));
+                Intent intent = new Intent(this, StudentCoursePlanner.class);
+                intent.putExtra("id", id);
+                startActivity(intent);
                 break;
             case R.id.bcbt:
                 startActivity(new Intent(this, StudentCourseView.class));

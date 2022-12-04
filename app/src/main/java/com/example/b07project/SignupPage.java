@@ -12,7 +12,7 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
-public class StudentSignupPage extends AppCompatActivity implements View.OnClickListener {
+public class SignupPage extends AppCompatActivity implements View.OnClickListener {
 
     private Button btnFinish, backbt;
     private EditText progtxt,nametxt,emailtxt,passtxt;
@@ -23,7 +23,7 @@ public class StudentSignupPage extends AppCompatActivity implements View.OnClick
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_student_signup_page);
+        setContentView(R.layout.fragment_signup_page);
         backbt = (Button) findViewById(R.id.rbackbt);
         backbt.setOnClickListener(this);
         btnFinish = (Button) findViewById(R.id.btnFinish);
@@ -87,9 +87,10 @@ public class StudentSignupPage extends AppCompatActivity implements View.OnClick
             return;
         }
 
+
         model.register(email, password, (String ID) -> {
             if (ID == null) {
-                Toast.makeText(StudentSignupPage.this, "Failed to register", Toast.LENGTH_LONG).show();
+                Toast.makeText(SignupPage.this, "Failed to register", Toast.LENGTH_LONG).show();
                 return;
             }
             // Toast.makeText(RegisterActivity.this, "registered", Toast.LENGTH_LONG).show();
@@ -97,30 +98,30 @@ public class StudentSignupPage extends AppCompatActivity implements View.OnClick
                 Student s = new Student(ID,program,email,name);
                 model.addStudent(s, (Boolean created) -> {
                     if (!created) {
-                        Toast.makeText(StudentSignupPage.this, "Failed to create a user!", Toast.LENGTH_LONG).show();
+                        Toast.makeText(SignupPage.this, "Failed to create a user!", Toast.LENGTH_LONG).show();
 
                         return;
                     }
 
-                    Toast.makeText(StudentSignupPage.this, "user has been registered successfully!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(SignupPage.this, "user has been registered successfully!", Toast.LENGTH_LONG).show();
 
 
-                    startActivity(new Intent(StudentSignupPage.this, MainActivity.class));
+                    startActivity(new Intent(SignupPage.this, MainActivity.class));
                 });
             }
             if(adminbt.isChecked() == true){
                 Admin a = new Admin(ID,email,name);
                 model.addAdmin(a, (Boolean created) -> {
                     if (!created) {
-                        Toast.makeText(StudentSignupPage.this, "Failed to create a user!", Toast.LENGTH_LONG).show();
+                        Toast.makeText(SignupPage.this, "Failed to create a user!", Toast.LENGTH_LONG).show();
 
                         return;
                     }
 
-                    Toast.makeText(StudentSignupPage.this, "user has been registered successfully!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(SignupPage.this, "user has been registered successfully!", Toast.LENGTH_LONG).show();
 
 
-                    startActivity(new Intent(StudentSignupPage.this, MainActivity.class));
+                    startActivity(new Intent(SignupPage.this, MainActivity.class));
                 });
             }
         });

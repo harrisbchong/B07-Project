@@ -15,6 +15,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.HashMap;
 import java.util.Objects;
 import java.util.function.Consumer;
 
@@ -23,12 +24,16 @@ public class Model {
 
     private DatabaseReference stuRef;
     private DatabaseReference adRef;
-    private DatabaseReference courseRef;
+    private DatabaseReference cRef;
+    private DatabaseReference sRef;
     private FirebaseAuth auth;
+
+
     private Model() {
         stuRef = FirebaseDatabase.getInstance().getReference("students");
         adRef = FirebaseDatabase.getInstance().getReference("admins");
-        courseRef = FirebaseDatabase.getInstance().getReference("courses");
+        cRef = FirebaseDatabase.getInstance().getReference("courses");
+        sRef = FirebaseDatabase.getInstance().getReference("Session");
         auth = FirebaseAuth.getInstance();
 
     }
@@ -38,6 +43,9 @@ public class Model {
             instance = new Model();
         return instance;
     }
+
+
+
 
     public void stuauthenticate(String email, String password, Consumer<Student> callback) {
         auth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -95,6 +103,29 @@ public class Model {
             }
         });
     }
+
+    public void getCourses(Consumer<HashMap<String, Course>> callback) {
+        cRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                HashMap<String, Course> courses = new HashMap<>();
+                for (DataSnapshot allcourse: snapshot.getChildren()) {
+                    Course c = allcourse.getValue(Course.class);
+                    System.out.println(c);
+
+                    courses.put(c.courseCode, c);
+                }
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                    callback.accept(courses);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {}
+        });
+    }
+
+
 
 
     public void getStudent(String stuID, Consumer<Student> callback) {

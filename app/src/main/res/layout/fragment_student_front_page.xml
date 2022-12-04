@@ -8,6 +8,21 @@
     android:scrollbarThumbHorizontal="@color/white">
 
     <TextView
+        android:id="@+id/year"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/uoft_blue"
+        android:text="Time Started"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.178" />
+
+    <TextView
         android:id="@+id/programn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -17,9 +32,10 @@
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.177" />
+        app:layout_constraintVertical_bias="0.107" />
 
     <Button
         android:id="@+id/bcbt"
@@ -59,16 +75,17 @@
         android:textSize="34sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.066" />
+        app:layout_constraintVertical_bias="0.023" />
 
     <Button
         android:id="@+id/ctbt"
         android:layout_width="216dp"
         android:layout_height="57dp"
         android:drawableRight="@drawable/calendar"
-        android:text="Course Timeline"
+        android:text="Course Planner"
         android:textColor="@color/black"
         android:textSize="14sp"
         app:backgroundTint="@color/white"

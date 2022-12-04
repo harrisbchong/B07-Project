@@ -3,8 +3,6 @@ package com.example.b07project;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.example.b07project.databinding.FragmentStudentFrontPageBinding;
-
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.view.View;
@@ -45,7 +43,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(new Intent(this, AdminLoginPage.class));
                 break;
             case R.id.signup_button:
-                startActivity(new Intent(this,StudentSignupPage.class));
+                startActivity(new Intent(this, SignupPage.class));
                 break;
         }
     }

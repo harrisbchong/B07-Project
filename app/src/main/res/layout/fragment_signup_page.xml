@@ -55,7 +55,7 @@
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="288.8dp"
-        android:layout_height="252dp"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -64,7 +64,7 @@
         <EditText
             android:id="@+id/progtxt"
             android:layout_width="288.8dp"
-            android:layout_height="48dp"
+            android:layout_height="30dp"
             android:background="@drawable/white_rounded_edittext"
             android:ems="10"
             android:hint="Enter Program"
@@ -81,7 +81,7 @@
         <EditText
             android:id="@+id/nametxt"
             android:layout_width="288.8dp"
-            android:layout_height="48dp"
+            android:layout_height="30dp"
             android:background="@drawable/white_rounded_edittext"
             android:ems="10"
             android:hint="Enter Name"
@@ -98,7 +98,7 @@
         <EditText
             android:id="@+id/emailtxt"
             android:layout_width="288.8dp"
-            android:layout_height="48dp"
+            android:layout_height="30dp"
             android:background="@drawable/white_rounded_edittext"
             android:ems="10"
             android:hint="Enter Email"
@@ -115,7 +115,7 @@
         <EditText
             android:id="@+id/passtxt"
             android:layout_width="288.8dp"
-            android:layout_height="48dp"
+            android:layout_height="30dp"
             android:background="@drawable/white_rounded_edittext"
             android:ems="10"
             android:hint="Enter Password"
@@ -129,31 +129,31 @@
         android:id="@+id/adminbt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="480dp"
         android:text="Admin"
         android:textColor="@color/white"
         android:textColorHighlight="@color/button_green"
         android:textColorHint="@color/button_green"
         android:textColorLink="@color/button_green"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.086"
         app:layout_constraintStart_toStartOf="@+id/linearLayout"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <RadioButton
         android:id="@+id/studentrbt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="480dp"
         android:shadowColor="@color/button_green"
         android:text="Student"
         android:textColor="@color/white"
         android:textColorHighlight="@color/button_green"
         android:textColorLink="@color/button_green"
         app:layout_constraintEnd_toEndOf="@+id/linearLayout"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.855"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imageView5"
