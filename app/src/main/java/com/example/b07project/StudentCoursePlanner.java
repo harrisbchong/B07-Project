@@ -37,7 +37,8 @@ public class StudentCoursePlanner extends AppCompatActivity implements View.OnCl
         backbt.setOnClickListener(this);
         gbt = (Button) findViewById(R.id.gtbt);
         gbt.setOnClickListener(this);
-        ptxt = findViewById(R.id.plantable);
+        ptxt = (TextView) findViewById(R.id.plantable);
+        ptxt.setVisibility(View.INVISIBLE);
         cctxt = (EditText) findViewById(R.id.cctxt);
         id = getIntent().getStringExtra("id");
 
@@ -77,7 +78,7 @@ public class StudentCoursePlanner extends AppCompatActivity implements View.OnCl
             model.getCourses((HashMap<String, Course> allc) -> {
                 for (String code: coursestotake) {
                     if (!allc.containsKey(code)) {
-                        cctxt.setError("Course Code Does Not Exist");
+                        cctxt.setError("Incorrect Course Code");
                         cctxt.requestFocus();
                         return;
                     }
@@ -132,9 +133,11 @@ public class StudentCoursePlanner extends AppCompatActivity implements View.OnCl
                     String tostring = "";
                     for (String key: plantable.keySet()) {
                         if(!plantable.get(key).isEmpty())
-                        tostring += key + ": " + "\n" + String.join(", ", Objects.requireNonNull(plantable.get(key))) + "\n" +"\n";
+                        tostring += key + ": " + "\n" + String.join(", ", Objects.requireNonNull(plantable.get(key))) +"\n"+ "\n";
                     }
-                    ptxt.setText(String.join("\n", tostring));
+                    ptxt.setVisibility(View.VISIBLE);
+                    ptxt.setText(String.join("\n", tostring.substring(0,tostring.length()-2)));
+
                 }
             });
 

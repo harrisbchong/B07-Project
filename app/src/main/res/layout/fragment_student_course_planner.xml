@@ -57,9 +57,9 @@
         android:layout_marginTop="136dp"
         android:background="@drawable/white_rounded_edittext"
         android:ems="10"
-        android:hint="Enter Desired Course Code"
+        android:hint="Eg. CSCA08,CSCC24"
         android:inputType="textPersonName"
-        android:textColorHint="@color/black"
+        android:textColorHint="#79000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
@@ -68,16 +68,31 @@
     <TextView
         android:id="@+id/plantable"
         android:layout_width="310dp"
-        android:layout_height="356dp"
-        android:layout_marginBottom="28dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="268dp"
         android:background="@drawable/white_rounded_edittext"
+        android:gravity="clip_vertical"
         android:textAllCaps="false"
         android:textColor="@color/black"
         android:textSize="16sp"
         android:textStyle="normal"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="181dp"
+        android:layout_height="24dp"
+        android:text="Enter Desired Course Code:"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.304"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.182" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
