@@ -17,6 +17,7 @@
         android:layout_marginRight="28dp"
         android:background="@color/white"
         android:gravity="left"
+        android:gravity="center"
         android:text="HELLO!!!!!!!"
         app:layout_constraintEnd_toStartOf="@+id/imageButton2"
         app:layout_constraintStart_toStartOf="parent"
@@ -29,6 +30,7 @@
         app:layout_constraintStart_toEndOf="@+id/tv_content_1"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/delete" />
+
 
     <TextView
         android:id="@+id/k_content_1"

@@ -14,6 +14,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class Course {
+
     public String courseCode;
 
     public String courseName;
@@ -70,7 +71,6 @@ public class Course {
         }
         return result + offeringSessions.get(n-1);
     }
-
 
 }
 

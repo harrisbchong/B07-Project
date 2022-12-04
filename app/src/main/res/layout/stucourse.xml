@@ -17,6 +17,7 @@
         android:layout_marginRight="28dp"
         android:background="@color/white"
         android:gravity="left"
+        android:gravity="center"
         android:text="HELLO!!!!!!!"
         app:layout_constraintEnd_toStartOf="@+id/imageButton2"
         app:layout_constraintStart_toStartOf="parent"
@@ -38,5 +39,4 @@
         android:textColor="#FAF8F8"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/tv_content" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

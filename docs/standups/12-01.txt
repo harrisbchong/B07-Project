@@ -1,0 +1,44 @@
+Name: Cheng Liang Huang
+
+What have you done since yesterday?
+	- Fixed code in Mark's admin_course_view branch, to allow it to read course data from database
+	
+What are you planning on doing today?
+	- Do research into how to perform branch merges in Android Studio
+
+Any impediments or stumbling blocks?
+	- None
+
+Name: Yuchuan Xue	
+	
+What have you done since yesterday?
+	- Add SCourseViewAdapterClass for the recycleview in StudentCourseViewPage and then implementing the major funcions of StudentCourseViewPage
+	to let it display all courses' information stored in realtime database and add the courses to students' "taken courses"
+	
+What are you planning on doing today?
+	- adjusting the functions to distinguish whether the course is able to be added to the "taken course" according to the prerequisites
+	
+Any impediments or stumbling blocks?
+	- None
+
+Name: Mark Lin
+
+What have you done since yesterday?
+	- Tried to refactor code in Admin Course View to work with our current data format
+	
+What are you planning on doing today?
+	- Nothing
+
+Any impediments or stumbling blocks?
+	- None
+
+Name: Harris Chong
+
+What have you done since yesterday?
+	- Worked on Edit course UI
+	
+What are you planning on doing today?
+	- Work on the unit tests for login 
+
+Any impediments or stumbling blocks?
+	- None
