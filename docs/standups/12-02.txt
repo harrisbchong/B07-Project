@@ -41,3 +41,14 @@ What are you planning on doing today?
 
 Any impediments or stumbling blocks?
 	- None
+
+Name: Jason Liang	
+
+What have you done since yesterday?
+	- reforming some UI
+	
+What are you planning on doing today?
+	- get an insipiration on the logic of my task
+
+Any impediments or stumbling blocks?
+	- None
