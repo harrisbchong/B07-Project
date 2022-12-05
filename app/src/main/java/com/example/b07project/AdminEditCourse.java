@@ -173,8 +173,8 @@ public class AdminEditCourse extends AppCompatActivity {
             }
 
             Boolean selfPrereq = false;
-            if(selectedCourses.contains(oldCode)){
-                selectedCourses.remove(oldCode);
+            if(selectedCourses.contains(ref.getKey())){
+                selectedCourses.remove(ref.getKey());
                 selfPrereq = true;
             }
 
