@@ -61,17 +61,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView">
 
-        <EditText
-            android:id="@+id/progtxt"
-            android:layout_width="288.8dp"
-            android:layout_height="30dp"
-            android:background="@drawable/white_rounded_edittext"
-            android:ems="10"
-            android:hint="Enter Program"
-            android:inputType="textPersonName"
-            android:textColorHint="@color/black"
-            android:textSize="20sp" />
-
         <ImageView
             android:id="@+id/imageView2"
             android:layout_width="match_parent"
@@ -129,14 +118,14 @@
         android:id="@+id/adminbt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="480dp"
+        android:layout_marginTop="456dp"
         android:text="Admin"
         android:textColor="@color/white"
         android:textColorHighlight="@color/button_green"
         android:textColorHint="@color/button_green"
         android:textColorLink="@color/button_green"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.086"
+        app:layout_constraintHorizontal_bias="0.089"
         app:layout_constraintStart_toStartOf="@+id/linearLayout"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -144,14 +133,14 @@
         android:id="@+id/studentrbt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="480dp"
+        android:layout_marginTop="456dp"
         android:shadowColor="@color/button_green"
         android:text="Student"
         android:textColor="@color/white"
         android:textColorHighlight="@color/button_green"
         android:textColorLink="@color/button_green"
         app:layout_constraintEnd_toEndOf="@+id/linearLayout"
-        app:layout_constraintHorizontal_bias="0.855"
+        app:layout_constraintHorizontal_bias="0.848"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
