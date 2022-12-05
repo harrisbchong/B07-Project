@@ -31,3 +31,14 @@ What are you planning on doing today?
 
 Any impediments or stumbling blocks?
 	- None
+	
+Name: Cheng Liang Huang
+
+What have you done since yesterday?
+- Refactored Yuchuan's code for Student Browse Course and Student Academic History to fetch course codes using course keys 
+
+What are you planning on doing today?
+- Help other members to merge their finished branches into main
+
+Any impediments or stumbling blocks?
+- Waiting for Mark and Yuchuan to finish their implementations so I can help them merge
