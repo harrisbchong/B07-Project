@@ -109,6 +109,7 @@
         android:text="Remember ME"
         android:textColor="@color/white"
         android:textSize="20sp"
+        app:buttonTint="@color/button_green"
         app:layout_constraintBottom_toTopOf="@+id/admin_login_submit"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

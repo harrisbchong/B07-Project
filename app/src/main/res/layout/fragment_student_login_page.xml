@@ -79,11 +79,13 @@ tools:context=".StudentFrontPage">
         android:textColorHighlight="@color/button_green"
         android:textColorLink="@color/button_green"
         android:textSize="20sp"
+        app:buttonTint="@color/button_green"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.821" />
+        />
 
     <EditText
         android:id="@+id/student_password_input"

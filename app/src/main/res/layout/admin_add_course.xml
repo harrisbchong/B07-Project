@@ -116,21 +116,24 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="@string/admin_course_add_fall" />
+                        android:text="@string/admin_course_add_fall"
+                        app:buttonTint="@color/uoft_blue" />
 
                     <CheckBox
                         android:id="@+id/adminAddCourseWinterCheckbox"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="@string/admin_course_add_winter" />
+                        android:text="@string/admin_course_add_winter"
+                        app:buttonTint="@color/uoft_blue" />
 
                     <CheckBox
                         android:id="@+id/adminAddCourseSummerCheckbox"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="@string/admin_course_add_summer" />
+                        android:text="@string/admin_course_add_summer"
+                        app:buttonTint="@color/uoft_blue" />
                 </LinearLayout>
 
             </LinearLayout>
