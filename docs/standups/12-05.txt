@@ -19,3 +19,14 @@ What are you planning on doing today?
 
 Any impediments or stumbling blocks?
 	- None
+
+Name: Jason Liang	
+
+What have you done since yesterday?
+	- got the codes to work, and unit test to work	
+	
+What are you planning on doing today?
+	- finish up the UI for every pages, and have meeting to get the logic of each code/function running as intended and make the changes before handing it in.
+
+Any impediments or stumbling blocks?
+	- None
