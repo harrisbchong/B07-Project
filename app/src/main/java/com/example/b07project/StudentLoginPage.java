@@ -126,4 +126,13 @@ public class StudentLoginPage extends AppCompatActivity implements View.OnClickL
         startActivity(intent);
     }
 
+    public String getEmail(){
+        email = etxt.getText().toString();
+        return email;
+    }
+
+    public String getPassword(){
+        password = ptxt.getText().toString();
+        return password;
+    }
 }
