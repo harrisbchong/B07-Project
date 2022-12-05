@@ -47,7 +47,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/textView1"
-            app:layout_constraintTop_toBottomOf="@+id/courseCode" />
+            app:layout_constraintTop_toBottomOf="@+id/courseCode"
+            android:layout_marginRight="16dp" />
 
         <TextView
             android:id="@+id/textView"
@@ -58,7 +59,8 @@
             android:text="Sessions:"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/courseName" />
+            app:layout_constraintTop_toBottomOf="@+id/courseName"
+            android:layout_marginLeft="16dp" />
 
         <TextView
             android:id="@+id/textView2"
@@ -97,7 +99,8 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/textView2"
             app:layout_constraintTop_toBottomOf="@+id/offeringSessions"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintVertical_bias="0.0"
+            android:layout_marginRight="16dp" />
 
         <ImageButton
             android:id="@+id/deleteButton"
