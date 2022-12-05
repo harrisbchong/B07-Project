@@ -12,7 +12,7 @@ Mark Lin
 Yuchuan Xue
 - implemented the first version of admin login page
 - implemented student course view page and academic history pages to display, add and remove courses
-- and some other little functions like back buttons
+- Added some other little functions like back buttons
 
 Jason Liang
 -Designed all the pages UI in figma for the group to follow when building the app.
@@ -20,7 +20,7 @@ Jason Liang
 -Implemented the front pages for both students and admins. (main directory pages for each users when logged in) 
 -Implemented the course planner, where it generates a timeline based on what the student wants to take.
 -Help Implementing the junit tests.
--Made sure the final app follows the UI designed in figma and refractor codes with team if necessary.
+-Made sure the final app follows the UI designed in figma.
 
 Cheng Liang Huang
 
