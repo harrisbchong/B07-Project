@@ -23,10 +23,13 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.function.Consumer;
 
 public class courseAdapter extends FirebaseRecyclerAdapter<CourseAdapterModel,
         courseAdapter.coursesViewholder> {
     Context c;
+    private Model m = Model.getInstance();
 
     public courseAdapter(@NonNull FirebaseRecyclerOptions<CourseAdapterModel> options, Context c) {
         super(options);
@@ -45,13 +48,28 @@ public class courseAdapter extends FirebaseRecyclerAdapter<CourseAdapterModel,
             public void onClick(View view) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(c);
                 builder.setTitle("Course Deletion");
-                builder.setMessage("Are you sure you want to delete " + model.getCourseCode());
+                builder.setMessage("Are you sure you want to delete " + model.getCourseCode()
+                        + "?");
                 builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         model.getRef().removeValue();
                         Toast.makeText(c, model.getCourseCode() + " has been deleted",
                                 Toast.LENGTH_SHORT).show();
                         dialog.dismiss();
+
+                        // remove references to the deleted course stored in other courses
+                        m.getCourses((HashMap<String, Course> courseList) -> {
+                            String keyToRemove = model.getRef().getKey();
+                            for (Map.Entry<String, Course> entry : courseList.entrySet()) {
+                                if (entry.getValue().prerequisites.contains(keyToRemove)) {
+                                    entry.getValue().prerequisites.remove(keyToRemove);
+                                    FirebaseDatabase.getInstance().getReference("courses").
+                                            child(entry.getKey()).setValue(entry.getValue());
+                                }
+                            }
+                        });
+
+
                     }
                 });
                 builder.setNegativeButton("No", new DialogInterface.OnClickListener() {

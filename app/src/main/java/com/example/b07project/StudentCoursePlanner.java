@@ -105,8 +105,6 @@ public class StudentCoursePlanner extends AppCompatActivity implements View.OnCl
                     }
                     // add all of my taken courses into this taken list
                     List<String> token = new ArrayList<>(student.taken);
-                    //System.out.println("----------------------------------");
-                    //System.out.println(student.taken);
                     // the current taking list of courses
                     List<String> taking = new ArrayList<>();
                     // *****Real time year and Semester
@@ -163,12 +161,6 @@ public class StudentCoursePlanner extends AppCompatActivity implements View.OnCl
                     ptxt.setText(outputStrings.size() > 0 ?
                             TextUtils.join("\n\n", outputStrings) :
                             "No More Remaining Courses To Take.");
-//                    if (tostring.length() > 1) {
-//                        ptxt.setVisibility(View.VISIBLE);
-//                        tostring = tostring.substring(0,tostring.length()-2);
-//                    }
-//                    ptxt.setText(String.join("\n", tostring));
-
                 }
             });
 

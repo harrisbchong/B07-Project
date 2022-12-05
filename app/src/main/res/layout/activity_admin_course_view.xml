@@ -25,6 +25,7 @@
             android:background="@drawable/grey_rounded_edittext"
             android:fontFamily="sans-serif"
             android:gravity="center"
+            android:paddingRight="15dp"
             android:text="@string/course_offering"
             android:textColor="@color/uoft_blue"
             android:textSize="20sp"
