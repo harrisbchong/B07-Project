@@ -1,0 +1,10 @@
+Name: Mark Lin
+
+What have you done since yesterday?
+	- Finished implementation for deleting courses and got some work done on implementation for editing
+	
+What are you planning on doing today?
+	- Complete implementation for course editing
+
+Any impediments or stumbling blocks?
+	- None
