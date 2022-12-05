@@ -8,3 +8,14 @@ What are you planning on doing today?
 
 Any impediments or stumbling blocks?
 	- None
+
+Name: Harris Chong
+
+What have you done since yesterday?
+	- Working on the junit tests
+	
+What are you planning on doing today?
+	- Continuing to work on junit tests
+
+Any impediments or stumbling blocks?
+	- None
