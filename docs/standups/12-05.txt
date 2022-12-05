@@ -30,3 +30,14 @@ What are you planning on doing today?
 
 Any impediments or stumbling blocks?
 	- None
+
+Name: Yuchuan Xue
+
+What have you done since yesterday?
+	- Communicated with other group memebers to do the final change to the UI designs
+	
+What are you planning on doing today?
+	- Having meeting with group memebers to make sure the final application runs successfully and write about each one's contributions
+
+Any impediments or stumbling blocks?
+	- None
