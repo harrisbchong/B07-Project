@@ -104,7 +104,7 @@ public class AdminLoginPage extends AppCompatActivity implements View.OnClickLis
         }
 
         if (password.length() < 5) {
-            ptxt.setError("Min Password length Is 5");
+            ptxt.setError("Min Password Length Is 6");
             ptxt.requestFocus();
             return;
         }

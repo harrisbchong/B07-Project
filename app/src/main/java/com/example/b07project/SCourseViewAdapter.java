@@ -74,14 +74,14 @@ public class SCourseViewAdapter extends RecyclerView.Adapter<SCourseViewAdapter.
 
                             if (student.taken.contains(k)) {
                                 // if the student has already taken the course
-                                Toast.makeText(v.getContext(), "You have already taken this course",
+                                Toast.makeText(v.getContext(), "Already Added",
                                         Toast.LENGTH_SHORT).show();
                             } else if (courseSelected.prerequisites.isEmpty()) {
                                 student.taken.add(k);
                                 m.child("students").child(userId.getUid()).setValue(student);
                                 holder.addButton.setVisibility(View.INVISIBLE);
                                 Toast.makeText(v.getContext(), courseSelected.courseCode +
-                                                " is successfully added to the taken courses",
+                                                " Added Successfully",
                                         Toast.LENGTH_SHORT).show();
                             }
                             else{
@@ -97,11 +97,11 @@ public class SCourseViewAdapter extends RecyclerView.Adapter<SCourseViewAdapter.
                                     m.child("students").child(userId.getUid()).setValue(student);
                                     holder.addButton.setVisibility(View.INVISIBLE);
                                     Toast.makeText(v.getContext(), courseSelected.courseCode +
-                                                    " is successfully added to the taken courses",
+                                                    " Added Successfully",
                                             Toast.LENGTH_SHORT).show();
                                 } else{
                                     Toast.makeText(v.getContext(),
-                                            "The prerequisites for this course are not met",
+                                            "Prerequisites Not Yet Added",
                                             Toast.LENGTH_SHORT).show();
                                 }
                             }

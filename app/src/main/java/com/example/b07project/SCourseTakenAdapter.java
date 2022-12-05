@@ -43,7 +43,7 @@ public class SCourseTakenAdapter extends RecyclerView.Adapter<SCourseTakenAdapte
             Course course = coursesTaken.get(position);
             if (course == null) {
                 holder.courseCode.setText("Course Not Found.");
-                holder.courseName.setText("Sorry, this course\nhas been deleted by admin");
+                holder.courseName.setText("Sorry, This Course\nHas Been Deleted By Administration");
                 holder.dcbt.setVisibility(View.INVISIBLE);
             } else {
                 holder.courseCode.setText(course.getCourseCode());
@@ -62,8 +62,8 @@ public class SCourseTakenAdapter extends RecyclerView.Adapter<SCourseTakenAdapte
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 if (task.isSuccessful()) {
-                                    holder.courseCode.setText("Course removed.");
-                                    holder.courseName.setText("You removed this course.");
+                                    holder.courseCode.setText("\n  Course Has Been Removed.");
+                                    holder.courseName.setText("");
                                 }
                             }
                         });

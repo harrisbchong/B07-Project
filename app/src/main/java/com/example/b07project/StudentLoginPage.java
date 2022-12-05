@@ -104,7 +104,7 @@ public class StudentLoginPage extends AppCompatActivity implements View.OnClickL
         }
 
         if (password.length() < 5) {
-            ptxt.setError("Min Password length Is 5");
+            ptxt.setError("Min Password Length Is 6");
             ptxt.requestFocus();
             return;
         }
