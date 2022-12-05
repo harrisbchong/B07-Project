@@ -30,3 +30,14 @@ What are you planning on doing today?
 
 Any impediments or stumbling blocks?
 	- None
+	
+Name: Yuchuan Xue
+
+What have you done since yesterday?
+	- Did some final tests to the functions of studentcourseview and student academic history pages
+	
+What are you planning on doing today?
+	- Having meeting with other group memebers to unify the UI designs and test the interactions between different pages
+
+Any impediments or stumbling blocks?
+	- None
