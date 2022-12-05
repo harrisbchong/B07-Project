@@ -20,13 +20,14 @@ What are you planning on doing today?
 Any impediments or stumbling blocks?
 	- None
 
-Name: Jason Liang	
+Name: Yuchuan Xue
 
 What have you done since yesterday?
-	- writing out some of the logic for the course generator
+	- Implemented the UI and functions of Student Academic History page
+	- Check its functionarity and its interaction with other pages like student course view
 	
 What are you planning on doing today?
-	- get the code to work so we can see the courses we want to take displayed
+	- Do some final tests to the functions of studentcourseview and student academic history 
 
 Any impediments or stumbling blocks?
 	- None
