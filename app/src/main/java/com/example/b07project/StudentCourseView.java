@@ -90,6 +90,7 @@ public class StudentCourseView extends AppCompatActivity implements View.OnClick
                     mAdapter = new SCourseViewAdapter(mList, kList);
                     mRecycleView.setLayoutManager(mLinearLayoutManager);
                     mRecycleView.setAdapter(mAdapter);
+
                 }
 
             }
