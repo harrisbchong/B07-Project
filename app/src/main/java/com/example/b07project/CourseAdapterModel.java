@@ -11,8 +11,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class CourseAdapterModel {
     public static final String DELIMITER = ", ";
@@ -29,21 +32,15 @@ public class CourseAdapterModel {
     public DatabaseReference getRef(){ return ref;}
 
     public String getCourseCode() {
-        return courseData.courseCode;
+        return courseData.getCourseCode();
     }
 
     public String getCourseName() {
-        return courseData.courseName;
+        return courseData.getCourseName();
     }
 
     public String getOfferingSessions() {
         return TextUtils.join(CourseAdapterModel.DELIMITER, courseData.offeringSessions);
-    }
-
-    public String getPrerequisites() {
-        String pre = TextUtils.join(CourseAdapterModel.DELIMITER, courseData.prerequisites);
-        if(pre.isEmpty()) return "No prerequisites";
-        return pre;
     }
 
     public void setCourseCode(String courseCode) {

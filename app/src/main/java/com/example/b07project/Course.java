@@ -9,6 +9,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.Exclude;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -42,15 +43,26 @@ public class Course {
         }
     }
 
-    public String getCode(){
+    public void setCourseCode(String code) {
+        this.courseCode = code;
+    }
+
+    public void setCourseName(String name) {
+        this.courseName = name;
+    }
+
+    @Exclude
+    public String getCourseCode(){
         return this.courseCode;
     }
 
-    public String getName(){
+    @Exclude
+    public String getCourseName(){
         return this.courseName;
     }
 
-    public String getPrerequisites(HashMap<String, Course> courseDirectory){
+    @Exclude
+    public String getPrerequisitesAsString(HashMap<String, Course> courseDirectory){
         List<String> codes = new ArrayList<>();
         for (String courseId : this.prerequisites) {
             codes.add(courseDirectory.get(courseId).courseCode);
@@ -64,7 +76,8 @@ public class Course {
         return result + TextUtils.join(", ", codes);
     }
 
-    public String getSessions(){
+    @Exclude
+    public String getSessionsAsString(){
         String result = "Sessions: ";
         int n = offeringSessions.size();
         if((n == 0)||(offeringSessions == null)){

@@ -61,7 +61,7 @@ public class AdminAddCourse extends AppCompatActivity {
             // extract course information
             for (DataSnapshot childSnapshot : courses) {
                 Course course = childSnapshot.getValue(Course.class);
-                allCourseNames[index] = course == null ? "NULL" : course.courseCode;
+                allCourseNames[index] = course == null ? "NULL" : course.getCourseCode();
                 allCourseSelected[index] = previouslySelected.contains(childSnapshot.getKey());
                 allCourseKeys[index] = childSnapshot.getKey();
                 index++;

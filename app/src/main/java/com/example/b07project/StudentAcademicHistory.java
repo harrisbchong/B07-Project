@@ -25,6 +25,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class StudentAcademicHistory extends AppCompatActivity implements View.OnClickListener{
@@ -34,14 +35,10 @@ public class StudentAcademicHistory extends AppCompatActivity implements View.On
     private DatabaseReference mDR;
     private FirebaseAuth auth;
     private FirebaseUser userId;
-    private String[] allCourseCodes = new String[]{};
-    private String[] allCourseNames = new String[]{};
-    private String[] allCourseKeys = new String[]{};
-    private int courseNum, i = 0;
     private RecyclerView mRecycleView;
     private SCourseTakenAdapter mAdapter;
     private LinearLayoutManager mLinearLayoutManager;
-    private List mList, kList;
+    private HashMap<String, Course> courseDirectory;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -52,65 +49,58 @@ public class StudentAcademicHistory extends AppCompatActivity implements View.On
         userId = auth.getCurrentUser();
 
         mRecycleView = findViewById(R.id.rv_course_taken);
-        mLinearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
-        mList = new ArrayList<>();
-        kList = new ArrayList<>();
-        initData_1(mList, kList);
-        mAdapter = new SCourseTakenAdapter(mList, kList);
-        mRecycleView.setLayoutManager(mLinearLayoutManager);
-        mRecycleView.setAdapter(mAdapter);
-        mDR.child("students").child(userId.getUid()).child("taken").get().addOnCompleteListener(
-                new OnCompleteListener<DataSnapshot>() {
+        mLinearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,
+                false);
+
+        mDR.child("courses").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
                 if (!task.isSuccessful()) {
                     Log.e("firebase", "Error getting data", task.getException());
                 } else {
-                    courseNum = (int)task.getResult().getChildrenCount();
                     Iterable<DataSnapshot> courses = task.getResult().getChildren();
-                    allCourseCodes = new String[courseNum];
-                    allCourseNames = new String[courseNum];
-                    allCourseKeys = new String[courseNum];
-                    int index = 0;
+                    courseDirectory = new HashMap<>();
+                    // retrieve all courses available
                     for (DataSnapshot childSnapshot : courses) {
-                        allCourseKeys[index] = childSnapshot.getKey();
-                        allCourseCodes[index] = childSnapshot.getValue(String.class);
-                        index++;
+                        Course course = childSnapshot.getValue(Course.class);
+                        courseDirectory.put(childSnapshot.getKey(), course);
                     }
 
-                    for(int i = 0; i < allCourseKeys.length; i++){
-                        int finalI = i;
-                        mDR.child("courses").child(allCourseKeys[i]).get().addOnCompleteListener
-                                (new OnCompleteListener<DataSnapshot>() {
-                            @Override
-                            public void onComplete(@NonNull Task<DataSnapshot> task) {
-                                if (!task.isSuccessful()) {
-                                    Log.e("firebase", "Error getting data", task.getException());
-                                } else {
-                                    Course course = task.getResult().getValue(Course.class);
-                                    if(course == null){
-                                        allCourseCodes[finalI] = "Sorry,the class";
-                                        allCourseNames[finalI] = "has been deleted by the admin.";
-                                        mDR.child("students").child(userId.getUid()).child("taken").child(allCourseKeys[finalI]).removeValue();
-                                    } else {
-                                        allCourseCodes[finalI] = course.getCode();
-                                        allCourseNames[finalI] = course.getName();
-                                        mDR.child("students").child(userId.getUid()).child("taken").child(allCourseKeys[finalI])
-                                                .setValue(course.getCode());
+                    mDR.child("students").child(userId.getUid()).get().addOnCompleteListener(
+                            new OnCompleteListener<DataSnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<DataSnapshot> task) {
+                            if (!task.isSuccessful()) {
+                                Log.e("firebase", "Error getting data", task.getException());
+                            } else {
+                                Student student = task.getResult().getValue(Student.class);
+                                List<Course> coursesTaken = new ArrayList<>();
+                                List<String> courseKeys = new ArrayList<>();
+
+                                // retrieve the data for the courses that the student has taken
+                                for (String taken : student.taken) {
+                                    if (courseDirectory.containsKey(taken)) {
+                                        // only add courses if the key is found
+                                        coursesTaken.add(courseDirectory.get(taken));
+                                        courseKeys.add(taken);
                                     }
                                 }
-                                mList = new ArrayList<>();
-                                initData_1(mList, kList);
-                                mAdapter = new SCourseTakenAdapter(mList, kList);
+
+                                // remove any keys that don't match courses
+                                if (student.taken.size() != courseKeys.size()) {
+                                    student.taken = courseKeys;
+                                    mDR.child("students").child(userId.getUid()).setValue(student);
+                                }
+
+                                mAdapter = new SCourseTakenAdapter(coursesTaken, courseKeys,
+                                        student);
                                 mRecycleView.setLayoutManager(mLinearLayoutManager);
                                 mRecycleView.setAdapter(mAdapter);
                             }
-                        });
-                    }
+                        }
+                    });
                 }
-
             }
-
         });
 
         backbt = (Button) findViewById(R.id.slbackbt3);
@@ -131,13 +121,6 @@ public class StudentAcademicHistory extends AppCompatActivity implements View.On
                 break;
         }
 
-    }
-
-    public void initData_1(List list_1, List list_2){
-        for(int i = 0; i < courseNum; i++){
-            list_1.add(allCourseCodes[i] + "\n" + allCourseNames[i]);
-            list_2.add(allCourseKeys[i]);
-        }
     }
 
 
