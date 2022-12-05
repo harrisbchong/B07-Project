@@ -42,3 +42,14 @@ What are you planning on doing today?
 
 Any impediments or stumbling blocks?
 	- None
+
+Name: Jason Liang	
+
+What have you done since yesterday?
+	- looking into ways into getting all the courses
+	
+What are you planning on doing today?
+	- changing some UI on my finsihed pages
+
+Any impediments or stumbling blocks?
+	- None
