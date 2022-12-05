@@ -1,8 +1,6 @@
 SUMMARY OF TASKS
 
 Harris Chong
-- implemented the unit tests for student and admin login
-- setup jira board, github, and figma
 
 Mark Lin
 - imported some drawables icons to use throughout the app
@@ -10,6 +8,9 @@ Mark Lin
 - various UI changes throughout the app
 
 Yuchuan Xue
+- implemented the first version of admin login page
+- implemented student course view page and academic history pages to display, add and remove courses
+- Added some other little functions like back buttons
 
 Jason Liang
 
