@@ -19,3 +19,14 @@ What are you planning on doing today?
 
 Any impediments or stumbling blocks?
 	- None
+
+Name: Jason Liang	
+
+What have you done since yesterday?
+	- got the timeline generator to work.
+	
+What are you planning on doing today?
+	- try to merge my files and have the app running smoothly without issue
+
+Any impediments or stumbling blocks?
+	- None
