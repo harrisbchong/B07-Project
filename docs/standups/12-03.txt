@@ -19,3 +19,14 @@ What are you planning on doing today?
 
 Any impediments or stumbling blocks?
 	- None
+
+Name: Jason Liang	
+
+What have you done since yesterday?
+	- writing out some of the logic for the course generator
+	
+What are you planning on doing today?
+	- get the code to work so we can see the courses we want to take displayed
+
+Any impediments or stumbling blocks?
+	- None
