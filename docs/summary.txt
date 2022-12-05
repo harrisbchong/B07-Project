@@ -23,6 +23,7 @@ Jason Liang
 -Made sure the final app follows the UI designed in figma.
 
 Cheng Liang Huang
+- Setup the realtime database and firebase authentication on Google
 - Developed the first implementation of student login and signup (UI + Code)
 - Implemented the user story requiring admins to be able to add courses
 - Refactored code for admin course browse/edit, student course browse, and student academic history to properly read/write from the firebase using the Course and Student objects
