@@ -41,3 +41,15 @@ What are you planning on doing today?
 
 Any impediments or stumbling blocks?
 	- None
+
+Name: Cheng Liang Huang
+
+What have you done since yesterday?
+- Fixed the course timeline generator implementation to use course keys instead of course codes, which fixes a bug that crashes the timeline page for certain courses
+- Fixed bug where courses deleted by admins were still stored by other courses as prerequisites
+
+What are you planning on doing today?
+- Meet with team to finalize submission documents 
+
+Any impediments or stumbling blocks?
+- Waiting for other group members to update their standup documents and the project summary file
