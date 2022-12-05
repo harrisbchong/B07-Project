@@ -9,6 +9,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.Exclude;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -44,38 +45,43 @@ public class Course {
         }
     }
 
-    public String getCode(){
+    public void setCourseCode(String code) {
+        this.courseCode = code;
+    }
+
+    public void setCourseName(String name) {
+        this.courseName = name;
+    }
+
+    @Exclude
+    public String getCourseCode(){
         return this.courseCode;
     }
 
-    public String getName(){
+    @Exclude
+    public String getCourseName(){
         return this.courseName;
     }
 
-    public String getPrerequisites(HashMap<String, Course> courseDirectory){
+    @Exclude
+    public String getPrerequisitesAsString(HashMap<String, Course> courseDirectory){
         List<String> codes = new ArrayList<>();
         for (String courseId : this.prerequisites) {
             codes.add(courseDirectory.get(courseId).courseCode);
         }
 
-        String result = "Prerequisites: ";
-        int n = prerequisites.size();
-        if (n == 0 || prerequisites == null) {
+        if (prerequisites == null || this.prerequisites.size() == 0) {
             return "No prerequisites";
         }
-        return result + TextUtils.join(", ", codes);
+        return TextUtils.join(", ", codes);
     }
 
-    public String getSessions(){
-        String result = "Sessions: ";
-        int n = offeringSessions.size();
-        if((n == 0)||(offeringSessions == null)){
+    @Exclude
+    public String getSessionsAsString(){
+        if(this.offeringSessions == null || this.offeringSessions.size() == 0){
             return "Please implement sessions for this course";
         }
-        for (int i = 0;i < n - 1; i++){
-            result = result + offeringSessions.get(i) + ", ";
-        }
-        return result + offeringSessions.get(n-1);
+        return TextUtils.join(", ", this.offeringSessions);
     }
 
     public static List<Course> getCoursePath(HashMap<String, Course> courses,  boolean reverser,String CourseCode) {

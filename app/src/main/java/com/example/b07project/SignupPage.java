@@ -15,7 +15,7 @@ import android.widget.Toast;
 public class SignupPage extends AppCompatActivity implements View.OnClickListener {
 
     private Button btnFinish, backbt;
-    private EditText progtxt,nametxt,emailtxt,passtxt;
+    private EditText nametxt,emailtxt,passtxt;
     private RadioButton adminbt, studentbt;
     private Model model;
 
@@ -29,7 +29,6 @@ public class SignupPage extends AppCompatActivity implements View.OnClickListene
         btnFinish = (Button) findViewById(R.id.btnFinish);
         btnFinish.setOnClickListener(this);
         nametxt = (EditText) findViewById(R.id.nametxt);
-        progtxt = (EditText) findViewById(R.id.progtxt);
         emailtxt = (EditText) findViewById(R.id.emailtxt);
         passtxt = (EditText) findViewById(R.id.passtxt);
         adminbt = (RadioButton) findViewById(R.id.adminbt);
@@ -54,7 +53,6 @@ public class SignupPage extends AppCompatActivity implements View.OnClickListene
         String email = emailtxt.getText().toString().trim();
         String password = passtxt.getText().toString().trim();
         String name = nametxt.getText().toString().trim();
-        String program = progtxt.getText().toString().trim();
 
 
         if (name.isEmpty()) {
@@ -90,20 +88,20 @@ public class SignupPage extends AppCompatActivity implements View.OnClickListene
 
         model.register(email, password, (String ID) -> {
             if (ID == null) {
-                Toast.makeText(SignupPage.this, "Failed to register", Toast.LENGTH_LONG).show();
+                Toast.makeText(SignupPage.this, "Failed To Register", Toast.LENGTH_LONG).show();
                 return;
             }
             // Toast.makeText(RegisterActivity.this, "registered", Toast.LENGTH_LONG).show();
             if(studentbt.isChecked() == true){
-                Student s = new Student(ID,program,email,name);
+                Student s = new Student(ID,email,name);
                 model.addStudent(s, (Boolean created) -> {
                     if (!created) {
-                        Toast.makeText(SignupPage.this, "Failed to create a user!", Toast.LENGTH_LONG).show();
+                        Toast.makeText(SignupPage.this, "Failed To Create Student", Toast.LENGTH_LONG).show();
 
                         return;
                     }
 
-                    Toast.makeText(SignupPage.this, "user has been registered successfully!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(SignupPage.this, "Student Registered Successfully", Toast.LENGTH_LONG).show();
 
 
                     startActivity(new Intent(SignupPage.this, MainActivity.class));
@@ -113,12 +111,12 @@ public class SignupPage extends AppCompatActivity implements View.OnClickListene
                 Admin a = new Admin(ID,email,name);
                 model.addAdmin(a, (Boolean created) -> {
                     if (!created) {
-                        Toast.makeText(SignupPage.this, "Failed to create a user!", Toast.LENGTH_LONG).show();
+                        Toast.makeText(SignupPage.this, "Failed To Create Admin", Toast.LENGTH_LONG).show();
 
                         return;
                     }
 
-                    Toast.makeText(SignupPage.this, "user has been registered successfully!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(SignupPage.this, "Admin Registered Successfully", Toast.LENGTH_LONG).show();
 
 
                     startActivity(new Intent(SignupPage.this, MainActivity.class));

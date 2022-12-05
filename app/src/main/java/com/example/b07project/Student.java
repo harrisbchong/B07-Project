@@ -1,15 +1,15 @@
 package com.example.b07project;
 
-import java.io.Serializable;
-import java.util.ArrayList;
+import com.google.firebase.database.DatabaseReference;
 
-public class Student implements Serializable {
+import java.util.ArrayList;
+import java.util.List;
+
+public class Student {
     public String name;
     public String email;
     public String id;
-    public String program;
-    public ArrayList<String> taken;
-
+    public List<String> taken;
 
 
     public Student(){
@@ -17,12 +17,11 @@ public class Student implements Serializable {
 
     }
 
-    public Student(String i,String p, String e, String n)
+    public Student(String i, String e, String n)
     {
             this();
             this.name = n;
             this.id = i;
-            this.program =p;
             this.email = e;
 
     }

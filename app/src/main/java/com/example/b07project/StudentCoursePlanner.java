@@ -69,6 +69,7 @@ public class StudentCoursePlanner extends AppCompatActivity implements View.OnCl
 
 
 
+    @SuppressLint("SuspiciousIndentation")
     public void generateplan() {
 
         String[] coursestotake = cctxt.getText().toString().trim().toUpperCase().split(",");

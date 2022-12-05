@@ -6,6 +6,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -50,8 +51,6 @@ public class StudentFrontPage extends AppCompatActivity implements View.OnClickL
                 if (s != null) {
                     TextView name = findViewById(R.id.sname);
                     name.setText(s.name);
-                    TextView prog = findViewById(R.id.programn);
-                    prog.setText(s.program);
                 }
             }
 

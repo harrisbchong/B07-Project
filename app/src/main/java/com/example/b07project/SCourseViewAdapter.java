@@ -4,13 +4,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -21,26 +19,23 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.util.List;
+import java.util.HashMap;
 
 public class SCourseViewAdapter extends RecyclerView.Adapter<SCourseViewAdapter.MyHolder>{
-    private List mList, kList;
     private DatabaseReference m;
     private FirebaseAuth auth;
     private FirebaseUser userId;
-    private String[] CourseCodes = new String[]{};
-    private String[] CourseKeys = new String[]{};
-    private int courseNum;
 
-    SCourseViewAdapter(List list_1, List list_2) {
-        mList = list_1;
-        kList = list_2;
+    private HashMap<String, Course> courses;
+
+    SCourseViewAdapter(HashMap<String, Course> courses) {
+        this.courses = courses;
     }
 
     @Override
     public MyHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.stucourse, parent, false);
+                .inflate(R.layout.scourse, parent, false);
         MyHolder holder = new MyHolder(view);
         m = FirebaseDatabase.getInstance().getReference();
         auth = FirebaseAuth.getInstance();
@@ -48,68 +43,65 @@ public class SCourseViewAdapter extends RecyclerView.Adapter<SCourseViewAdapter.
         return holder;
     }
 
-    public int exist(String m, String[] list){
-        for(String str: list){
-            if (str.equals(m)){
-                return 1;
-            }
-        }
-        return 0;
-    }
-
     @Override
     public void onBindViewHolder(MyHolder holder, int position) {
-        holder.textView.setText(mList.get(position).toString());
-        holder.kView.setText(kList.get(position).toString());
-        holder.ibt.setOnClickListener(new View.OnClickListener(){
+        String[] keys = courses.keySet().toArray(new String[0]);
+        Course currentCourse = courses.get(keys[position]);
+
+        holder.courseCode.setText(currentCourse.courseCode);
+        holder.courseName.setText(currentCourse.courseName);
+        holder.offeringSessions.setText(currentCourse.getSessionsAsString());
+        holder.prerequisites.setText(currentCourse.getPrerequisitesAsString(courses));
+
+        holder.addButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                String k = holder.kView.getText().toString();
-                String str = holder.textView.getText().toString();
-                String [] test = str.split("\n");
-                m.child("students").child(userId.getUid()).child("taken").get().addOnCompleteListener
+                String k = keys[position];
+
+                m.child("students").child(userId.getUid()).get().addOnCompleteListener
                         (new OnCompleteListener<DataSnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<DataSnapshot> task) {
                         if (!task.isSuccessful()) {
                             Log.e("firebase", "Error getting data", task.getException());
                         } else {
-                            courseNum = (int)task.getResult().getChildrenCount();
-                            Iterable<DataSnapshot> courses = task.getResult().getChildren();
-                            CourseCodes = new String[courseNum];
-                            CourseKeys = new String[courseNum];
-
-                            int index = 0;
-                            for (DataSnapshot childSnapshot : courses) {
-                                CourseCodes[index] = childSnapshot.getValue(String.class);
-                                CourseKeys[index] = childSnapshot.getKey();
-                                index++;
+                            Course courseSelected = null;
+                            if (courses.containsKey(k)) {
+                                courseSelected = courses.get(k);
                             }
 
-                            Log.e("TextView", test[3]);
+                            Student student = task.getResult().getValue(Student.class);
 
-                            if(exist(k, CourseKeys) == 1){
+                            if (student.taken.contains(k)) {
+                                // if the student has already taken the course
                                 Toast.makeText(v.getContext(), "You have already taken this course",
-                                Toast.LENGTH_SHORT).show();
-                            }
-                            else if(test[3].equals("No prerequisites")){
-                                m.child("students").child(userId.getUid()).child("taken").child(k).setValue(test[0]);
-                                Toast.makeText(v.getContext(), test[0] + " is successfully added to the taken courses",
+                                        Toast.LENGTH_SHORT).show();
+                            } else if (courseSelected.prerequisites.isEmpty()) {
+                                student.taken.add(k);
+                                m.child("students").child(userId.getUid()).setValue(student);
+                                holder.addButton.setVisibility(View.INVISIBLE);
+                                Toast.makeText(v.getContext(), courseSelected.courseCode +
+                                                " is successfully added to the taken courses",
                                         Toast.LENGTH_SHORT).show();
                             }
                             else{
-                                String s = test[3].substring(15);
-                                String [] pre = s.split(", ");
-                                int n = pre.length, count = 0;
-                                for(int i = 0; i < n; i++){
-                                    count = count + exist(pre[i], CourseCodes);
+                                boolean tookAllPrereqs = true;
+                                for (String prereq : courseSelected.prerequisites) {
+                                    if (!student.taken.contains(prereq)) {
+                                        tookAllPrereqs = false;
+                                        break;
+                                    }
                                 }
-                                if(count == n){
-                                    m.child("students").child(userId.getUid()).child("taken").child(k).setValue(test[0]);
-                                    Toast.makeText(v.getContext(), test[0] + " is successfully added to the taken courses",
+                                if(tookAllPrereqs){
+                                    student.taken.add(k);
+                                    m.child("students").child(userId.getUid()).setValue(student);
+                                    holder.addButton.setVisibility(View.INVISIBLE);
+                                    Toast.makeText(v.getContext(), courseSelected.courseCode +
+                                                    " is successfully added to the taken courses",
                                             Toast.LENGTH_SHORT).show();
                                 } else{
-                                    Toast.makeText(v.getContext(), "The prerequisites for this course are not met",
+                                    Toast.makeText(v.getContext(),
+                                            "The prerequisites for this course are not met",
                                             Toast.LENGTH_SHORT).show();
                                 }
                             }
@@ -126,20 +118,22 @@ public class SCourseViewAdapter extends RecyclerView.Adapter<SCourseViewAdapter.
 
     @Override
     public int getItemCount() {
-        return mList.size();
+        return this.courses.keySet().size();
     }
 
-
     class MyHolder extends RecyclerView.ViewHolder {
-
-        TextView textView, kView;
-        ImageButton ibt;
-
-        public MyHolder(View itemView) {
+        TextView courseCode;
+        TextView courseName;
+        TextView offeringSessions;
+        TextView prerequisites;
+        ImageButton addButton;
+        public MyHolder(@NonNull View itemView) {
             super(itemView);
-            textView = itemView.findViewById(R.id.tv_content);
-            kView = itemView.findViewById(R.id.k_content);
-            ibt = itemView.findViewById(R.id.imageButton2);
+            courseCode = itemView.findViewById(R.id.courseCode);
+            courseName = itemView.findViewById(R.id.courseName);
+            offeringSessions = itemView.findViewById(R.id.offeringSessions);
+            prerequisites = itemView.findViewById(R.id.prerequisites);
+            addButton = itemView.findViewById(R.id.sbcbt);
         }
     }
 }

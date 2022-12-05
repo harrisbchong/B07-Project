@@ -8,26 +8,11 @@
     android:scrollbarThumbHorizontal="@color/white">
 
     <TextView
-        android:id="@+id/year"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/uoft_blue"
-        android:text="Time Started"
-        android:textColor="@color/white"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.178" />
-
-    <TextView
         android:id="@+id/programn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/uoft_blue"
-        android:text="program"
+        android:layout_width="112dp"
+        android:layout_height="35dp"
+        android:background="@drawable/blue_rounded_edittext"
+        android:text="Student"
         android:textColor="@color/white"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -35,7 +20,7 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.107" />
+        app:layout_constraintVertical_bias="0.214" />
 
     <Button
         android:id="@+id/bcbt"
@@ -69,16 +54,17 @@
         android:id="@+id/sname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/uoft_blue"
+        android:background="@drawable/blue_rounded_edittext"
+        android:paddingRight="15dp"
         android:text="Name"
         android:textColor="@color/white"
         android:textSize="34sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.023" />
+        app:layout_constraintVertical_bias="0.083" />
 
     <Button
         android:id="@+id/ctbt"
@@ -106,9 +92,9 @@
         app:cornerRadius="100dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.514"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bcbt"
-        app:layout_constraintVertical_bias="0.564" />
+        app:layout_constraintVertical_bias="0.512" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

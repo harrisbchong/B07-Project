@@ -6,7 +6,7 @@
     android:background="@color/button_tint"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".StudentCourseView">
+    >
 
     <!-- TODO: Update blank fragment layout -->
 
@@ -18,17 +18,19 @@
         android:drawableBottom="@drawable/arrow_left"
         app:backgroundTint="@color/white"
         app:cornerRadius="100dp"
+        app:layout_constraintEnd_toStartOf="@+id/course_offering"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/course_offering"
-        android:layout_width="181dp"
-        android:layout_height="39dp"
-        android:layout_marginTop="24dp"
+        android:layout_width="206.7dp"
+        android:layout_height="44.5dp"
+        android:layout_marginTop="45dp"
         android:background="@drawable/grey_rounded_edittext"
         android:gravity="center"
         android:text="@string/course_offering"
+        android:textColor="@color/uoft_blue"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -36,10 +38,11 @@
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="153dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="96dp"
+        android:layout_width="160dp"
+        android:layout_height="44.5dp"
+        android:layout_marginTop="120dp"
         android:background="@drawable/blue_rounded_edittext"
+        android:gravity="start|center_vertical"
         android:text="@string/course_codes"
         android:textColor="@color/white"
         android:textSize="20sp"
@@ -50,12 +53,13 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_list"
-        android:layout_width="410dp"
-        android:layout_height="489dp"
-        android:layout_marginTop="110dp"
+        android:layout_width="370dp"
+        android:layout_height="475dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
