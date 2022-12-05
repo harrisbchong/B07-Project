@@ -90,20 +90,3 @@ public class Course {
     }
 
 }
-
-/*
-for (int i = 0;i < n; i++){
-            String part = m.child("courses").child(prerequisites.get(i)).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
-                @Override
-                public void onComplete(@NonNull Task<DataSnapshot> task) {
-                    if (!task.isSuccessful()) {
-                        Log.e("firebase", "Error getting data", task.getException());
-                    } else {
-                        String course = task.getResult().getValue(Course.class).getCode();
-                        result = result + course + ", ";
-                        }
-                    }
-                }
-            });
-        }
- */
