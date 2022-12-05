@@ -12,7 +12,7 @@ Mark Lin
 Yuchuan Xue
 - implemented the first version of admin login page
 - implemented student course view page and student academic history pages to display, add and remove courses
-- Added some other little functions like back buttons
+- and some other little functions like back buttons
 
 Jason Liang
 -Designed all the pages UI in figma for the group to follow when building the app.
