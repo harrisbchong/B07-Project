@@ -1,0 +1,10 @@
+Name: Mark Lin
+
+What have you done since yesterday?
+	- Finished implementation for editing
+	
+What are you planning on doing today?
+	- Have last group meeting to iron out final bugs and merge everything together
+
+Any impediments or stumbling blocks?
+	- None
