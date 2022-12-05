@@ -3,6 +3,8 @@ SUMMARY OF TASKS
 Harris Chong
 
 Mark Lin
+- imported some drawables icons to use throughout the app
+- implemented admin course view with ability for admins to delete and edit courses
 
 Yuchuan Xue
 
