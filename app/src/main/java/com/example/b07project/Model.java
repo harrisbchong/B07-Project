@@ -113,7 +113,7 @@ public class Model {
                     Course c = allcourse.getValue(Course.class);
                     System.out.println(c);
 
-                    courses.put(c.courseCode, c);
+                    courses.put(allcourse.getKey(), c);
                 }
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                     callback.accept(courses);

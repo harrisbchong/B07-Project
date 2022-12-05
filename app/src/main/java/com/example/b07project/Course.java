@@ -11,11 +11,13 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.Exclude;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.Queue;
 
 public class Course {
@@ -84,13 +86,13 @@ public class Course {
         return TextUtils.join(", ", this.offeringSessions);
     }
 
-    public static List<Course> getCoursePath(HashMap<String, Course> courses,  boolean reverser,String CourseCode) {
+    public static List<String> getCoursePath(HashMap<String, Course> courses,  boolean reverser,String CourseCode) {
         if (!courses.containsKey(CourseCode)) {
             return null;
         }
 
         // create the final result
-        List<Course> plan = new ArrayList<Course>();
+        List<Course> plan = new ArrayList<>();
 
         //create the queue
         Queue<String> q = new LinkedList<>();
@@ -101,10 +103,8 @@ public class Course {
         while (!q.isEmpty()) {
             //dequeue that course
             String cc = q.poll();
-            System.out.println(cc);
             //get the course from hashmap
             Course c = courses.get(cc);
-            System.out.println(c);
             if (!plan.contains(c))
                 plan.add(c);
 
@@ -117,7 +117,18 @@ public class Course {
         if (reverser)
             Collections.reverse(plan);
 
-        return plan;
+        List<String> result = new ArrayList<>();
+        // return the final result as key
+        for (Course c : plan) {
+            for (Map.Entry<String, Course> course : courses.entrySet()) {
+                if (course.getValue() == c) {
+                    result.add(course.getKey());
+                    break;
+                }
+            }
+        }
+
+        return result;
     }
 
 
