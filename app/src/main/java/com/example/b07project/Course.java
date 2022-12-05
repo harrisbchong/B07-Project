@@ -68,25 +68,18 @@ public class Course {
             codes.add(courseDirectory.get(courseId).courseCode);
         }
 
-        String result = "Prerequisites: ";
-        int n = prerequisites.size();
-        if (n == 0 || prerequisites == null) {
+        if (prerequisites == null || this.prerequisites.size() == 0) {
             return "No prerequisites";
         }
-        return result + TextUtils.join(", ", codes);
+        return TextUtils.join(", ", codes);
     }
 
     @Exclude
     public String getSessionsAsString(){
-        String result = "Sessions: ";
-        int n = offeringSessions.size();
-        if((n == 0)||(offeringSessions == null)){
+        if(this.offeringSessions == null || this.offeringSessions.size() == 0){
             return "Please implement sessions for this course";
         }
-        for (int i = 0;i < n - 1; i++){
-            result = result + offeringSessions.get(i) + ", ";
-        }
-        return result + offeringSessions.get(n-1);
+        return TextUtils.join(", ", this.offeringSessions);
     }
 
 }

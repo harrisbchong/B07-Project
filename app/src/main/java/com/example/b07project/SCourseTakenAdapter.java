@@ -42,31 +42,28 @@ public class SCourseTakenAdapter extends RecyclerView.Adapter<SCourseTakenAdapte
         public void onBindViewHolder(MyHolderST holder, int position) {
             Course course = coursesTaken.get(position);
             if (course == null) {
-                holder.textView.setText("Sorry, this course\nhas been deleted by admin");
-                holder.kView.setText("");
-                holder.ibt.setVisibility(View.INVISIBLE);
+                holder.courseCode.setText("Course not found.");
+                holder.courseName.setText("Sorry, this course\nhas been deleted by admin");
+                holder.dcbt.setVisibility(View.INVISIBLE);
             } else {
-                holder.textView.setText(course.getCourseCode() + "\n" + course.getCourseName());
-                holder.kView.setText(courseKeys.get(position));
-                holder.ibt.setVisibility(View.VISIBLE);
+                holder.courseCode.setText(course.getCourseCode());
+                holder.courseName.setText(course.getCourseName());
+                holder.dcbt.setVisibility(View.VISIBLE);
             }
 
-            holder.ibt.setOnClickListener(new View.OnClickListener(){
+            holder.dcbt.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View v) {
-                    String k = holder.kView.getText().toString();
-                    if (k != "" && student.taken.contains(k)) {
-                        student.taken.remove(k);
+                    String courseKeyToRemove = courseKeys.get(position);
+                    if (courseKeyToRemove != "" && student.taken.contains(courseKeyToRemove)) {
+                        student.taken.remove(courseKeyToRemove);
                         m.child(student.id).setValue(student).addOnCompleteListener(
                                 new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 if (task.isSuccessful()) {
-                                    holder.textView.setText("This course is successfully removed\n" +
-                                            "from your taken course list.");
-                                } else {
-                                    holder.textView.setText("Failed to remove course from list " +
-                                            "of taken courses. Please refresh page.");
+                                    holder.courseCode.setText("Course removed.");
+                                    holder.courseName.setText("You removed this course.");
                                 }
                             }
                         });
@@ -82,14 +79,15 @@ public class SCourseTakenAdapter extends RecyclerView.Adapter<SCourseTakenAdapte
 
         class MyHolderST extends RecyclerView.ViewHolder {
 
-            TextView textView, kView;
-            ImageButton ibt;
+            TextView courseCode;
+            TextView courseName;
+            ImageButton dcbt;
 
             public MyHolderST(View itemView) {
                 super(itemView);
-                textView = itemView.findViewById(R.id.tv_content_1);
-                kView = itemView.findViewById(R.id.k_content_1);
-                ibt = itemView.findViewById(R.id.imageButton3);
+                courseCode = itemView.findViewById(R.id.courseCode);
+                courseName = itemView.findViewById(R.id.courseName);
+                dcbt = itemView.findViewById(R.id.dcbt);
             }
         }
     }
