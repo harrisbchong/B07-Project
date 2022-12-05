@@ -40,3 +40,15 @@ What are you planning on doing today?
 
 Any impediments or stumbling blocks?
 	- None
+	
+Name: Jason Liang
+
+What have you done since yesterday?
+	- Double checking my own code
+	
+What are you planning on doing today?
+	- Start planning for the course timeline page
+
+Any impediments or stumbling blocks?
+	- None
+
