@@ -13,7 +13,9 @@ import com.google.firebase.database.DatabaseReference;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 public class Course {
 
@@ -76,21 +78,43 @@ public class Course {
         return result + offeringSessions.get(n-1);
     }
 
+    public static List<Course> getCoursePath(HashMap<String, Course> courses,  boolean reverser,String CourseCode) {
+        if (!courses.containsKey(CourseCode)) {
+            return null;
+        }
+
+        // create the final result
+        List<Course> plan = new ArrayList<Course>();
+
+        //create the queue
+        Queue<String> q = new LinkedList<>();
+
+        //add that course
+        q.offer(CourseCode);
+
+        while (!q.isEmpty()) {
+            //dequeue that course
+            String cc = q.poll();
+            System.out.println(cc);
+            //get the course from hashmap
+            Course c = courses.get(cc);
+            System.out.println(c);
+            if (!plan.contains(c))
+                plan.add(c);
+
+            //for loop the pre of this course
+            for (String pre : c.prerequisites) {
+                q.offer(pre);
+            }
+        }
+
+        if (reverser)
+            Collections.reverse(plan);
+
+        return plan;
+    }
+
+
+
 }
 
-/*
-for (int i = 0;i < n; i++){
-            String part = m.child("courses").child(prerequisites.get(i)).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
-                @Override
-                public void onComplete(@NonNull Task<DataSnapshot> task) {
-                    if (!task.isSuccessful()) {
-                        Log.e("firebase", "Error getting data", task.getException());
-                    } else {
-                        String course = task.getResult().getValue(Course.class).getCode();
-                        result = result + course + ", ";
-                        }
-                    }
-                }
-            });
-        }
- */
