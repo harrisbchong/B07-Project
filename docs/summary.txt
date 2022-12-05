@@ -11,7 +11,7 @@ Mark Lin
 
 Yuchuan Xue
 - implemented the first version of admin login page
-- implemented student course view page and academic history pages to display, add and remove courses
+- implemented student course view page and student academic history pages to display, add and remove courses
 - Added some other little functions like back buttons
 
 Jason Liang
