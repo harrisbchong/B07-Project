@@ -1,6 +1,8 @@
 SUMMARY OF TASKS
 
 Harris Chong
+- implemented the unit tests for student and admin login
+- setup jira board, github, and figma
 
 Mark Lin
 - imported some drawables icons to use throughout the app
