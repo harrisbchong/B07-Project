@@ -7,7 +7,7 @@ Harris Chong
 Mark Lin
 - imported drawables icons to use throughout the app
 - implemented admin course view with ability for admins to delete and edit courses
-- worked on UI refactoring for several pages through the app
+- worked on UI refactoring for several pages throughout the app
 
 Yuchuan Xue
 - implemented the first version of admin login page
