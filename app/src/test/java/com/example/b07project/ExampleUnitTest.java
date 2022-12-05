@@ -41,11 +41,9 @@ public class ExampleUnitTest {
 
     @Captor
     ArgumentCaptor<Consumer<Student>> captor;
-    // ArgumentCaptor<Consumer<User>> captor;
 
     @Captor
     ArgumentCaptor<Consumer<Admin>> adcaptor;
-    // ArgumentCaptor<Consumer<User>> captor;
 
     /**
      * Tests Successful student login when received student
