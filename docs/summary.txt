@@ -5,6 +5,7 @@ Harris Chong
 Mark Lin
 - imported some drawables icons to use throughout the app
 - implemented admin course view with ability for admins to delete and edit courses
+- various UI changes throughout the app
 
 Yuchuan Xue
 
