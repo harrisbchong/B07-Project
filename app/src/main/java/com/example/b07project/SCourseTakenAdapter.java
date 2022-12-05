@@ -46,7 +46,7 @@ public class SCourseTakenAdapter extends RecyclerView.Adapter<SCourseTakenAdapte
                 holder.kView.setText("");
                 holder.ibt.setVisibility(View.INVISIBLE);
             } else {
-                holder.textView.setText(course.getCode() + "\n" + course.getName());
+                holder.textView.setText(course.getCourseCode() + "\n" + course.getCourseName());
                 holder.kView.setText(courseKeys.get(position));
                 holder.ibt.setVisibility(View.VISIBLE);
             }

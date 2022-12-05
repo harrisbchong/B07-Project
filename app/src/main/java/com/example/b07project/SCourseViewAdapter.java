@@ -4,13 +4,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -22,7 +20,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.HashMap;
-import java.util.List;
 
 public class SCourseViewAdapter extends RecyclerView.Adapter<SCourseViewAdapter.MyHolder>{
     private DatabaseReference m;
@@ -53,8 +50,8 @@ public class SCourseViewAdapter extends RecyclerView.Adapter<SCourseViewAdapter.
 
         holder.textView.setText(currentCourse.courseCode + "\n" +
                 currentCourse.courseName + "\n" +
-                currentCourse.getSessions() + "\n" +
-                currentCourse.getPrerequisites(courses));
+                currentCourse.getSessionsAsString() + "\n" +
+                currentCourse.getPrerequisitesAsString(courses));
         holder.kView.setText(keys[position]);
 
         holder.ibt.setOnClickListener(new View.OnClickListener(){

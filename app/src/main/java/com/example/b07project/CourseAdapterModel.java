@@ -32,11 +32,11 @@ public class CourseAdapterModel {
     public DatabaseReference getRef(){ return ref;}
 
     public String getCourseCode() {
-        return courseData.courseCode;
+        return courseData.getCourseCode();
     }
 
     public String getCourseName() {
-        return courseData.courseName;
+        return courseData.getCourseName();
     }
 
     public String getOfferingSessions() {
