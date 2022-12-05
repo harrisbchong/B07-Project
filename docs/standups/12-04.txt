@@ -41,3 +41,15 @@ What are you planning on doing today?
 
 Any impediments or stumbling blocks?
 	- None
+	
+Name: Cheng Liang Huang
+
+What have you done since yesterday?
+	- Merged admin course browse pages into main 
+	- Refactored code for Student Browse Course and Student Academic History, so that student's taken courses are stored an ArrayList on Firebase. Also updated the UI for these pages using Mark's template
+
+What are you planning on doing today?
+	- Help other team members merge their branches into main
+
+Any impediments or stumbling blocks?
+	- Waiting for Jason to implement Course Timeline generator 
