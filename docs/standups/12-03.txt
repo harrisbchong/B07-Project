@@ -42,3 +42,14 @@ What are you planning on doing today?
 
 Any impediments or stumbling blocks?
 - Waiting for Mark and Yuchuan to finish their implementations so I can help them merge
+
+Name: Jason Liang
+
+What have you done since yesterday?
+	- made some changes to the figma direction, for course timeline as its now course planner.
+	
+What are you planning on doing today?
+	- Finalize the code for course generator and have it functional with database.
+
+Any impediments or stumbling blocks?
+	- None
