@@ -83,7 +83,6 @@ public class StudentCoursePlanner extends AppCompatActivity implements View.OnCl
         LinkedHashMap<String, HashSet<String>> plantable = new LinkedHashMap<>();
         model.getStudent(id, (Student student) -> {
             model.getCourses((HashMap<String, Course> allc) -> {
-                // convert input codes to keys
                 for (int i = 0; i < coursestotake.length; i++) {
                     for (Map.Entry<String, Course> entry : allc.entrySet()) {
                         if (entry.getValue().courseCode.equals(coursestotake[i])) {
@@ -103,11 +102,11 @@ public class StudentCoursePlanner extends AppCompatActivity implements View.OnCl
                     if (coursePath == null) {
                         return;
                     }
-                    // add all of my taken courses into this taken list
+  
                     List<String> token = new ArrayList<>(student.taken);
-                    // the current taking list of courses
+             
                     List<String> taking = new ArrayList<>();
-                    // *****Real time year and Semester
+               
                     int currentY = 2022;
                     String currentS = "Fall";
 
@@ -116,8 +115,8 @@ public class StudentCoursePlanner extends AppCompatActivity implements View.OnCl
                     while (coursePath.size() > 0) {
                         String courseKey = coursePath.get(0);
                         Course c = allc.get(courseKey);
-                        //checker for if its already there
-                        if (token.contains(courseKey)) { // change this to key
+      
+                        if (token.contains(courseKey)) {
                             coursePath.remove(courseKey);
                             continue;
                         }
@@ -130,7 +129,7 @@ public class StudentCoursePlanner extends AppCompatActivity implements View.OnCl
                                 }
                             }
                             String key = currentY + " " + currentS;
-                            if (!plantable.containsKey(key))  //after adding all the taking courses this year, I will
+                            if (!plantable.containsKey(key))  
                                 plantable.put(key, new HashSet<>());
                             List<String> takingCodes = new ArrayList<>();
                             for (String tKey: taking) {
@@ -149,7 +148,7 @@ public class StudentCoursePlanner extends AppCompatActivity implements View.OnCl
                         taking.clear();
                     }
 
-                    //this is the Display UI method area
+      
 
                     List<String> outputStrings = new ArrayList<>();
                     for (String key: plantable.keySet()) {
