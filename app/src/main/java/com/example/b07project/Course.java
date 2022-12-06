@@ -91,24 +91,15 @@ public class Course {
             return null;
         }
 
-        // create the final result
         List<Course> plan = new ArrayList<>();
-
-        //create the queue
         Queue<String> q = new LinkedList<>();
-
-        //add that course
         q.offer(CourseCode);
-
         while (!q.isEmpty()) {
-            //dequeue that course
             String cc = q.poll();
-            //get the course from hashmap
             Course c = courses.get(cc);
             if (!plan.contains(c))
                 plan.add(c);
 
-            //for loop the pre of this course
             for (String pre : c.prerequisites) {
                 q.offer(pre);
             }
@@ -118,7 +109,6 @@ public class Course {
             Collections.reverse(plan);
 
         List<String> result = new ArrayList<>();
-        // return the final result as key
         for (Course c : plan) {
             for (Map.Entry<String, Course> course : courses.entrySet()) {
                 if (course.getValue() == c) {
